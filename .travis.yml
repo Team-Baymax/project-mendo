@@ -4,7 +4,7 @@ bundler_args: --path vendor --without development
 rvm:
 - 2.0.0
 script:
-- bundle exec rake build
+- bundle exec rake
 deploy:
   provider: heroku
   app: hidden-temple-5173 # optional if it's the same as your repo name
