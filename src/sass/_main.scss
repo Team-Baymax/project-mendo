@@ -1,0 +1,55 @@
+html{
+    height: 100%;
+    width: 100%;
+    font-size: 62.5%;  /*set up for all font size*/
+}
+body{
+    height: 100%;
+    width: 100%;
+}
+.side-nav{
+    width: 15%;
+    height: 100%;
+    background-color: #58595b;
+    float: left;
+    padding: 2.7rem;
+}
+.user-contain{
+    height: 25rem;
+    width: 100%;
+    background-color: yellow;
+}
+.user-top{
+    height: 7rem;
+    width: 100%;
+    background-color: aqua;
+}
+.user-img{
+    height: 100%;
+    width: 25%;
+    border-radius: 50%;
+    background-color: purple;
+}
+.user-description{
+    height: auto;
+    width: 100%;
+    background-color: aqua;
+    padding: 20px 0px;
+}
+.user-description p{
+    text-align: center;
+    //line-height: ;
+}
+header{
+    height: 10%;
+    width: 85%;
+    background-color: green;
+    float: left;
+}
+.nav-button{
+    height: 100%;
+    width: 10%;
+    background-color: bisque;
+    border: 1px black solid;
+    float: left;
+}
