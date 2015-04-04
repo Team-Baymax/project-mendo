@@ -1,0 +1,41 @@
+.plan-screen{
+    height: 100%;
+    width: 100%;
+    //background-color: aqua;
+    
+    .header{
+        height: 15%;
+        width: 100%;
+        background-color: #d1d3d4;
+        overflow-x: scroll;
+        white-space: nowrap;
+        
+        .widget{
+            height: 100%;
+            width: 150px;
+            //background-color: azure;
+            display: inline-block;
+            //border-left: solid 1px #c9c9c9;
+            border-right: solid 1px #c9c9c9;
+            
+            .icon{
+                height: 40px;
+                width: 40px;
+                background-color: white;
+                position: relative;
+                top: 20%;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 50px;
+            }
+            
+            p{
+                color: #f1f2f2;
+                text-align: center;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                font-size: 0.8em;
+            }
+        }
+    }
+}

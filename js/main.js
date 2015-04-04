@@ -3,20 +3,23 @@ var mainContainer = $(".main-container");
 
 var PageRouter = {};
 
+PageRouter.clearMainContent = function(){
+    $(mainContainer).children().addClass('hide');
+}
+
 //First screen
 PageRouter.loadFirstScreen = function(){
     $('.text').removeClass('hide');
 }
 
-PageRouter.clearMainContent = function(){
-    $(mainContainer).children().addClass('hide');
-}
-
 //Second Screen
 PageRouter.loadWidgetScreen = function(){
-    /*var widgetHolder = $(div);
-    widgetHolder.addClass("widget-holder");*/
     $('.widget-holder').removeClass('hide');
+}
+
+//Plan Screen
+PageRouter.loadPlanScreen = function(){
+    $('.plan-screen').removeClass('hide');
 }
 
 //hide all
@@ -30,6 +33,11 @@ $('.regimen').click(function(){
 $('.text-two').click(function(){
     PageRouter.clearMainContent();
     PageRouter.loadWidgetScreen();
+});
+
+$('.widget-btn').click(function(){
+    PageRouter.clearMainContent();
+    PageRouter.loadPlanScreen();
 });
 
 $('.btn').click(function(){

@@ -6,7 +6,7 @@
     display: block;
     
     .widget-bg{
-        background-color: rebeccapurple;
+        //background-color: rebeccapurple;
         height: 100%;
         width: 100%;
         border-radius: 1em;
@@ -18,47 +18,84 @@
         box-sizing: border-box;
         position: relative;
         
-        .widget{
-            width: 30%;
-            height: 500px;
-            margin-right: 5%;
-            margin-bottom: 4em;
-            background-color: red;
-            border-radius: 3px;
-            //height: 0;
-            &:nth-child(3n+3){
-                background-color: aqua;
-                margin-right: 0;
-            }
-        }
-        
         .top-bar{
-            height: 10%;
+            height: auto;
             width: 100%;
-            background-color: antiquewhite;
+            //background-color: #f1f2f2;
+            margin-bottom: 5%;
+            
+            h1{
+                float: left;
+                color: #d1d3d4;
+                line-height: 50px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 500;
+                font-size: 1.4em;
+            }
             
             .widget-btn{
                 width: 15%;
                 height: 50px;
                 background-color: #d1d3d4;
-                float: left;
+                float: right;
                 box-sizing: border-box;
                 border-radius: 5px;
-                position: absolute;
-                bottom: 0%;
-                left: 50%;
-                transform: translate(-50%, -50%);
                 cursor: pointer;
             
-            p{
-                color: #f1f2f2;
-                line-height: 50px;
-                text-align: center;
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 400;
-                font-size: 0.8em;
+                p{
+                    color: #f1f2f2;
+                    line-height: 50px;
+                    text-align: center;
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 400;
+                    font-size: 0.8em;
+                }
             }
         }
+        
+        .widget-scroll{
+            height: 90%;
+            width: 100%;
+            position: relative;
+            bottom: 0%;
+            overflow-y: scroll;
+        }
+        
+        .widget{
+            width: 30%;
+            height: 200px;
+            margin-right: 5%;
+            margin-bottom: 5%;
+            background-color: red;
+            border-radius: 3px;
+            float: left;
+            overflow: hidden;
+            //height: 0;
+            &:nth-child(3n+3){
+                background-color: aqua;
+                margin-right: 0;
+            }
+            
+                .img{
+                    height: 60%;
+                    width: 100%;
+                    background-color: #d1d3d4;
+                }
+            
+                .content{
+                    height: 40%;
+                    width: 100%;
+                    background-color: #f1f2f2;
+                    padding: 1em;
+                    
+                    p{
+                        color: #bbbdbf;
+                        //line-height: 50px;
+                        font-family: 'Open Sans', sans-serif;
+                        font-weight: 400;
+                        font-size: 0.8em;
+                    }
+                }
         }
     }
 }
