@@ -1,13 +1,18 @@
 //Global elements
 var mainContainer = $(".main-container");
 
+//hide all
+$(mainContainer).children().addClass('hide');
+
 //Nothing on the screen
 $('.regimen').click(function(){
-    
+    loadFirstScreen();
 });
 
 //First screen
-$(".text-two")
+function loadFirstScreen(){
+    $('.text').removeClass('hide');
+}
 
 $('.text-two').click(function(){
     clearMainContent();
@@ -20,7 +25,7 @@ $('.btn').click(function(){
 });
 
 function clearMainContent(){
-    $(mainContainer).children().css("display","none");
+    $(mainContainer).children().addClass('hide');
 }
 
 //Second Screen
@@ -29,17 +34,3 @@ function loadWidgetScreen(){
     widgetHolder.addClass("widget-holder");*/
     $('.widget-holder').css('display', 'block');
 }
-
-/*
-<div class="widget-holder">
-                <div class="widget-bg">
-                    <div class="widget">
-                        <div class="img"></div>
-                        <div class="content">
-                            <p>Blah Blah Blah</p>
-                        </div>
-                    </div>
-                    
-                    <div class="widget-btn"><p>Done</p></div>
-                </div>
-            </div>*/
