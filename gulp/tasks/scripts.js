@@ -1,8 +1,8 @@
 var gulp = require('gulp');
-var config = require('../config').markup;
+var config = require('../config').scripts;
 var browserSync  = require('browser-sync');
 
-gulp.task('markup', function() {
+gulp.task('scripts', function() {
   return gulp.src(config.src)
     .pipe(browserSync.reload({stream:true}));
 });

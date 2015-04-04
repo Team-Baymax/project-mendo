@@ -1,5 +1,5 @@
 var dest = ".";
-var src = './src';
+var src = '.';
 
 module.exports = {
   browserSync: {
@@ -17,7 +17,11 @@ module.exports = {
     }
   },
   markup: {
-    src: "index.html",
+    src: "*.html",
+    dest: dest
+  },
+  scripts: {
+    src: src + "/js/**/*.js",
     dest: dest
   }
 };

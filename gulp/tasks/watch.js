@@ -9,8 +9,7 @@ var browserSync  = require('browser-sync');
 
 gulp.task('watch', ['browserSync'], function(callback) {
   gulp.watch(config.sass.src,   ['sass']);
-  gulp.watch(config.markup.src, function(){
-      browserSync.reload({stream:true});
-  });
+  gulp.watch(config.markup.src, ['markup']);
+  gulp.watch(config.scripts.src, ['scripts']);
   // Watchify will watch and recompile our JS, so no need to gulp.watch it
 });
