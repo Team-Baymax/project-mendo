@@ -32,5 +32,5 @@ function clearMainContent(){
 function loadWidgetScreen(){
     /*var widgetHolder = $(div);
     widgetHolder.addClass("widget-holder");*/
-    $('.widget-holder').css('display', 'block');
+    $('.widget-holder').removeClass('hide');
 }
