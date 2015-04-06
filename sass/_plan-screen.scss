@@ -2,6 +2,8 @@
     height: 100%;
     width: 100%;
     //background-color: aqua;
+    display: flex;
+    flex-direction: column;
     
     .header{
         height: 130px;
@@ -35,6 +37,131 @@
                 font-family: 'Open Sans', sans-serif;
                 font-weight: 400;
                 font-size: 0.8em;
+            }
+        }
+    }
+    
+    .timeline-holder{
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        position: relative;
+        display: flex;
+        
+        .date{
+            position: absolute;
+            height: auto;
+            width: auto;
+            padding: 15px;
+            
+            h1{
+                color: #4d4d4d;
+                line-height: 50px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 700;
+                font-size: 1.4em;
+            }
+            
+            p{
+                color: #4d4d4d;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 100;
+                font-size: 0.8em;
+            }
+        }
+        
+        .side-bar{
+            height: 1000px;
+            width: 20%;
+            //background-color: red;
+            
+            .line{
+                width: 5px;
+                background-color: #363636;
+                height: 100%;
+                float: right;
+            }
+        }
+        
+        .top{
+            margin-top: 100px;
+        }
+        
+        .modules-holder{
+            width: 80%;
+            height: 100%;
+            //background-color: red;
+            
+            .time-row{
+                width: auto;
+                height: auto;
+                //background-color: rebeccapurple;
+                position: relative;
+                padding-left: 50px;
+                
+                .time-container{
+                    height: auto;
+                    width: auto;
+                    background-color: aquamarine;
+                    
+                    .time{
+                        position: absolute;
+                        top: 50%;
+                        left: -90px;
+                        transform: translateY(-50%);
+                        color: #757575;
+                        font-size: 0.8em;
+                        font-family: 'Open Sans', sans-serif;
+                        font-weight: 100;
+                    }
+                    
+                    .node{
+                        height: 30px;
+                        width: 30px;
+                        background-color: white;
+                        border-radius: 50%;
+                        border: 1px solid #363636;
+                        position: absolute;
+                        left: -18px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                }
+                
+                .module{
+                    height: auto;
+                    width: 296px;
+                    background-color: #e1e1e1;
+                    border: solid 1px #c9c9c9;
+                    padding: 20px;
+                    margin: 0px 30px 30px 0px;
+                    h1{
+                        color: #444444;
+                        font-size: 1.4em;
+                        font-family: 'Open Sans', sans-serif;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+                    
+                    p{
+                        color: #757575;
+                        font-size: 0.8em;
+                        font-family: 'Open Sans', sans-serif;
+                        font-weight: 500;
+                    }
+                    
+                    .graphic-container{
+                        width: 100%;
+                        margin-top: 50px;
+                        .graphic{
+                            height: 10px;
+                            width: 100%;
+                            background-color: #9f9f9f;
+                            border-radius: 10px;
+                            margin-bottom: 20px;
+                        }
+                    }
+                }
             }
         }
     }
