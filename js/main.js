@@ -44,6 +44,26 @@ timelineWidgetExpand.expandFoodWidget = function(e){
     $(e).find('.expanded-widget').removeClass('hide');
 }
 
+timelineWidgetExpand.search = function(e){
+    //$(e).parent().removeClass('hide');
+    $(e).parent().parent().find('.list').removeClass('hide');
+    //console.log($(e).find('.list'));
+}
+
+timelineWidgetExpand.close = function(e){
+    //alert($(e).parent());
+    //var thisModule = $(e).parent().parent();
+    $(e).parent().addClass('hide');
+    /*$(thisModule).css({
+        'width': '296px',
+        'height': '160px',
+        'cursor': 'pointer',
+    });
+    $(thisModule).find('.unexpanded-widget').removeClass('hide');*/
+    //console.log($(thisModule).find('.unexpanded-widget'));
+    
+}
+
 
 
 
@@ -75,4 +95,12 @@ $('.btn').click(function(){
 
 $('.module').click(function(){
     timelineWidgetExpand.expandFoodWidget(this);
+});
+
+$('.searchbox').click(function(){
+    timelineWidgetExpand.search(this);
+});
+
+$('.cancel').click(function(){
+    timelineWidgetExpand.close(this);
 });
