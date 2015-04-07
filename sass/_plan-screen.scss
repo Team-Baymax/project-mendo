@@ -140,7 +140,7 @@
                 }
                 
                 .module{
-                    height: auto;
+                    height: 160px;
                     width: 296px;
                     background-color: #e1e1e1;
                     border: solid 1px #c9c9c9;
@@ -148,8 +148,13 @@
                     margin: 0px 30px 30px 0px;
                     float: left;
                     cursor: pointer;
+                    transition: height 2s;
                     
-                    h1{
+                    .unexpanded-widget{
+                        height: 100%;
+                        width: 100%;
+                        
+                        h1{
                         color: #444444;
                         font-size: 1.4em;
                         font-family: 'Open Sans', sans-serif;
@@ -173,6 +178,116 @@
                             background-color: #9f9f9f;
                             border-radius: 10px;
                             margin-bottom: 20px;
+                        }
+                    }
+                    }
+                    
+                    .expanded-widget{
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        
+                        .cancel{
+                            color: #4d4d4d;
+                            font-family: 'Open Sans', sans-serif;
+                            font-weight: 100;
+                            font-size: 0.8em;
+                        }
+                        
+                        .nav{
+                                width: 100%;
+                                height: auto;
+                                //background-color: red;
+                                margin-top: 20px;
+                            
+                                img{
+                                    height: 34px;
+                                    width: 34px;
+                                    display: inline-block;
+                                    cursor: pointer;
+                                    opacity: 0.8;
+                                    &:hover{
+                                        opacity: 1;
+                                    }
+                                }
+                            
+                                .something{
+                                    height: 34px;
+                                    width: 34px;
+                                    background-color: #9f9f9f;
+                                    border-radius: 50%;
+                                    display: inline-block;
+                                    cursor: pointer;
+                                    opacity: 0.8;
+                                    position: relative;
+                                    left: 35%;
+                                    &:hover{
+                                        opacity: 1;
+                                    }
+                                }
+                            
+                                .recipie{
+                                    float: right;
+                                }
+                            
+                                .searchbox{
+                                    height: 30px;
+                                    width: 100%;
+                                    background-color: white;
+                                    border-radius: 15px;
+                                    margin: 30px 0px 50px 0px;
+                                    visibility: visible;
+                                    cursor: pointer;
+                                }
+                            }
+                        
+                        .list{
+                            height: 70%;
+                            width: 100%;
+                            //background-color: rebeccapurple;
+                            overflow-y: scroll;
+                            white-space: nowrap;
+                            
+                            .food{
+                                width: 100%;
+                                height: auto;
+                                //background-color: aqua;
+                                position: relative;
+                                border-bottom: solid 1px #bfbfbf;
+                                padding: 20px 0px;
+                                
+                                img{
+                                    height: 34px;
+                                    width: 34px;
+                                    display: inline-block;
+                                    cursor: pointer;
+                                }
+                                
+                                p{
+                                    color: #4d4d4d;
+                                    font-family: 'Open Sans', sans-serif;
+                                    font-weight: 100;
+                                    font-size: 0.8em;
+                                }
+                                
+                                .name{
+                                    display: inline-block;
+                                    line-height: -34px;
+                                    position: absolute;
+                                    top: 50%;
+                                    transform: translateY(-50%);
+                                }
+                                
+                                .serving{
+                                    display: inline-block;
+                                    line-height: -34px;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 100%;
+                                    transform: translate(-100%, -50%);
+                                }
+                            }
                         }
                     }
                 }

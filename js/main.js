@@ -5,6 +5,8 @@ var PageRouter = {};
 
 var timelineFixer = {};
 
+var timelineWidgetExpand = {};
+
 window.onload = init;
 
 function init(){
@@ -28,21 +30,27 @@ PageRouter.loadWidgetScreen = function(){
 //Plan Screen
 PageRouter.loadPlanScreen = function(){
     $('.plan-screen').removeClass('hide');
-    timelineFixer.adjust();
+    //timelineFixer.adjust();
 }
+
+//Expand food journal
+timelineWidgetExpand.expandFoodWidget = function(e){
+    $(e).find('.unexpanded-widget').addClass('hide');
+    $(e).css({
+        'width':'400px',
+        'height': '500px',
+        'cursor': 'default',
+    });
+    $(e).find('.expanded-widget').removeClass('hide');
+}
+
+
+
+
+
 
 //hide all
 $(mainContainer).children().addClass('hide');
-
-//adjust timeline
-//take the height of the widget element 
-//and apply it to the height of the time row to fix the node position.
-timelineFixer.adjust = function(){
-    var height;
-    //height = $('.timeline-holder').height();
-    //height = $('.time-row').find('.module').height();
-    console.log(height);
-}
 
 //Nothing on the screen
 $('.regimen').click(function(){
@@ -63,4 +71,8 @@ $('.widget-btn').click(function(){
 $('.btn').click(function(){
     $('.btn-active').addClass('hide');
     $(this).find(".btn-active").removeClass('hide');
+});
+
+$('.module').click(function(){
+    timelineWidgetExpand.expandFoodWidget(this);
 });
