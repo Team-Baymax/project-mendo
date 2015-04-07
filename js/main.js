@@ -53,7 +53,7 @@ timelineWidgetExpand.search = function(e){
 timelineWidgetExpand.close = function(e){
     //alert($(e).parent());
     //var thisModule = $(e).parent().parent();
-    $(e).parent().addClass('hide');
+    $(e).closest('.expanded-widget').addClass('hide');
     /*$(thisModule).css({
         'width': '296px',
         'height': '160px',
@@ -101,6 +101,8 @@ $('.searchbox').click(function(){
     timelineWidgetExpand.search(this);
 });
 
-$('.cancel').click(function(){
+$('.cancel').click(function(e){
+    e.preventDefault();
+    e.stopPropagation();
     timelineWidgetExpand.close(this);
 });
