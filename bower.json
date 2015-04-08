@@ -1,0 +1,20 @@
+{
+  "name": "BigScreenProto",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Team-Baymax/BigScreenProto",
+  "authors": [
+    "lcb931023 <lcb931023@gmail.com>"
+  ],
+  "description": "prototype for patient portal",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "compass-mixins": "~1.0.2"
+  }
+}
