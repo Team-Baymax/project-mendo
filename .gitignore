@@ -1,4 +1,6 @@
 node_modules
+bower_components
 .DS_Store
 css/app.css
 npm-debug.log
+sass/compass-mixins
