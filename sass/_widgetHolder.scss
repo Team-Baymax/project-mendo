@@ -1,7 +1,7 @@
 .widget-holder{
     height: 100%;
     width: 100%;
-    padding: 3em;
+    padding: 3rem;
     box-sizing: border-box;
     display: block;
     
@@ -9,12 +9,12 @@
         //background-color: rebeccapurple;
         height: 100%;
         width: 100%;
-        border-radius: 1em;
+        border-radius: 1rem;
         border: #e6e7e8 dashed 3px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 3em;
+        padding: 3rem;
         box-sizing: border-box;
         position: relative;
         
@@ -30,7 +30,7 @@
                 line-height: 50px;
                 font-family: 'Open Sans', sans-serif;
                 font-weight: 500;
-                font-size: 1.4em;
+                font-size: 1.4rem;
             }
             
             .widget-btn{
@@ -48,7 +48,7 @@
                     text-align: center;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 400;
-                    font-size: 0.8em;
+                    font-size: 0.8rem;
                 }
             }
         }
@@ -87,14 +87,14 @@
                     height: 40%;
                     width: 100%;
                     background-color: #f1f2f2;
-                    padding: 1em;
+                    padding: 1rem;
                     
                     p{
                         color: #bbbdbf;
                         //line-height: 50px;
                         font-family: 'Open Sans', sans-serif;
                         font-weight: 400;
-                        font-size: 0.8em;
+                        font-size: 0.8rem;
                     }
                 }
         }

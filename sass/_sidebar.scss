@@ -3,14 +3,14 @@
     width: 20%;
     min-width: 300px;
     background-color: #58595b;
-    //padding: 1em;
+    //padding: 1rem;
     box-sizing: border-box;
   
         .user-contain{
             height: 28%;
             width: 100%;
             //background-color: purple;
-            padding: 2em;
+            padding: 2rem;
             box-sizing: border-box;
     
             .user-top{
@@ -38,20 +38,20 @@
                 width: 55%;
                 float: right;
                 display: block;
-                line-height: 1.6em;
+                line-height: 1.6rem;
                 position: relative;
                 top: 50%;
                 transform: translateY(-50%);
                 
                 .name{
                     color: #f1f2f2;
-                    font-size: 1em;
+                    font-size: 1rem;
                     font-weight: 600;
                 }
                 
                 p{
                     color: #939598;
-                    font-size: 0.8em;
+                    font-size: 0.8rem;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 300;
                 }
@@ -60,14 +60,14 @@
         .user-bottom{
             height: auto;
             width: 100%;
-            line-height: 2em;
+            line-height: 2rem;
             margin-top: 10px;
             //background-color: antiquewhite;
             
             .user-info{
                 p{
                     color: #bcbec0;
-                    font-size: 0.8em;
+                    font-size: 0.8rem;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 300;
                 }
@@ -91,7 +91,7 @@
             border-top: 1px #606060 solid;
             border-bottom: 1px #606060 solid;
             box-sizing: border-box;
-            padding: 1em 2em;
+            padding: 1rem 2rem;
             position: relative;
             cursor: pointer;
             
@@ -110,7 +110,7 @@
             
             p{
                 color: #f1f2f2;
-                font-size: 0.9em;
+                font-size: 0.9rem;
                 font-family: 'Open Sans', sans-serif;
                 font-weight: 300;
                 //float: left;
@@ -139,7 +139,7 @@
             height: 12%;
             //background-color: red;
             box-sizing: border-box;
-            padding: 2em;
+            padding: 2rem;
             
             .bottom-btn{
                 width: 47%;
@@ -160,7 +160,7 @@
                     text-align: center;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 300;
-                    font-size: 0.8em;
+                    font-size: 0.8rem;
                 }
             }
             
