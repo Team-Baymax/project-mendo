@@ -2,7 +2,7 @@
     height: 100%;
     width: 20%;
     min-width: 300px;
-    background-color: #58595b;
+    background-color: #ffffff;
     //padding: 1rem;
     box-sizing: border-box;
   
@@ -88,48 +88,78 @@
             height: 60px;
             width: 100%;
             //background-color: aqua;
-            border-top: 1px #606060 solid;
-            border-bottom: 1px #606060 solid;
+            border-top: 1px #e1e1e1 solid;
+            border-bottom: 1px #e1e1e1 solid;
             box-sizing: border-box;
-            padding: 1rem 2rem;
             position: relative;
             cursor: pointer;
-            
-            .icon{
-                width: 10%;
-                height: 0%;
-                padding-bottom: 10%;
-                border-radius: 50%;
-                background-color: #6d6e71;
-                float: left;
-                 position: relative;
-                top: 50%;
-                transform: translateY(-50%);
- 
+            z-index: 1;
+          
+            .selected{
+              height: 100%;
+              width: 7px;
+              border-top-right-radius: 10px;
+              border-bottom-right-radius: 10px;
+              background-color: #f66759;
+              position: absolute;
+              left: 95%;
+              transition: all 0.5s;
+              z-index: 0;
             }
-            
-            p{
-                color: #f1f2f2;
-                font-size: 0.9rem;
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 300;
-                //float: left;
-                text-align: center;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+          
+            .selected-animate{
+              left: 100%;
             }
+          
+            .btn-container{
+              position: absolute;
+              height: 100%;
+              width: 100%;
+              z-index: 1;
+              background-color: #ffffff;
+              transition: all 0.5s;
             
-            .btn-active{
-                height: 42px;
-                width: 42px;
-                background-color: white;
-                transform: rotate(45deg) translateY(-50%);
-                position: absolute;
-                left: 94%;
-                top: 50%;
-                //visibility: hidden;
+              .content-contain{
+                padding: 1rem 2rem;
+
+                .icon{
+                  width: 10%;
+                  height: 0%;
+                  padding-bottom: 10%;
+                  border-radius: 50%;
+                  background-color: #e1e1e1;
+                  float: left;
+                   position: absolute;
+                  top: 50%;
+                  transform: translateY(-50%);
+
+                  }
+
+                p{
+                  color: black;
+                  font-size: 0.9rem;
+                  font-family: 'Open Sans', sans-serif;
+                  font-weight: 400;
+                  //float: left;
+                  text-align: center;
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  transition: all 0.5s;
+                }
+
+                /*.btn-active{
+                  height: 42px;
+                  width: 42px;
+                  background-color: white;
+                  transform: rotate(45deg) translateY(-50%);
+                  position: absolute;
+                  left: 94%;
+                  top: 50%;
+                  //visibility: hidden;
+                }*/
+              }
             }
         }
     }

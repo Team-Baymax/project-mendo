@@ -20,6 +20,9 @@ PageRouter.clearMainContent = function(){
 //First screen
 PageRouter.loadFirstScreen = function(){
     $('.text').removeClass('hide');
+    $('.selected').addClass('selected-animate');
+    $('.btn-container').css('background-color','#ededed');
+    $('.btn p').css('font-weight', '600');
 }
 
 //Second Screen
