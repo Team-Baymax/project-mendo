@@ -50,18 +50,23 @@ timelineWidgetExpand.search = function(e){
     //console.log($(e).find('.list'));
 }
 
-timelineWidgetExpand.close = function(e){
-    //alert($(e).parent());
-    //var thisModule = $(e).parent().parent();
-    $(e).closest('.expanded-widget').addClass('hide');
-    /*$(thisModule).css({
-        'width': '296px',
-        'height': '160px',
-        'cursor': 'pointer',
+timelineWidgetExpand.close = function(){
+    /*$(e).closest('.expanded-widget').addClass('hide');
+    $(e).closest('.expanded-widget').find('.list').addClass('hide');
+    $(e).parent().parent().css({
+        'width':'296px',
+        'height':'160px',
+        'cursor':'pointer',
     });
-    $(thisModule).find('.unexpanded-widget').removeClass('hide');*/
-    //console.log($(thisModule).find('.unexpanded-widget'));
-    
+    $(e).closest('.module').find('.unexpanded-widget').removeClass('hide');*/
+    $('.expanded-widget').addClass('hide');
+    $('.expanded-widget').find('.list').addClass('hide');
+    $('.module').css({
+        'width':'296px',
+        'height':'160px',
+        'cursor':'pointer',
+    });
+    $('.module').find('.unexpanded-widget').removeClass('hide');
 }
 
 
@@ -94,6 +99,7 @@ $('.btn').click(function(){
 });
 
 $('.module').click(function(){
+    timelineWidgetExpand.close();
     timelineWidgetExpand.expandFoodWidget(this);
 });
 
