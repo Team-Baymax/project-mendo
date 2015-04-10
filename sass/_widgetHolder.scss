@@ -1,0 +1,124 @@
+.widget-holder{
+    height: 100%;
+    width: 100%;
+    padding: 3rem;
+    box-sizing: border-box;
+    display: block;
+    
+    .widget-bg{
+        //background-color: rebeccapurple;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 1em;
+        box-sizing: border-box;
+        position: relative;
+        
+        .top-bar{
+            height: auto;
+            width: 100%;
+            //background-color: #f1f2f2;
+            margin-bottom: 5%;
+            
+            h1{
+                float: left;
+                color: #d1d3d4;
+                line-height: 50px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 500;
+                font-size: 1.4rem;
+            }
+            
+            .widget-btn{
+                width: 15%;
+                height: 50px;
+                background-color: #d1d3d4;
+                float: right;
+                box-sizing: border-box;
+                border-radius: 5px;
+                cursor: pointer;
+            
+                p{
+                    color: #f1f2f2;
+                    line-height: 50px;
+                    text-align: center;
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 400;
+                    font-size: 0.8rem;
+                }
+            }
+        }
+        
+        .widget-scroll{
+            height: 90%;
+            width: 100%;
+            position: relative;
+            bottom: 0%;
+            overflow-y: scroll;
+        }
+        
+        .widget{
+            width: 30%;
+            height: 50%;
+            min-height: 200px;
+            margin-right: 5%;
+            margin-bottom: 3%;
+            background-color: white;
+            border-radius: 2%;
+            float: left;
+            overflow: hidden;
+            //height: 0;
+            &:nth-child(3n+3){
+                //background-color: aqua;
+                margin-right: 0;
+            }
+          
+            .icon{
+              height: 50px;
+              width: 50px;
+              //background-color: red;
+              border-radius: 50%;
+              border: solid #b0b0b0 1px;
+              margin: 0 auto;
+              display: block;
+              margin-top: 10%;
+              margin-bottom: 5%;
+            }
+          
+            .content{
+              height: auto;
+              width: 100%;
+              //padding: 1rem;
+              
+              h1{
+                font-size: 1.5rem;
+                font-weight: 600;
+                text-align: center;
+                margin-bottom: 3%;
+              }
+                    
+              .tags{
+                color: $secondary-text-color;
+                //line-height: 50px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                font-size: 0.8rem;
+                text-align: center;
+                font-style: italic;
+              }
+              
+              .description{
+                //color: #bbbdbf;
+                //line-height: 50px;
+                font-family: 'Open Sans', sans-serif;
+                font-weight: 400;
+                font-size: 0.8rem;
+                padding: 2rem;
+                line-height: 1.5rem;
+              }
+            }
+        }
+    }
+}

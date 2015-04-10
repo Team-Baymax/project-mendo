@@ -1,0 +1,35 @@
+.widget-cta
+  display: flex
+  flex-direction: row
+  flex-wrap: wrap
+  width: 100%
+  .widget
+    background: #ccc
+    border: 1px solid darken(#ccc, 5%)
+    cursor: pointer
+    outline: 0
+    padding: 15px 10px
+    position: relative
+    width: (100% / 3)
+    .title
+      color: #4477bb
+      display: inline-block
+      font-size: 1.5rem
+      margin: 0
+      padding: 0
+      vertical-align: middle
+    .status
+      background: #633
+      border-radius: 25px
+      box-shadow: inset 0 0 8px 2px darken(#633, 15%)
+      display: inline-block
+      height: 25px
+      position: absolute
+      right: 10px
+      top: 50%
+      transform: translatey(-50%)
+      vertical-align: middle
+      width: 25px
+      &.active
+        background: #1ED31E
+        box-shadow: 0 0 2px 1px lighten(#1ED31E, 5%)
