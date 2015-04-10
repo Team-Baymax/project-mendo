@@ -1,7 +1,8 @@
+.DS_Store
+
 node_modules
 bower_components
-.DS_Store
-css/app.css
 config.codekit
 npm-debug.log
-sass/compass-mixins
+src/sass/compass-mixins
+build
