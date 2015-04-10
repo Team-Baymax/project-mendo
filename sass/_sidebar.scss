@@ -44,13 +44,13 @@
                 transform: translateY(-50%);
                 
                 .name{
-                    color: #f1f2f2;
+                    //color: #f1f2f2;
                     font-size: 1rem;
                     font-weight: 600;
                 }
                 
                 p{
-                    color: #939598;
+                    //color: #939598;
                     font-size: 0.8rem;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 300;
@@ -66,7 +66,7 @@
             
             .user-info{
                 p{
-                    color: #bcbec0;
+                    //color: #bcbec0;
                     font-size: 0.8rem;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 300;
@@ -89,11 +89,13 @@
             width: 100%;
             //background-color: aqua;
             border-top: 1px #e1e1e1 solid;
-            border-bottom: 1px #e1e1e1 solid;
             box-sizing: border-box;
             position: relative;
             cursor: pointer;
             z-index: 1;
+            &:nth-last-child(1){
+              border-bottom: 1px #e1e1e1 solid;
+            }
           
             .selected{
               height: 100%;
@@ -103,7 +105,7 @@
               background-color: #f66759;
               position: absolute;
               left: 95%;
-              transition: all 0.5s;
+              transition: all 600ms cubic-bezier(0.165, 0.84, 0.44, 1);  
               z-index: 0;
             }
           
@@ -118,6 +120,9 @@
               z-index: 1;
               background-color: #ffffff;
               transition: all 0.5s;
+              &:hover{
+                background-color: rgb(244, 244, 244);
+              }
             
               .content-contain{
                 padding: 1rem 2rem;
@@ -136,17 +141,17 @@
                   }
 
                 p{
-                  color: black;
+                  //color: black;
                   font-size: 0.9rem;
                   font-family: 'Open Sans', sans-serif;
                   font-weight: 400;
                   //float: left;
-                  text-align: center;
+                  //text-align: left;
                   position: absolute;
                   top: 50%;
                   left: 50%;
                   transform: translate(-50%, -50%);
-                  transition: all 0.5s;
+                  transition: all 1s;
                 }
 
                 /*.btn-active{
@@ -185,7 +190,7 @@
                 cursor: pointer;
                 
                 p{
-                    color: #f1f2f2;
+                    //color: #f1f2f2;
                     line-height: 50px;
                     text-align: center;
                     font-family: 'Open Sans', sans-serif;

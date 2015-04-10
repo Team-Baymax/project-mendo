@@ -18,11 +18,11 @@ PageRouter.clearMainContent = function(){
 }
 
 //First screen
-PageRouter.loadFirstScreen = function(){
+PageRouter.loadFirstScreen = function(e){
     $('.text').removeClass('hide');
-    $('.selected').addClass('selected-animate');
-    $('.btn-container').css('background-color','#ededed');
-    $('.btn p').css('font-weight', '600');
+    $(e).find('.selected').addClass('selected-animate');
+    $(e).find('.btn-container').css('background-color','#ededed');
+    $(e).find('.btn-container .content-contain p').css('font-weight', '600');
 }
 
 //Second Screen
@@ -83,7 +83,7 @@ $(mainContainer).children().addClass('hide');
 //Nothing on the screen
 $('.regimen').click(function(){
     PageRouter.clearMainContent();
-    PageRouter.loadFirstScreen();
+    PageRouter.loadFirstScreen(this);
 });
 
 $('.text-two').click(function(){
@@ -96,10 +96,10 @@ $('.widget-btn').click(function(){
     PageRouter.loadPlanScreen();
 });
 
-$('.btn').click(function(){
+/*$('.btn').click(function(){
     $('.btn-active').addClass('hide');
     $(this).find(".btn-active").removeClass('hide');
-});
+});*/
 
 $('.module').click(function(){
     timelineWidgetExpand.close();
@@ -114,4 +114,15 @@ $('.cancel').click(function(e){
     e.preventDefault();
     e.stopPropagation();
     timelineWidgetExpand.close(this);
+});
+
+
+
+
+//Key press for demo!!!!!
+$(document).keypress(function(e) {
+  if(e.which == 99) {
+    //alert('yo');
+    
+  }
 });

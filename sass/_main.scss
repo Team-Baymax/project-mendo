@@ -1,3 +1,14 @@
+$main-text-color: #3f3f3f;
+$secondary-text-color: #a8a8a8;
+
+p{
+  color: $main-text-color;
+}
+
+h1{
+  color: $main-text-color;
+}
+
 .hide{
     display: none !important;
 }
