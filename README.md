@@ -5,6 +5,7 @@ Patient Portal Big Screen Prototype
 
 ```
 npm install
+bower install
 ```
 ### Dev
 ```
