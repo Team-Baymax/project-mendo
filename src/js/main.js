@@ -126,3 +126,9 @@ $(document).keypress(function(e) {
     
   }
 });
+
+var socket = io();
+
+socket.on('button clicked', function (data){
+  console.log(data);
+});
