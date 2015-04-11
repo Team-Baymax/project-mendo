@@ -4,7 +4,10 @@ var dest = "./build";
 module.exports = {
   browserSync: {
     // proxy into expressJS server
-    proxy: "localhost:3001"
+    proxy: {
+      host: "http://localhost",
+      port: "5000"
+    }
   },
   sass: {
     src: [ src + "/sass/**/*.{sass,scss}", src + "/bower_components/compass-mixins/**/*.{sass,scss}" ],
@@ -25,8 +28,5 @@ module.exports = {
   scripts: {
     src: src + "/js/**/*.js",
     dest: dest + "/js"
-  },
-  server: {
-    path: './server/index.js'
   }
 };
