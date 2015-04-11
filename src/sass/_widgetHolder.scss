@@ -1,7 +1,7 @@
 .widget-holder{
     height: 100%;
     width: 100%;
-    padding: 3rem;
+    //padding: 3rem;
     box-sizing: border-box;
     display: block;
     
@@ -12,7 +12,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        padding: 1em;
+        //padding: 3rem;
         box-sizing: border-box;
         position: relative;
         
@@ -20,7 +20,7 @@
             height: auto;
             width: 100%;
             //background-color: #f1f2f2;
-            margin-bottom: 5%;
+            //margin-bottom: 5%;
             
             h1{
                 float: left;
@@ -57,14 +57,15 @@
             position: relative;
             bottom: 0%;
             overflow-y: scroll;
+            padding: 5%;
         }
         
         .widget{
             width: 30%;
-            height: 50%;
+            height: 40%;
             min-height: 200px;
             margin-right: 5%;
-            margin-bottom: 3%;
+            margin-bottom: 5%;
             background-color: white;
             border-radius: 2%;
             float: left;
@@ -115,7 +116,7 @@
                 font-family: 'Open Sans', sans-serif;
                 font-weight: 400;
                 font-size: 0.8rem;
-                padding: 2rem;
+                padding: 4rem;
                 line-height: 1.5rem;
               }
             }

@@ -7,6 +7,8 @@ var timelineFixer = {};
 
 var timelineWidgetExpand = {};
 
+var selectedWidgets = [];
+
 window.onload = init;
 
 function init(){
@@ -121,9 +123,16 @@ $('.cancel').click(function(e){
 
 //Key press for demo!!!!!
 $(document).keypress(function(e) {
-  if(e.which == 99) {
+  if(e.which == 49) {
     //alert('yo');
-    
+    $('<div class="widget foodJournal"><div class="icon"></div><div class="content"><h1>Food Journal</h1><p class="tags">Food Log, Calorie Counter, Personalized Plan</p><p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p></div></div>').appendTo('.widget-scroll');
+    selectedWidgets = "foodJournal";
+    //console.log(selectedWidgets);
+  }
+  
+  else if(e.which == 50){
+    $('<div class="widget bloodPressure"><div class="icon"></div><div class="content"><h1>Blood Pressure</h1><p class="tags">Monitor and record blood pressure reading</p><p class="description">Track your blood pressure to help work towards a lower blood pressure to lower the risk of heart diseases, stroke and other problems.</p></div></div>').appendTo('.widget-scroll');
+    selectedWidgets = "bloodPressure";
   }
 });
 
