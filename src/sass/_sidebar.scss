@@ -5,6 +5,8 @@
     background-color: #ffffff;
     //padding: 1rem;
     box-sizing: border-box;
+    box-shadow: 3px 0px 3px rgba(136, 136, 136, 0.16);
+    z-index: 1;
   
         .user-contain{
             height: 28%;
@@ -14,34 +16,24 @@
             box-sizing: border-box;
     
             .user-top{
-                height: 50%;
+                height: 100%;
                 width: 100%;
-                //background-color: yellow;
-                overflow: hidden;
             
             .user-img{
                 height: 0;
-                padding-bottom: 30%;
+                //padding-bottom: 30%;
                 width: 30%;
                 border-radius: 50%;
                 background-color: purple;
                 background-image: url(../../media/me.jpg);
                 background-size: cover;
-                float: left;
                 display: block;
-                position: relative;
-                top: 50%;
-                transform: translateY(-50%);
             }
             .user-description{
                 height: auto;
-                width: 55%;
-                float: right;
+                width: 100%;
                 display: block;
                 line-height: 1.6rem;
-                position: relative;
-                top: 50%;
-                transform: translateY(-50%);
                 
                 .name{
                     //color: #f1f2f2;
@@ -51,22 +43,6 @@
                 
                 p{
                     //color: #939598;
-                    font-size: 0.8rem;
-                    font-family: 'Open Sans', sans-serif;
-                    font-weight: 300;
-                }
-            }
-        }
-        .user-bottom{
-            height: auto;
-            width: 100%;
-            line-height: 2rem;
-            margin-top: 10px;
-            //background-color: antiquewhite;
-            
-            .user-info{
-                p{
-                    //color: #bcbec0;
                     font-size: 0.8rem;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 300;
