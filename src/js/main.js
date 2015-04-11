@@ -12,66 +12,66 @@ var selectedWidgets = [];
 window.onload = init;
 
 function init(){
-    $('.btn-active').addClass('hide');
+  $('.btn-active').addClass('hide');
 }
 
 PageRouter.clearMainContent = function(){
-    $(mainContainer).children().addClass('hide');
+  $(mainContainer).children().addClass('hide');
 }
 
 //First screen
 PageRouter.loadFirstScreen = function(e){
-    $('.text').removeClass('hide');
-    $(e).find('.selected').addClass('selected-animate');
-    $(e).find('.btn-container').css('background-color','#ededed');
-    $(e).find('.btn-container .content-contain p').css('font-weight', '600');
+  $('.text').removeClass('hide');
+  $(e).find('.selected').addClass('selected-animate');
+  $(e).find('.btn-container').css('background-color','#ededed');
+  $(e).find('.btn-container .content-contain p').css('font-weight', '600');
 }
 
 //Second Screen
 PageRouter.loadWidgetScreen = function(){
-    $('.widget-holder').removeClass('hide');
+  $('.widget-holder').removeClass('hide');
 }
 
 //Plan Screen
 PageRouter.loadPlanScreen = function(){
-    $('.plan-screen').removeClass('hide');
-    //timelineFixer.adjust();
+  $('.plan-screen').removeClass('hide');
+  //timelineFixer.adjust();
 }
 
 //Expand food journal
 timelineWidgetExpand.expandFoodWidget = function(e){
-    $(e).find('.unexpanded-widget').addClass('hide');
-    $(e).css({
-        'width':'400px',
-        'height': '500px',
-        'cursor': 'default',
-    });
-    $(e).find('.expanded-widget').removeClass('hide');
+  $(e).find('.unexpanded-widget').addClass('hide');
+  $(e).css({
+    'width':'400px',
+    'height': '500px',
+    'cursor': 'default',
+  });
+  $(e).find('.expanded-widget').removeClass('hide');
 }
 
 timelineWidgetExpand.search = function(e){
-    //$(e).parent().removeClass('hide');
-    $(e).parent().parent().find('.list').removeClass('hide');
-    //console.log($(e).find('.list'));
+  //$(e).parent().removeClass('hide');
+  $(e).parent().parent().find('.list').removeClass('hide');
+  //console.log($(e).find('.list'));
 }
 
 timelineWidgetExpand.close = function(){
-    /*$(e).closest('.expanded-widget').addClass('hide');
-    $(e).closest('.expanded-widget').find('.list').addClass('hide');
-    $(e).parent().parent().css({
-        'width':'296px',
-        'height':'160px',
-        'cursor':'pointer',
-    });
-    $(e).closest('.module').find('.unexpanded-widget').removeClass('hide');*/
-    $('.expanded-widget').addClass('hide');
-    $('.expanded-widget').find('.list').addClass('hide');
-    $('.module').css({
-        'width':'296px',
-        'height':'160px',
-        'cursor':'pointer',
-    });
-    $('.module').find('.unexpanded-widget').removeClass('hide');
+  /*$(e).closest('.expanded-widget').addClass('hide');
+  $(e).closest('.expanded-widget').find('.list').addClass('hide');
+  $(e).parent().parent().css({
+    'width':'296px',
+    'height':'160px',
+    'cursor':'pointer',
+  });
+  $(e).closest('.module').find('.unexpanded-widget').removeClass('hide');*/
+  $('.expanded-widget').addClass('hide');
+  $('.expanded-widget').find('.list').addClass('hide');
+  $('.module').css({
+    'width':'296px',
+    'height':'160px',
+    'cursor':'pointer',
+  });
+  $('.module').find('.unexpanded-widget').removeClass('hide');
 }
 
 
@@ -84,38 +84,38 @@ $(mainContainer).children().addClass('hide');
 
 //Nothing on the screen
 $('.regimen').click(function(){
-    PageRouter.clearMainContent();
-    PageRouter.loadFirstScreen(this);
+  PageRouter.clearMainContent();
+  PageRouter.loadFirstScreen(this);
 });
 
 $('.text-two').click(function(){
-    PageRouter.clearMainContent();
-    PageRouter.loadWidgetScreen();
+  PageRouter.clearMainContent();
+  PageRouter.loadWidgetScreen();
 });
 
 $('.widget-btn').click(function(){
-    PageRouter.clearMainContent();
-    PageRouter.loadPlanScreen();
+  PageRouter.clearMainContent();
+  PageRouter.loadPlanScreen();
 });
 
 /*$('.btn').click(function(){
-    $('.btn-active').addClass('hide');
-    $(this).find(".btn-active").removeClass('hide');
+  $('.btn-active').addClass('hide');
+  $(this).find(".btn-active").removeClass('hide');
 });*/
 
 $('.module').click(function(){
-    timelineWidgetExpand.close();
-    timelineWidgetExpand.expandFoodWidget(this);
+  timelineWidgetExpand.close();
+  timelineWidgetExpand.expandFoodWidget(this);
 });
 
 $('.searchbox').click(function(){
-    timelineWidgetExpand.search(this);
+  timelineWidgetExpand.search(this);
 });
 
 $('.cancel').click(function(e){
-    e.preventDefault();
-    e.stopPropagation();
-    timelineWidgetExpand.close(this);
+  e.preventDefault();
+  e.stopPropagation();
+  timelineWidgetExpand.close(this);
 });
 
 
@@ -140,4 +140,10 @@ var socket = io();
 
 socket.on('button clicked', function (data){
   console.log(data);
+  addWidget(data);
 });
+
+
+function addWidget(pWidgetName) {
+  $('<div class="widget foodJournal"><div class="icon"></div><div class="content"><h1>'+ pWidgetName +'</h1><p class="tags">Food Log, Calorie Counter, Personalized Plan</p><p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p></div></div>').appendTo('.widget-scroll');
+}
