@@ -123,3 +123,13 @@
         }
     }
 }
+
+.widget-holder.widget-view{
+  .widget{
+    transform: translate(0, 100vh);
+    transition: transform 0.3s ease-in;
+    &.active{
+      transform: translate(0, 0);
+    }
+  }
+}
