@@ -125,7 +125,7 @@ socket.on('button clicked', function (data){
     // add the new html
     $('.widget-scroll').append( createWidget(data) );
     // add the active class to animate in
-    // * TOFIX: For some reason
+    // * FIXME: For some reason
     // * the animation is broken
     // * when you call addClass alone.
     // * Wrapping it in the setTimeout
