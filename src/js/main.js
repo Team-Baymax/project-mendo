@@ -75,10 +75,6 @@ timelineWidgetExpand.close = function(){
 }
 
 
-
-
-
-
 //hide all
 $(mainContainer).children().addClass('hide');
 
@@ -120,8 +116,60 @@ $('.cancel').click(function(e){
 
 var socket = io();
 
+// handles adding widgets to screen
 socket.on('button clicked', function (data){
   console.log(data);
-  var $widget = $('.'+data);
-  $widget.hasClass('active') ? $widget.removeClass('active') : $widget.addClass('active');
+  $widget = $('.widget.' + data);
+  // if object does not exist, create it
+  if ( $widget.length === 0) {
+    // add the new html
+    $('.widget-scroll').append( createWidget(data) );
+    // add the active class to animate in
+    // * TOFIX: For some reason
+    // * the animation is broken
+    // * when you call addClass alone.
+    // * Wrapping it in the setTimeout
+    // * should be just a temporary fix
+    setTimeout(function(){
+      $('.widget.' + data).addClass('active');
+    }, 1);
+  // else remove it
+  } else {
+    $widget.removeClass('active'); //begin the animation
+    // delay by 300ms before removing
+    setTimeout(function(){
+      $widget.remove();
+    }, 300);
+  }
 });
+
+function createWidget (name) {
+  var html = '';
+  switch (name) {
+    case 'food':
+      html =  '<div class="widget food">';
+      html += ' <div class="icon"></div>';
+      html += '  <div class="content">';
+      html += '    <h1>Food Journal</h1>';
+      html += '    <p class="tags">Food Log, Calorie Counter, Personalized Plan</p>';
+      html += '    <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p>';
+      html += ' </div>';
+      html += '</div>';
+      break;
+
+    case 'bloodPressure':
+      html =  '<div class="widget bloodPressure">';
+      html += '  <div class="icon"></div>';
+      html += '  <div class="content">';
+      html += '    <h1 class="title">Blood Pressure</h1>';
+      html += '    <p class="tags">Monitor and record blood pressure reading</p>';
+      html += '  </div>';
+      html += '</div>';
+      break;
+
+    default:
+      break;
+  }
+
+  return html;
+}
