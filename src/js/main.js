@@ -173,3 +173,16 @@ function createWidget (name) {
 
   return html;
 }
+
+// Insert Leap Here
+
+
+Leap.loop(function(frame){
+  // Leap Update Loop
+  
+  // Exit loop if no hand in view
+  if(frame.hands.length < 1) return;
+}).use('boneHand', {
+  targetEl: $("#handModel-holder").get(0),
+  arm: true
+});;
