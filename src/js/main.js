@@ -173,3 +173,27 @@ function createWidget (name) {
 
   return html;
 }
+
+// Insert Leap Here
+var leapController = new Leap.Controller({
+  enableGestures: true
+});
+leapController.use('boneHand', {
+  targetEl: document.querySelector("#handModel-holder"),
+  arm: true
+});
+leapController.use('screenPosition');
+
+leapController.on('connect', function() {
+  console.log("Successfully connected.");
+});
+
+leapController.on('deviceStreaming', function() {
+  console.log("A Leap device has been connected.");
+});
+
+leapController.on('deviceStopped', function() {
+  console.log("A Leap device has been disconnected.");
+});
+
+leapController.connect();
