@@ -3,7 +3,7 @@ var mainContainer = $(".main-container");
 
 var PageRouter = {};
 
-var timelineFixer = {};
+var widgetExpand = {};
 
 var timelineWidgetExpand = {};
 
@@ -19,8 +19,6 @@ PageRouter.clearMainContent = function(){
     $(mainContainer).children().addClass('hide');
 }
 
-//First screen
-
 
 //Second Screen
 PageRouter.loadWidgetScreen = function(){
@@ -31,6 +29,25 @@ PageRouter.loadWidgetScreen = function(){
 PageRouter.loadPlanScreen = function(){
     $('.plan-screen').removeClass('hide');
     //timelineFixer.adjust();
+}
+
+widgetExpand.expand = function(){
+  $('.food-journal').parent().css({
+    'position':'initial',
+  })
+  $('.food-journal').children().addClass('hide');
+  $('.food-journal').css({
+    'background-image':'inherit',
+    'position':'absolute',
+    'top':'0',
+    'left':'0',
+    'height':'82%',
+    'width':'93%',
+    'z-index':'99',
+    'margin':'19px 3.6%',
+    
+    //margin: 19px 3.6%;
+  })
 }
 
 //Expand food journal
@@ -88,15 +105,14 @@ $('.text-two').click(function(){
     PageRouter.loadWidgetScreen();
 });
 
+$('.food-journal').click(function(){
+  widgetExpand.expand();
+});
+
 $('.widget-btn').click(function(){
     PageRouter.clearMainContent();
     PageRouter.loadPlanScreen();
 });
-
-/*$('.btn').click(function(){
-    $('.btn-active').addClass('hide');
-    $(this).find(".btn-active").removeClass('hide');
-});*/
 
 $('.module').click(function(){
     timelineWidgetExpand.close();
@@ -111,24 +127,6 @@ $('.cancel').click(function(e){
     e.preventDefault();
     e.stopPropagation();
     timelineWidgetExpand.close(this);
-});
-
-
-
-
-//Key press for demo!!!!!
-$(document).keypress(function(e) {
-  if(e.which == 49) {
-    //alert('yo');
-    $('<div class="widget foodJournal"><div class="icon"></div><div class="content"><h1>Food Journal</h1><p class="tags">Food Log, Calorie Counter, Personalized Plan</p><p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p></div></div>').appendTo('.widget-scroll');
-    selectedWidgets = "foodJournal";
-    //console.log(selectedWidgets);
-  }
-  
-  else if(e.which == 50){
-    $('<div class="widget bloodPressure"><div class="icon"></div><div class="content"><h1>Blood Pressure</h1><p class="tags">Monitor and record blood pressure reading</p><p class="description">Track your blood pressure to help work towards a lower blood pressure to lower the risk of heart diseases, stroke and other problems.</p></div></div>').appendTo('.widget-scroll');
-    selectedWidgets = "bloodPressure";
-  }
 });
 
 var socket = io();

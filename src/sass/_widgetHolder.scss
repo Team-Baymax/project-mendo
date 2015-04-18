@@ -43,6 +43,7 @@
               
               .patient{
                 font-size: 1.3rem;
+                color: $main-text-color;
               }
               
               .name{
@@ -147,7 +148,7 @@
                 margin-bottom: 3%;
                 //background-color: white;
                 border-radius: 2%;
-                overflow: hidden;
+                //overflow: hidden;
                 padding: 19px 16px;
                 border: #d2d2d2 2px dashed;
                 box-sizing: border-box;
@@ -158,12 +159,13 @@
                 }
 
                 .widget-bg{
-                  //background-color: red;
+                  background-color: white;
                   border-radius: 10px;
                   height: 100%;
                   width: 100%;
                   overflow: hidden;
                   position: relative;
+                  transition: all 8s;
 
                   .icon{
                     height: 50px;
