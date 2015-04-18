@@ -8,51 +8,90 @@
     flex-direction: row;
     flex-wrap: wrap;
     box-sizing: border-box;
-    
-    /*.widget-bg{
-        //background-color: rebeccapurple;
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        //padding: 3rem;
-        box-sizing: border-box;
-        position: relative;*/
         
         .top-bar{
             height: 8.1%;
             width: 100%;
             background-color: white;
             margin-bottom: 3%;
+            padding: 0% 3%;
+          
+          .user{
+            height: 100%;
+            width: auto;
+            padding: 1%;
+            box-sizing: border-box;
+            float: left;
+            display: flex;
+            align-items: center;
             
-            h1{
-                float: left;
-                color: #d1d3d4;
-                line-height: 50px;
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 500;
-                font-size: 1.4rem;
+            .picture{
+              height: 63px;
+              width: 63px;
+              //background-color: antiquewhite;
+              background-image: url('../../media/robertKeller.jpg');
+              border-radius: 100%;
+              margin-right: 20px;
+              background-size: cover;
+              background-position: 63px 71px;
+            }
+            
+            .content-left{
+              //display: flex;
+              //flex-direction: column;
+              //align-content: flex-start;
+              
+              .patient{
+                font-size: 1.3rem;
+              }
+              
+              .name{
+                font-size: 1.5rem;
+                font-weight: 600;
+                width: 110px;
+                display: inherit;
+              }
+            }
+          }
+          
+          .content-right{
+              height: 100%;
+              width: 415px;
+              padding: 1%;
+              box-sizing: border-box;
+              float: right;
+              display: flex;
+              align-items: center;
+          
+            .widget-btn, .widget-count{
+              width: 187px;
+              height: 42px;
+              float: left;
+              box-sizing: border-box;
+              text-align: center;
+              font-size: 1.5rem;
+              line-height: 42px;
             }
             
             .widget-btn{
-                width: 15%;
-                height: 50px;
-                background-color: #d1d3d4;
-                float: right;
-                box-sizing: border-box;
-                border-radius: 5px;
-                cursor: pointer;
+              text-align: center;
+              color: white;
+              font-size: 1.5rem;
+              line-height: 42px;
+              background-color: #1fb6be;
+              border-radius: 50px;
+              cursor: pointer;
             
-                p{
+                span{
                     color: #f1f2f2;
-                    line-height: 50px;
+                    //line-height: 50px;
                     text-align: center;
                     font-family: 'Open Sans', sans-serif;
                     font-weight: 400;
-                    font-size: 0.8rem;
+                    font-size: 1.5rem;
                 }
             }
+          }
         }
         
         .widget-scroll{
@@ -65,143 +104,144 @@
             //flex-direction: row;
             //flex-wrap: wrap;
             padding: 0% 2.9%;
-        }
-      
-        .food-journal{
-          background-image: url(../../media/foodTrackerBg.jpg);
-          background-size: cover;
-          background-position: bottom left;
-        }
-        .blood-pressure{
-          background-image: url(../../media/bloodPressureBg.jpg);
-          background-size: cover;
-          background-position: bottom left;
-        }
-        .blood-glucose{
-          background-image: url(../../media/bloodSugarBg.jpg);
-          background-size: cover;
-          background-position: bottom left;
-        }
-        .fitness-planner{
-          background-image: url(../../media/fitnessTrackerBg.jpg);
-          background-size: cover;
-          background-position: bottom left;
-        }
-        .sleep-analysis{
-          background-image: url(../../media/sleepTrackerBg.jpg);
-          background-size: cover;  
-          background-position: bottom left;
-        }
-        .medication{
-          background-image: url(../../media/medicationTrackerBg.jpg);
-          background-size: cover;
-          background-position: bottom left;
-        }
-        .widget{
-            //flex-grow: 1;
-            flex-basis: auto;
-            flex-shrink: 1;
-            width: 31.3%;
-            height: 40%;
-            //min-height: 200px;
-            margin-right: 3%;
-            margin-bottom: 3%;
-            //background-color: white;
-            border-radius: 2%;
-            overflow: hidden;
-            padding: 19px 16px;
-            border: #d2d2d2 2px dashed;
-            box-sizing: border-box;
-            float: left;
-            position: relative;
-            &:nth-child(3n+3){
-              margin-right: 0;
+
+            .food-journal{
+              background-image: url(../../media/foodTrackerBg.jpg);
+              background-size: cover;
+              background-position: bottom left;
+              cursor: pointer;
             }
-          
-            .widget-bg{
-              //background-color: red;
-              border-radius: 10px;
-              height: 100%;
-              width: 100%;
-              overflow: hidden;
-              position: relative;
-          
-              .icon{
-                height: 50px;
-                width: 50px;
-                //background-color: red;
-                border-radius: 50%;
-                border: solid #b0b0b0 1px;
-                margin: 0 auto;
-                display: block;
-                margin-top: 10%;
-                margin-bottom: 5%;
+            .blood-pressure{
+              background-image: url(../../media/bloodPressureBg.jpg);
+              background-size: cover;
+              background-position: bottom left;
+            }
+            .blood-glucose{
+              background-image: url(../../media/bloodSugarBg.jpg);
+              background-size: cover;
+              background-position: bottom left;
+            }
+            .fitness-planner{
+              background-image: url(../../media/fitnessTrackerBg.jpg);
+              background-size: cover;
+              background-position: bottom left;
+            }
+            .sleep-analysis{
+              background-image: url(../../media/sleepTrackerBg.jpg);
+              background-size: cover;  
+              background-position: bottom left;
+            }
+            .medication{
+              background-image: url(../../media/medicationTrackerBg.jpg);
+              background-size: cover;
+              background-position: bottom left;
+            }
+            .widget{
+                //flex-grow: 1;
+                flex-basis: auto;
+                flex-shrink: 1;
+                width: 31.3%;
+                height: 40%;
+                //min-height: 200px;
+                margin-right: 3%;
+                margin-bottom: 3%;
+                //background-color: white;
+                border-radius: 2%;
+                overflow: hidden;
+                padding: 19px 16px;
+                border: #d2d2d2 2px dashed;
+                box-sizing: border-box;
                 float: left;
                 position: relative;
-                left: 50%;
-                transform: translateX(-50%);
-              }
-
-              .content{
-                height: auto;
-                width: 100%;
-                float: left;
-                //padding: 1rem;
-
-                h1{
-                  font-size: 1.5rem;
-                  font-weight: 600;
-                  text-align: center;
-                  margin-bottom: 3%;
+                &:nth-child(3n+3){
+                  margin-right: 0;
                 }
 
-                .tags{
-                  color: $secondary-text-color;
-                  //line-height: 50px;
-                  font-family: 'Open Sans', sans-serif;
-                  font-weight: 400;
-                  font-size: 0.8rem;
-                  text-align: center;
-                  font-style: italic;
-                }
-
-                .description{
-                  //color: #bbbdbf;
-                  //line-height: 50px;
-                  font-family: 'Open Sans', sans-serif;
-                  font-weight: 400;
-                  font-size: 0.8rem;
-                  //padding: 7%;
-                  line-height: 1.5rem;
-                  //width: 15.4%;
-                  padding: 7% 16.5%;
-                }
-              }
-              
-              .status{
-                position: absolute;
-                bottom: 0px;
-                right: 0px;
-                transform: translateY(-100%);
-                font-size: 16px;
-                margin-right: 3%;
-                
-                .ball{
-                  height: 9px;
-                  width: 9px;
-                  border-radius: 50%;
-                  background-color: #f96654;
-                  float: left;
+                .widget-bg{
+                  //background-color: red;
+                  border-radius: 10px;
+                  height: 100%;
+                  width: 100%;
+                  overflow: hidden;
                   position: relative;
-                  top: 3px;
+
+                  .icon{
+                    height: 50px;
+                    width: 50px;
+                    //background-color: red;
+                    border-radius: 50%;
+                    border: solid #b0b0b0 1px;
+                    margin: 0 auto;
+                    display: block;
+                    margin-top: 10%;
+                    margin-bottom: 5%;
+                    float: left;
+                    position: relative;
+                    left: 50%;
+                    transform: translateX(-50%);
+                  }
+
+                  .content{
+                    height: auto;
+                    width: 100%;
+                    float: left;
+                    //padding: 1rem;
+
+                    h1{
+                      font-size: 2.4rem;
+                      font-weight: 600;
+                      text-align: center;
+                      margin-bottom: 3%;
+                    }
+
+                    .tags{
+                      color: $secondary-text-color;
+                      //line-height: 50px;
+                      font-family: 'Open Sans', sans-serif;
+                      font-weight: 400;
+                      font-size: 1.35rem;
+                      text-align: center;
+                      font-style: italic;
+                    }
+
+                    .description{
+                      //color: #bbbdbf;
+                      //line-height: 50px;
+                      font-family: 'Open Sans', sans-serif;
+                      font-weight: 400;
+                      font-size: 1.65rem;
+                      //padding: 7%;
+                      line-height: 2.55rem;
+                      //width: 15.4%;
+                      padding: 7% 16.5%;
+                    }
+                  }
+
+                  .status{
+                    position: absolute;
+                    bottom: 0px;
+                    right: 0px;
+                    transform: translateY(-140%);
+                    font-size: 1.2rem;
+                    margin-right: 3%;
+
+                    .ball{
+                      height: 9px;
+                      width: 9px;
+                      border-radius: 50%;
+                      background-color: #f96654;
+                      float: left;
+                      position: relative;
+                      top: 3px;
+                    }
+
+                    p{
+                      color: $secondary-text-color;
+                      float: left;
+                      margin-left: 10px;
+                    }
+                  }
                 }
-                
-                p{
-                  color: $secondary-text-color;
-                  float: left;
-                  margin-left: 10px;
-                }
-              }
             }
         }
     }
