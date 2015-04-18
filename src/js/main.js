@@ -35,18 +35,33 @@ widgetExpand.expand = function(){
   $('.food-journal').parent().css({
     'position':'initial',
   })
-  $('.food-journal').children().addClass('hide');
-  $('.food-journal').css({
-    'background-image':'inherit',
+  //$('.food-journal').children().addClass('hide');
+  $('.food-journal').parent().find('.expand').css({
+    //'background-image':'inherit',
+    //'position':'absolute',
+    'top':'50%',
+    'left':'50%',
+    'transform':'translate(-50%, -50%)',
+    'height':'100%',
+    'width':'100%',
+    'opacity':'1',
+  })
+}
+
+widgetExpand.deflate = function(){
+  $('.food-journal').parent().css({
+    'position':'relative',
+  })
+  //$('.food-journal').children().addClass('hide');
+  $('.food-journal').parent().find('.expand').css({
+    //'background-image':'inherit',
     'position':'absolute',
-    'top':'0',
-    'left':'0',
-    'height':'82%',
-    'width':'93%',
-    'z-index':'99',
-    'margin':'19px 3.6%',
-    
-    //margin: 19px 3.6%;
+    'top':'50%',
+    'left':'50%',
+    'transform':'translate(-50%, -50%)',
+    'height':'50%',
+    'width':'50%',
+    'opacity':'0',
   })
 }
 
@@ -108,6 +123,10 @@ $('.text-two').click(function(){
 $('.food-journal').click(function(){
   widgetExpand.expand();
 });
+
+$('.background-black').click(function(){
+  widgetExpand.deflate();
+})
 
 $('.widget-btn').click(function(){
     PageRouter.clearMainContent();

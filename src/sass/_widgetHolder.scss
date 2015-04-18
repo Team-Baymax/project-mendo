@@ -157,6 +157,38 @@
                 &:nth-child(3n+3){
                   margin-right: 0;
                 }
+              
+                .expand{
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 50%;
+                  height: 50%;
+                  //background-color: black;
+                  transition: all 0.5s;
+                  z-index: 1;
+                  opacity: 0;
+                  
+                  .background-black{
+                    background-color: black;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    opacity: 0.8;
+                    cursor: pointer;
+                  }
+                  
+                  .background-white{
+                    background-color: white;
+                    height: 80%;
+                    width: 80%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    transition: all 0.5s;
+                  }
+                }
 
                 .widget-bg{
                   background-color: white;
@@ -165,7 +197,6 @@
                   width: 100%;
                   overflow: hidden;
                   position: relative;
-                  transition: all 8s;
 
                   .icon{
                     height: 50px;
