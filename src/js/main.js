@@ -20,12 +20,7 @@ PageRouter.clearMainContent = function(){
 }
 
 //First screen
-PageRouter.loadFirstScreen = function(e){
-    $('.text').removeClass('hide');
-    $(e).find('.selected').addClass('selected-animate');
-    $(e).find('.btn-container').css('background-color','#ededed');
-    $(e).find('.btn-container .content-contain p').css('font-weight', '600');
-}
+
 
 //Second Screen
 PageRouter.loadWidgetScreen = function(){
@@ -85,7 +80,7 @@ $(mainContainer).children().addClass('hide');
 //Nothing on the screen
 $('.regimen').click(function(){
     PageRouter.clearMainContent();
-    PageRouter.loadFirstScreen(this);
+    PageRouter.loadWidgetScreen(this);
 });
 
 $('.text-two').click(function(){

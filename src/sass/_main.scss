@@ -30,7 +30,11 @@ html body{
 }
 .main-container{
     height: 100%;
-    width: 100%;
+    width: 82%;
     background-color: #ededed;
     z-index: 0;
+}
+.clearfix {
+  overflow: auto;
+  zoom: 1;
 }
