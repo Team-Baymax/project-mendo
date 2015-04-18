@@ -175,14 +175,25 @@ function createWidget (name) {
 }
 
 // Insert Leap Here
-
-
-Leap.loop(function(frame){
-  // Leap Update Loop
-  
-  // Exit loop if no hand in view
-  if(frame.hands.length < 1) return;
-}).use('boneHand', {
-  targetEl: $("#handModel-holder").get(0),
+var leapController = new Leap.Controller({
+  enableGestures: true
+});
+leapController.use('boneHand', {
+  targetEl: document.querySelector("#handModel-holder"),
   arm: true
-});;
+});
+leapController.use('screenPosition');
+
+leapController.on('connect', function() {
+  console.log("Successfully connected.");
+});
+
+leapController.on('deviceStreaming', function() {
+  console.log("A Leap device has been connected.");
+});
+
+leapController.on('deviceStopped', function() {
+  console.log("A Leap device has been disconnected.");
+});
+
+leapController.connect();
