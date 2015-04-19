@@ -25,10 +25,10 @@ module.exports = {
     src: src + "/media/**",
     dest: dest + "/media"
   },
-  scripts: {
-    src: src + "/js/**/*.js",
-    dest: dest + "/js"
-  },
+  // scripts: {
+  //   src: src + "/js/**/*.js",
+  //   dest: dest + "/js"
+  // },
   browserify: {
     // A separate bundle will be generated for each
     // bundle config in the list below

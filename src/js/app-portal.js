@@ -4,7 +4,22 @@
 console.log("**Doctor / Patient Portal**");
 
 var $ = require('jquery');
+var Backbone = require('backbone');
 var socket = require('socket.io-client')();
+Backbone.$ = $;
+
+// TODO: EventEmitter2
+
+// Assemble the views
+var SideNavView = require('./sideNavView');
+
+
+
+var sideNavView = new SideNavView({
+  el: '#side-nav'
+});
+
+
 
 var mainContainer = $(".main-container");
 
