@@ -1,4 +1,4 @@
-Patient Portal Big Screen Prototype
+Project Endo
 ====
 
 ### Setup
