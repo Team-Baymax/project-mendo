@@ -16,9 +16,7 @@
       "hbsfy"
     ]
   },
-  "browserify-shim": {
-    
-  },
+  "browserify-shim": {},
   "devDependencies": {
     "browser-sync": "~1.3.6",
     "browserify": "^8.0.2",
