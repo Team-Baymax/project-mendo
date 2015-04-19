@@ -11,15 +11,17 @@
     background-color: white;
     //margin-bottom: 3%;
     padding: 0% 3%;
+    display: flex;
 
     .user{
       height: 100%;
       width: auto;
       padding: 1%;
       box-sizing: border-box;
-      float: left;
+      //float: left;
       display: flex;
       align-items: center;
+      min-width: 200px;
 
       .picture{
         height: 63px;
@@ -53,9 +55,9 @@
     
     .widget-button-contain{
       height: 100%;
-      width: 300px;
+      width: auto;
       background-color: red;
-      float: left;
+      //float: left;
       box-sizing: border-box;
       display: flex;
       //padding: 1%;
@@ -63,16 +65,19 @@
       .widget-button{
         background-color: antiquewhite;
         height: 100%;
-        width: 30px;
+        width: 108px;
+        border: solid black 1px;
       }
     }
       
     .content-right{
       height: 100%;
-      width: 415px;
+      width: auto;
+      max-width: 372px;
+      min-width: 349px;
       padding: 1%;
       box-sizing: border-box;
-      float: right;
+      //float: right;
       display: flex;
       align-items: center;
       
@@ -111,43 +116,50 @@
     width: 100%;
     height: 87%;
     overflow-y: scroll;
+    overflow-x: hidden;
     position: relative;
-    display: flex;
+    //display: flex;
     
     .date{
+      width: 30%;
+      height: 10%;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
       
-      h1{
-      }
+      .contain{
       
-      p{
+        h1{
+          display: inline-block;
+          font-size: 2.5rem;
+          font-weight: 600;
+          margin-right: 5px;
+        }
 
+        p{
+          display: inline-block;
+          font-size: 2.5rem;
+          font-weight: 100;
+        }
       }
-    }
-    
-    .side-bar{
-     
-    }
-    
-    .top{
-      //margin-top: 100px;
     }
     
     .modules-holder{
       width: 100%;
-      height: auto;
-      padding-left: 20%;
+      //height: 77%;
+      padding-left: 15%;
       float: left;
-      &:after {
-        content: "";
-        display: table;
-        clear: both;
-      }
+      position: relative;
       
       .line{
         width: 1px;
         background-color: #363636;
         height: 100%;
-        position: fixed;
+        position: absolute;
+        //top: 0;
+        //left: 0;
       }
       
       .time-row{
