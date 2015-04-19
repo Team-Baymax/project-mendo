@@ -12,20 +12,13 @@ var selectedWidgets = [];
 window.onload = init;
 
 function init(){
-  // $('.btn-active').addClass('hide');
+  $('.btn-active').addClass('hide');
 }
 
 PageRouter.clearMainContent = function(){
   $(mainContainer).children().addClass('hide');
 }
 
-//First screen
-PageRouter.loadFirstScreen = function(e){
-  $('.text').removeClass('hide');
-  $(e).find('.selected').addClass('selected-animate');
-  $(e).find('.btn-container').css('background-color','#ededed');
-  $(e).find('.btn-container .content-contain p').css('font-weight', '600');
-}
 
 //Second Screen
 PageRouter.loadWidgetScreen = function(){
@@ -39,37 +32,11 @@ PageRouter.loadPlanScreen = function(){
 }
 
 widgetExpand.expand = function(){
-  $('.food-journal').parent().css({
-    'position':'initial',
-  })
-  //$('.food-journal').children().addClass('hide');
-  $('.food-journal').parent().find('.expand').css({
-    //'background-image':'inherit',
-    //'position':'absolute',
-    'top':'50%',
-    'left':'50%',
-    'transform':'translate(-50%, -50%)',
-    'height':'100%',
-    'width':'100%',
-    'opacity':'1',
-  })
+  $('.expand').addClass('active');
 }
 
 widgetExpand.deflate = function(){
-  $('.food-journal').parent().css({
-    'position':'relative',
-  })
-  //$('.food-journal').children().addClass('hide');
-  $('.food-journal').parent().find('.expand').css({
-    //'background-image':'inherit',
-    'position':'absolute',
-    'top':'50%',
-    'left':'50%',
-    'transform':'translate(-50%, -50%)',
-    'height':'50%',
-    'width':'50%',
-    'opacity':'0',
-  })
+  $('.expand').removeClass('active');
 }
 
 //Expand food journal
@@ -109,13 +76,15 @@ timelineWidgetExpand.close = function(){
 }
 
 
+
+
 //hide all
 $(mainContainer).children().addClass('hide');
 
 //Nothing on the screen
 $('.regimen').click(function(){
   PageRouter.clearMainContent();
-  PageRouter.loadFirstScreen(this);
+  PageRouter.loadWidgetScreen(this);
 });
 
 $('.text-two').click(function(){
@@ -124,6 +93,7 @@ $('.text-two').click(function(){
 });
 
 $('.food-journal').click(function(){
+  console.log("$('.food-journal').click");
   widgetExpand.expand();
 });
 
@@ -135,11 +105,6 @@ $('.widget-btn').click(function(){
   PageRouter.clearMainContent();
   PageRouter.loadPlanScreen();
 });
-
-/*$('.btn').click(function(){
-  $('.btn-active').addClass('hide');
-  $(this).find(".btn-active").removeClass('hide');
-});*/
 
 $('.module').click(function(){
   timelineWidgetExpand.close();
@@ -158,14 +123,19 @@ $('.cancel').click(function(e){
 
 var socket = io();
 
-// handles adding widgets to screen
 socket.on('button clicked', function (data){
   console.log(data);
   $widget = $('.widget.' + data);
   // if object does not exist, create it
   if ( $widget.length === 0) {
     // add the new html
-    $('.widget-scroll').append( createWidget(data) );
+    var $html = $( createWidget(data) );
+
+    $('.widget-scroll').append( $html );
+    // * TODO Refactor. This is spaghetti
+    $html.click(function(){
+      widgetExpand.expand();
+    });
     // add the active class to animate in
     // * FIXME: For some reason
     // * the animation is broken
@@ -184,35 +154,30 @@ socket.on('button clicked', function (data){
     }, 300);
   }
 });
-
+  
 function createWidget (name) {
   var html = '';
   switch (name) {
     case 'food':
-      html =  '<div class="widget food">';
-      html += ' <div class="icon"></div>';
-      html += '  <div class="content">';
-      html += '    <h1>Food Journal</h1>';
-      html += '    <p class="tags">Food Log, Calorie Counter, Personalized Plan</p>';
-      html += '    <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p>';
-      html += ' </div>';
-      html += '</div>';
+      html = '<div class="widget food"> <div class="widget-bg food-journal"> <div class="icon"></div> <div class="content"> <h1>Food Journal</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div>';
       break;
 
     case 'bloodPressure':
-      html =  '<div class="widget bloodPressure">';
-      html += '  <div class="icon"></div>';
-      html += '  <div class="content">';
-      html += '    <h1 class="title">Blood Pressure</h1>';
-      html += '    <p class="tags">Monitor and record blood pressure reading</p>';
-      html += '  </div>';
-      html += '</div>';
+      html = '<div class="widget bloodPressure" name="bloodPressure"> <div class="widget-bg blood-pressure"> <div class="icon"></div> <div class="content"> <h1>Blood Pressure</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div> ';
       break;
 
     default:
       break;
   }
+  
+  // $(html).click(function(){
+  //   console.log("$('.food-journal').click");
+  //   widgetExpand.expand();
+  // });
 
+  // $('.background-black').click(function(){
+  //   widgetExpand.deflate();
+  // })
   return html;
 }
 
@@ -223,7 +188,7 @@ var leapController = new Leap.Controller({
 leapController.use('boneHand', {
   targetEl: document.querySelector("#handModel-holder"),
   arm: true
-});
+ });
 leapController.use('screenPosition');
 
 leapController.on('connect', function() {
