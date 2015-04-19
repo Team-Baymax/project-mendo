@@ -7,7 +7,8 @@
     "url": "git://github.com/team-baymax/project-mendo.git"
   },
   "browser": {
-    "underscore": "backbone/node_modules/underscore"
+    "underscore": "backbone/node_modules/underscore",
+    "socket.io-client": "socket.io/node_modules/socket.io-client"
   },
   "browserify": {
     "transform": [
@@ -16,12 +17,7 @@
     ]
   },
   "browserify-shim": {
-    "pagepiling": {
-      "exports": "pagepiling",
-      "depends": [
-        "jquery:$"
-      ]
-    }
+    
   },
   "devDependencies": {
     "browser-sync": "~1.3.6",
