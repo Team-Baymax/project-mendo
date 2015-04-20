@@ -56,17 +56,44 @@
     .widget-button-contain{
       height: 100%;
       width: auto;
-      background-color: red;
+      //background-color: red;
       //float: left;
       box-sizing: border-box;
+      border-left: solid #e1e1e1 1px;
       display: flex;
       //padding: 1%;
       
       .widget-button{
-        background-color: antiquewhite;
+        //background-color: antiquewhite;
         height: 100%;
         width: 108px;
-        border: solid black 1px;
+        border-right: solid #e1e1e1 1px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1%;
+        box-sizing: border-box;
+        cursor: pointer;
+        
+        .icon{
+          height: 40px;
+          width: 40px;
+          background-color: red;
+          //border-radius: 50%;
+          margin-bottom: 2px;
+          //position: absolute;
+          //top: 50%;
+          //left: 50%;
+          //transform: translateX(-50%);
+        }
+        
+        .title{
+          font-size: 1.4rem;
+          text-align: center;
+          color: $secondary-text-color;
+        }
       }
     }
       
@@ -155,7 +182,7 @@
       
       .line{
         width: 1px;
-        background-color: #363636;
+        background-color: #c2c2c2;
         height: 100%;
         position: absolute;
         //top: 0;
@@ -202,6 +229,10 @@
           }
         }
         
+        .top{
+          margin-top: 50px;
+        }
+        
         .module{
           height: 160px;
           width: 296px;
@@ -212,6 +243,8 @@
           float: left;
           cursor: pointer;
           transition: height 2s;
+          background-image: url('../../media/medicationBg.jpg');
+          background-size: contain;
           
           .unexpanded-widget{
             height: 100%;
