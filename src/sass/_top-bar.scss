@@ -6,7 +6,7 @@
   box-sizing: border-box;
   padding: 0% 3%;
   z-index: 1;
-  position: absolute;
+  position: fixed;
 
   .user{
     height: 100%;
@@ -48,20 +48,48 @@
   }
 
   .widget-button-contain{
-    height: 100%;
-    width: 300px;
-    background-color: red;
-    float: left;
-    box-sizing: border-box;
-    display: flex;
-    //padding: 1%;
-
-    .widget-button{
-      background-color: antiquewhite;
       height: 100%;
-      width: 30px;
+      width: 40%;
+      //background-color: red;
+      float: left;
+      box-sizing: border-box;
+      border-left: solid #e1e1e1 1px;
+      display: flex;
+      //padding: 1%;
+      
+      .widget-button{
+        //background-color: antiquewhite;
+        height: 100%;
+        width: 108px;
+        border-right: solid #e1e1e1 1px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1%;
+        box-sizing: border-box;
+        cursor: pointer;
+        
+        .icon{
+          height: 40px;
+          width: 40px;
+          background-color: red;
+          //border-radius: 50%;
+          margin-bottom: 2px;
+          //position: absolute;
+          //top: 50%;
+          //left: 50%;
+          //transform: translateX(-50%);
+        }
+        
+        .title{
+          font-size: 1.4rem;
+          text-align: center;
+          color: $secondary-text-color;
+        }
+      }
     }
-  }
 
   .content-right{
     height: 100%;
