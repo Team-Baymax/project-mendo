@@ -8,15 +8,16 @@ var Backbone = require('backbone');
 var socket = require('socket.io-client')();
 Backbone.$ = $;
 
-// TODO: EventEmitter2
+var EventEmitter2 = require('eventemitter2').EventEmitter2;
+var EVI = new EventEmitter2();
 
 // Assemble the views
-var SideNavView = require('./sideNavView');
-
-
-
+var SideNavView = require('./SideNavView');
+var PlanScreenView = require('./PlanScreenView');
+var WidgetHolderView = require('./WidgetHolderView');
 var sideNavView = new SideNavView({
-  el: '#side-nav'
+  el: '#side-nav',
+  EVI: EVI
 });
 
 

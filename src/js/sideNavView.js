@@ -3,14 +3,14 @@ var Backbone = require('backbone');
 Backbone.$ = require('jquery');
 
 module.exports = Backbone.View.extend({
-  template: require('./sideNavTemplate'),
+  template: require('./SideNavTemplate'),
   
   events: {
     "click .regimen": "openRegimen"
   },
   
   initialize: function(options) {
-    // this.EVI = options.EVI;
+    this.EVI = options.EVI;
 
     return this.render();
   },

@@ -6,7 +6,7 @@ module.exports = Backbone.View.extend({
   template: require('./WidgetHolderTemplate'),
   
   initialize: function(options) {
-    this.EVI = options.EVI;
+    // this.EVI = options.EVI;
 
     return this.render();
   },
