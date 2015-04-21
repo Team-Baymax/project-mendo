@@ -29,8 +29,11 @@ html, body{
   display: flex;
 }
 .main-container{
+  position: absolute;
   height: 100%;
   width: 82%;
+  top: 10%;
+  left: 18%;
   background-color: #ededed;
   z-index: 0;
   // [HACK] inner contents overflow container for some reason
