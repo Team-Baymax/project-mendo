@@ -44,7 +44,7 @@
 
         .patient{
           font-size: 1.3rem;
-          color: $main-text-color;
+          color: $text-color-main;
         }
 
         .name{
@@ -144,7 +144,7 @@
         transition: all 0.5s;
       }
     }
-    
+
     .food-journal{
       background-image: url(../../media/foodTrackerBg.jpg);
       cursor: pointer;
@@ -226,7 +226,7 @@
           }
 
           .tags{
-            color: $secondary-text-color;
+            color: $text-color-secondary;
             //line-height: 50px;
             font-family: 'Open Sans', sans-serif;
             font-weight: 400;
@@ -267,7 +267,7 @@
           }
 
           p{
-            color: $secondary-text-color;
+            color: $text-color-secondary;
             float: left;
             margin-left: 10px;
           }

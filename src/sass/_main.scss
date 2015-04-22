@@ -1,12 +1,10 @@
-$main-text-color: #3f3f3f;
-$secondary-text-color: #a8a8a8;
 
 p{
-  color: $main-text-color;
+  color: $text-color-main;
 }
 
 h1{
-  color: $main-text-color;
+  color: $text-color-main;
 }
 
 .hide{
@@ -21,10 +19,9 @@ html{
 
 html, body{
   font-size: 62.5%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: $font-family;
   height: 100%;
   width: 100%;
-  //background-color: green;
   margin: 0;
   display: flex;
 }
