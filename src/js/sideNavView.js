@@ -21,8 +21,8 @@ module.exports = Backbone.View.extend({
   
   // Load the regimen planner into main area
   openRegimen: function() {
-    console.log("[sidenavView] openRegimen");
-    // TODO: Use eventemitter to let main load in the regimen planner
+    console.log("[SideNavView] openRegimen");
+    this.EVI.emit('openRegimenBuilder');
   }
 
 });

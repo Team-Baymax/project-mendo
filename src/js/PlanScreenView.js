@@ -3,7 +3,7 @@ var Backbone = require('backbone');
 Backbone.$ = require('jquery');
 
 module.exports = Backbone.View.extend({
-  template: require('./WidgetHolderTemplate'),
+  template: require('./PlanScreenTemplate'),
   
   initialize: function(options) {
     // this.EVI = options.EVI;

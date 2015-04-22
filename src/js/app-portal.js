@@ -20,6 +20,7 @@ var TopBarView = require('./TopBarView');
 // Views that go into main content view
 var PlanScreenView = require('./PlanScreenView');
 var WidgetHolderView = require('./WidgetHolderView');
+
 var sideNavView = new SideNavView({
   el: '#side-nav',
   EVI: EVI
@@ -31,10 +32,23 @@ var topBarView = new TopBarView({
 
 // Swap this with all them content views
 var mainContentView;
+// FIXME: double init can't be good, no?
+EVI.on('openRegimenBuilder', function(){
+  mainContentView = new WidgetHolderView({
+    el: '#main-container',
+    EVI: EVI
+  });
+});
+
+EVI.on('openPlanScreen', function(){
+  mainContentView = new PlanScreenView({
+    el: '#main-container',
+    EVI: EVI
+  });
+  console.log(mainContentView);
+});
 
 var mainContainer = $(".main-container");
-
-var PageRouter = {};
 
 var widgetExpand = {};
 
@@ -46,22 +60,6 @@ window.onload = init;
 
 function init(){
   $('.btn-active').addClass('hide');
-}
-
-PageRouter.clearMainContent = function(){
-  $(mainContainer).children().addClass('hide');
-}
-
-
-//Second Screen
-PageRouter.loadWidgetScreen = function(){
-  $('.widget-holder').removeClass('hide');
-}
-
-//Plan Screen
-PageRouter.loadPlanScreen = function(){
-  $('.plan-screen').removeClass('hide');
-  //timelineFixer.adjust();
 }
 
 widgetExpand.expand = function(){
@@ -115,15 +113,6 @@ timelineWidgetExpand.close = function(){
 $(mainContainer).children().addClass('hide');
 
 //Nothing on the screen
-$('.regimen').click(function(){
-  PageRouter.clearMainContent();
-  PageRouter.loadWidgetScreen(this);
-});
-
-$('.text-two').click(function(){
-  PageRouter.clearMainContent();
-  PageRouter.loadWidgetScreen();
-});
 
 $('.food-journal').click(function(){
   console.log("$('.food-journal').click");
@@ -133,11 +122,6 @@ $('.food-journal').click(function(){
 $('.background-black').click(function(){
   widgetExpand.deflate();
 })
-
-$('.widget-btn').click(function(){
-  PageRouter.clearMainContent();
-  PageRouter.loadPlanScreen();
-});
 
 $('.module').click(function(){
   timelineWidgetExpand.close();
