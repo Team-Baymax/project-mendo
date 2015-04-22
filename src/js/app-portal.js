@@ -13,10 +13,15 @@ var EVI = new EventEmitter2();
 
 // Assemble the views
 var SideNavView = require('./SideNavView');
+var TopBarView = require('./TopBarView');
 var PlanScreenView = require('./PlanScreenView');
 var WidgetHolderView = require('./WidgetHolderView');
 var sideNavView = new SideNavView({
   el: '#side-nav',
+  EVI: EVI
+});
+var topBarView = new TopBarView({
+  el: '#top-bar',
   EVI: EVI
 });
 
