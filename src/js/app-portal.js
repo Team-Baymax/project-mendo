@@ -33,6 +33,7 @@ var topBarView = new TopBarView({
 // Swap this with all them content views
 var mainContentView;
 // FIXME: double init can't be good, no?
+// TODO: Generate these views according to our widget state
 EVI.on('openRegimenBuilder', function(){
   mainContentView = new WidgetHolderView({
     el: '#main-container',
@@ -45,7 +46,6 @@ EVI.on('openPlanScreen', function(){
     el: '#main-container',
     EVI: EVI
   });
-  console.log(mainContentView);
 });
 
 var mainContainer = $(".main-container");
@@ -53,14 +53,6 @@ var mainContainer = $(".main-container");
 var widgetExpand = {};
 
 var timelineWidgetExpand = {};
-
-var selectedWidgets = [];
-
-window.onload = init;
-
-function init(){
-  $('.btn-active').addClass('hide');
-}
 
 widgetExpand.expand = function(){
   $('.expand').addClass('active');
@@ -105,14 +97,6 @@ timelineWidgetExpand.close = function(){
   });
   $('.module').find('.unexpanded-widget').removeClass('hide');
 }
-
-
-
-
-//hide all
-$(mainContainer).children().addClass('hide');
-
-//Nothing on the screen
 
 $('.food-journal').click(function(){
   console.log("$('.food-journal').click");
