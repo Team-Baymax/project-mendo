@@ -1,5 +1,7 @@
 /**
  * Entry point for Doctor / Patient Portal
+ * Serves as page router also
+ * [TENTATIVE TODO] Put router into its own module?
  */
 console.log("**Doctor / Patient Portal**");
 
@@ -14,6 +16,8 @@ var EVI = new EventEmitter2();
 // Assemble the views
 var SideNavView = require('./SideNavView');
 var TopBarView = require('./TopBarView');
+
+// Views that go into main content view
 var PlanScreenView = require('./PlanScreenView');
 var WidgetHolderView = require('./WidgetHolderView');
 var sideNavView = new SideNavView({
@@ -25,7 +29,8 @@ var topBarView = new TopBarView({
   EVI: EVI
 });
 
-
+// Swap this with all them content views
+var mainContentView;
 
 var mainContainer = $(".main-container");
 
