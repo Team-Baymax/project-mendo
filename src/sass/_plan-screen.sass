@@ -1,15 +1,12 @@
 .plan-screen
   height: 100%
   width: 100%
-  //background-color: aqua
   display: flex
   flex-direction: column
 
   .top-bar
     height: 10%
-    //width: 100%
     background-color: white
-    //margin-bottom: 3%
     padding: 0% 3%
     display: flex
 
@@ -26,7 +23,6 @@
       .picture
         height: 63px
         width: 63px
-        //background-color: antiquewhite
         background-image: url('../../media/robertKeller.jpg')
         border-radius: 100%
         margin-right: 20px
@@ -35,14 +31,10 @@
 
 
       .content-left
-        //display: flex
-        //flex-direction: column
-        //align-content: flex-start
 
         .patient
           font-size: 1.3rem
           color: $text-color-main
-
 
         .name
           font-size: 1.5rem
@@ -50,21 +42,14 @@
           width: 110px
           display: inherit
 
-
-
-
     .widget-button-contain
       height: 100%
       width: auto
-      //background-color: red
-      //float: left
       box-sizing: border-box
       border-left: solid #e1e1e1 1px
       display: flex
-      //padding: 1%
 
       .widget-button
-        //background-color: antiquewhite
         height: 100%
         width: 108px
         border-right: solid #e1e1e1 1px
@@ -81,21 +66,12 @@
           height: 40px
           width: 40px
           background-color: red
-          //border-radius: 50%
           margin-bottom: 2px
-          //position: absolute
-          //top: 50%
-          //left: 50%
-          //transform: translateX(-50%)
-
 
         .title
           font-size: 1.4rem
           text-align: center
           color: $text-color-secondary
-
-
-
 
     .content-right
       height: 100%
@@ -104,7 +80,6 @@
       min-width: 349px
       padding: 1%
       box-sizing: border-box
-      //float: right
       display: flex
       align-items: center
 
@@ -117,7 +92,6 @@
         font-size: 1.5rem
         line-height: 42px
 
-
       .widget-btn
         text-align: center
         color: white
@@ -129,14 +103,9 @@
 
         span
           color: #f1f2f2
-          //line-height: 50px
           text-align: center
           font-weight: 400
           font-size: 1.5rem
-
-
-
-
 
   .timeline-holder
     width: 100%
@@ -144,13 +113,10 @@
     overflow-y: scroll
     overflow-x: hidden
     position: relative
-    //display: flex
 
     .overview
-        height: 300px
-        width: 100%
-        //background-color: rebeccapurple
-
+      height: 300px
+      width: 100%
       .contain
         width: 30%
         height: 10%
@@ -166,13 +132,9 @@
           margin-right: 5px
           color: #3f3f3f
 
-
-
       .widget-info-holder
         height: 100%
         width: 100%
-
-
 
     .date
       width: 30%
@@ -191,18 +153,13 @@
           font-weight: 600
           margin-right: 5px
 
-
         p
           display: inline-block
           font-size: 2.5rem
           font-weight: 100
 
-
-
-
     .modules-holder
       width: 100%
-      //height: 77%
       padding-left: 15%
       float: left
       position: relative
@@ -212,14 +169,9 @@
         background-color: #c2c2c2
         height: 100%
         position: absolute
-        //top: 0
-        //left: 0
-
-
       .time-row
         width: auto
         height: auto
-        //background-color: rebeccapurple
         position: relative
         padding-left: 50px
         &:after
@@ -231,7 +183,6 @@
           height: auto
           width: auto
           background-color: aquamarine
-
           .time
             position: absolute
             top: 25%
@@ -240,7 +191,6 @@
             color: #757575
             font-size: 0.8rem
             font-weight: 100
-
 
           .node
             height: 30px
@@ -253,11 +203,8 @@
             top: 25%
             transform: translateY(-50%)
 
-
-
         .top
           margin-top: 50px
-
 
         .module
           height: 137px
@@ -283,12 +230,10 @@
               font-weight: 500
               margin-bottom: 10px
 
-
             p
               color: #757575
               font-size: 0.8rem
               font-weight: 500
-
 
             .graphic-container
               width: 100%
@@ -299,9 +244,6 @@
                 background-color: #9f9f9f
                 border-radius: 10px
                 margin-bottom: 20px
-
-
-
 
           .expanded-widget
             height: 100%
@@ -317,11 +259,9 @@
               display: block
               width: 30px
 
-
             .nav
               width: 100%
               height: auto
-              //background-color: red
               margin-top: 20px
 
               img
@@ -332,8 +272,6 @@
                 opacity: 0.8
                 &:hover
                   opacity: 1
-
-
 
               .something
                 height: 34px
@@ -348,11 +286,8 @@
                 &:hover
                   opacity: 1
 
-
-
               .recipie
                 float: right
-
 
               .searchbox
                 height: 30px
@@ -363,19 +298,15 @@
                 visibility: visible
                 cursor: pointer
 
-
-
             .list
               height: 70%
               width: 100%
-              //background-color: rebeccapurple
               overflow-y: scroll
               white-space: nowrap
 
               .food
                 width: 100%
                 height: auto
-                //background-color: aqua
                 position: relative
                 border-bottom: solid 1px #bfbfbf
                 padding: 20px 0px
@@ -386,12 +317,10 @@
                   display: inline-block
                   cursor: pointer
 
-
                 p
                   color: #4d4d4d
                   font-weight: 100
                   font-size: 0.8rem
-
 
                 .name
                   display: inline-block
@@ -400,7 +329,6 @@
                   top: 50%
                   transform: translateY(-50%)
 
-
                 .serving
                   display: inline-block
                   line-height: -34px
@@ -408,12 +336,3 @@
                   top: 50%
                   left: 100%
                   transform: translate(-100%, -50%)
-
-
-
-
-
-
-
-
-
