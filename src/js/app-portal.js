@@ -92,7 +92,7 @@ timelineWidgetExpand.close = function(){
   $('.expanded-widget').find('.list').addClass('hide');
   $('.module').css({
     'width':'296px',
-    'height':'160px',
+    'height':'137px',
     'cursor':'pointer',
   });
   $('.module').find('.unexpanded-widget').removeClass('hide');

@@ -10,7 +10,7 @@ module.exports = {
     }
   },
   sass: {
-    src: [ src + "/sass/**/*.{sass,scss}", src + "/bower_components/compass-mixins/**/*.{sass,scss}" ],
+    src: [ src + "/sass/**/*.{sass,scss}" ],
     dest: dest + "/css",
     settings: {
       indentedSyntax: true, // Enable .sass syntax!
