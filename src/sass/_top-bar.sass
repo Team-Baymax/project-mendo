@@ -1,12 +1,18 @@
 .top-bar
   height: 10%
+  width: 85%
   background-color: white
   padding: 0% 3%
-  display: flex
+  //display: flex
+  position: absolute
+  left: 15%
+  z-index: 1
+  box-sizing: border-box
 
   .user
     height: 100%
-    width: auto
+    width: 15%
+    float: left
     padding: 1%
     box-sizing: border-box
     //float: left
@@ -38,7 +44,8 @@
 
   .widget-button-contain
     height: 100%
-    width: auto
+    width: 40%
+    float: left
     box-sizing: border-box
     border-left: solid #e1e1e1 1px
     display: flex
@@ -69,7 +76,8 @@
 
   .content-right
     height: 100%
-    width: auto
+    //width: 20%
+    float: right
     max-width: 372px
     min-width: 349px
     padding: 1%
