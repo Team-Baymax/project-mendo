@@ -1,6 +1,6 @@
 .side-nav
   height: 100%
-  width: 30%//Reset this to 15%
+  width: 15%//Reset this to 15%
   //min-width: 300px
   background-color: #ffffff
   //padding: 1rem
@@ -109,41 +109,44 @@
       z-index: 1
       &:nth-last-child(1)
         border-bottom: 1px #e1e1e1 solid
+      
+      .btn-container
+        position: absolute
+        height: 100%
+        width: 100%
+        z-index: 1
+        background-color: #ffffff
+        transition: all 0.5s
+        &:hover
+          background-color: rgb(244, 244, 244)
+        
+        .content-contain
+          padding: 1rem 2rem
 
-
-.btn-container
-  position: absolute
-  height: 100%
-  width: 100%
-  z-index: 1
-  background-color: #ffffff
-  transition: all 0.5s
-  &:hover
-    background-color: rgb(244, 244, 244)
-
-
-  .content-contain
-    padding: 1rem 2rem
-
-    .icon
-      width: 30px
-      height: 30px
-      //border-radius: 50%
-      background-color: #e1e1e1
-      position: absolute
-      top: 50%
-      right: 5%
-      transform: translate(-50%, -50%)
-
-
-    p
-      font-size: 1.65rem
-      font-weight: 400
-      position: absolute
-      top: 50%
-      left: 5%
-      transform: translateY(-50%)
-      transition: all 1s
+          .icon
+            width: 30px
+            height: 30px
+            //border-radius: 50%
+            background-color: #e1e1e1
+            position: absolute
+            top: 50%
+            right: 5%
+            transform: translate(-50%, -50%)
+            
+          p
+            font-size: 1.65rem
+            font-weight: 400
+            position: absolute
+            top: 50%
+            left: 5%
+            transform: translateY(-50%)
+            transition: all 1s
+  .logo-holder
+    height: 10%
+    width: 100%
+    background: red
+    position: absolute
+    bottom: 0%
 
 
 
