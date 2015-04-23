@@ -23,6 +23,9 @@ module.exports = Backbone.View.extend({
       el: '.widget-scroll',
       model: widgetModel
     });
+  },
+  removeWidget: function(data) {
+    
   }
   
 });

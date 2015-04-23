@@ -23,6 +23,7 @@ var WidgetHolderView = require('./WidgetHolderView');
 
 var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
+var WidgetCollection = require('./WidgetCollection');
 
 var sideNavView = new SideNavView({
   el: '#side-nav',
@@ -32,6 +33,8 @@ var topBarView = new TopBarView({
   el: '#top-bar',
   EVI: EVI
 });
+
+window.widgetCollection = new WidgetCollection();
 
 // Swap this with all them content views
 var mainContentView;
@@ -51,9 +54,14 @@ EVI.on('openPlanScreen', function(){
   });
 });
 
-socket.on('button clicked', function (data){
-  EVI.emit('addWidget', data);
-    
+socket.on('addWidget', function (data){
+  // EVI.emit('addWidget', data);
+  widgetCollection.addWidget(data);
+});
+socket.on('removeWidget', function (data){
+  // EVI.emit('removeWidget', data);
+  widgetCollection.removeWidget(data);
+});
   // [CHANGBAI] instead of checking the dom element's existence
   // check if it's active in the widget collection
   // Thus, .food won't be necessary
@@ -88,7 +96,7 @@ socket.on('button clicked', function (data){
   //     $widget.remove();
   //   }, 300);
   // }
-});
+
   
 function createWidget (name) {
   var html = '';

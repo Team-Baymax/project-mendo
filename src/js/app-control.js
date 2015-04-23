@@ -10,6 +10,11 @@ $('.widget').on('click', selectWidget);
 
 function selectWidget (e) {
   e.preventDefault();
-  $(this).hasClass('active') ? $(this).removeClass('active') : $(this).addClass('active');
-  socket.emit('button clicked', $(this).attr('name'));
+  if ( $(this).hasClass('active') ) {
+    $(this).removeClass('active');
+    socket.emit('removeWidget', $(this).attr('name'));
+  } else {
+    $(this).addClass('active');
+    socket.emit('addWidget', $(this).attr('name'));
+  }
 }
