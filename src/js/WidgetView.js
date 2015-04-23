@@ -7,11 +7,11 @@ module.exports = Backbone.View.extend({
   
   initialize: function(options) {
     this.EVI = options.EVI;
-
+    
     return this.render();
   },
   render: function() {
-    this.$el.html(this.template());
+    this.$el.append(this.template(this.model.attributes));
     return this;
   },
   

@@ -21,6 +21,9 @@ var TopBarView = require('./TopBarView');
 var PlanScreenView = require('./PlanScreenView');
 var WidgetHolderView = require('./WidgetHolderView');
 
+var WidgetView = require('./WidgetView');
+var WidgetModel = require('./WidgetModel');
+
 var sideNavView = new SideNavView({
   el: '#side-nav',
   EVI: EVI
@@ -47,6 +50,98 @@ EVI.on('openPlanScreen', function(){
     EVI: EVI
   });
 });
+
+socket.on('button clicked', function (data){
+  EVI.emit('addWidget', data);
+    
+  // [CHANGBAI] instead of checking the dom element's existence
+  // check if it's active in the widget collection
+  // Thus, .food won't be necessary
+  // event listen/handle should be handled by views themselves
+  
+  
+  // $widget = $('.widget.' + data);
+  // if object does not exist, create it
+  // if ( $widget.length === 0) {
+  //   // add the new html
+  //   var $html = $( createWidget(data) );
+  // 
+  //   $('.widget-scroll').append( $html );
+  //   // * TODO Refactor. This is spaghetti
+  //   $html.click(function(){
+  //     widgetExpand.expand();
+  //   });
+  //   // add the active class to animate in
+  //   // * FIXME: For some reason
+  //   // * the animation is broken
+  //   // * when you call addClass alone.
+  //   // * Wrapping it in the setTimeout
+  //   // * should be just a temporary fix
+  //   setTimeout(function(){
+  //     $('.widget.' + data).addClass('active');
+  //   }, 1);
+  // // else remove it
+  // } else {
+  //   $widget.removeClass('active'); //begin the animation
+  //   // delay by 300ms before removing
+  //   setTimeout(function(){
+  //     $widget.remove();
+  //   }, 300);
+  // }
+});
+  
+function createWidget (name) {
+  var html = '';
+  switch (name) {
+    case 'food':
+      html = '<div class="widget food-journal"> <div class="widget-bg"> <div class="icon"></div> <div class="content"> <h1>Food Journal</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div>';
+      break;
+
+    case 'bloodPressure':
+      html = '<div class="widget blood-pressure"> <div class="widget-bg blood-pressure"> <div class="icon"></div> <div class="content"> <h1>Blood Pressure</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div> ';
+      break;
+
+    default:
+      break;
+  }
+  
+  // $(html).click(function(){
+  //   console.log("$('.food-journal').click");
+  //   widgetExpand.expand();
+  // });
+
+  // $('.background-black').click(function(){
+  //   widgetExpand.deflate();
+  // })
+  return html;
+}
+
+// Insert Leap Here
+var leapController = new Leap.Controller({
+  enableGestures: true
+});
+leapController.use('boneHand', {
+  targetEl: document.querySelector("#handModel-holder"),
+  arm: true
+ });
+leapController.use('screenPosition');
+
+leapController.on('connect', function() {
+  console.log("Successfully connected.");
+});
+
+leapController.on('deviceStreaming', function() {
+  console.log("A Leap device has been connected.");
+});
+
+leapController.on('deviceStopped', function() {
+  console.log("A Leap device has been disconnected.");
+});
+
+leapController.connect();
+
+
+// Legacy code
 
 var mainContainer = $(".main-container");
 
@@ -121,85 +216,3 @@ $('.cancel').click(function(e){
   e.stopPropagation();
   timelineWidgetExpand.close(this);
 });
-
-socket.on('button clicked', function (data){
-  console.log(data);
-  $widget = $('.widget.' + data);
-  // if object does not exist, create it
-  if ( $widget.length === 0) {
-    // add the new html
-    var $html = $( createWidget(data) );
-
-    $('.widget-scroll').append( $html );
-    // * TODO Refactor. This is spaghetti
-    $html.click(function(){
-      widgetExpand.expand();
-    });
-    // add the active class to animate in
-    // * FIXME: For some reason
-    // * the animation is broken
-    // * when you call addClass alone.
-    // * Wrapping it in the setTimeout
-    // * should be just a temporary fix
-    setTimeout(function(){
-      $('.widget.' + data).addClass('active');
-    }, 1);
-  // else remove it
-  } else {
-    $widget.removeClass('active'); //begin the animation
-    // delay by 300ms before removing
-    setTimeout(function(){
-      $widget.remove();
-    }, 300);
-  }
-});
-  
-function createWidget (name) {
-  var html = '';
-  switch (name) {
-    case 'food':
-      html = '<div class="widget food"> <div class="widget-bg food-journal"> <div class="icon"></div> <div class="content"> <h1>Food Journal</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div>';
-      break;
-
-    case 'bloodPressure':
-      html = '<div class="widget bloodPressure" name="bloodPressure"> <div class="widget-bg blood-pressure"> <div class="icon"></div> <div class="content"> <h1>Blood Pressure</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div> ';
-      break;
-
-    default:
-      break;
-  }
-  
-  // $(html).click(function(){
-  //   console.log("$('.food-journal').click");
-  //   widgetExpand.expand();
-  // });
-
-  // $('.background-black').click(function(){
-  //   widgetExpand.deflate();
-  // })
-  return html;
-}
-
-// Insert Leap Here
-var leapController = new Leap.Controller({
-  enableGestures: true
-});
-leapController.use('boneHand', {
-  targetEl: document.querySelector("#handModel-holder"),
-  arm: true
- });
-leapController.use('screenPosition');
-
-leapController.on('connect', function() {
-  console.log("Successfully connected.");
-});
-
-leapController.on('deviceStreaming', function() {
-  console.log("A Leap device has been connected.");
-});
-
-leapController.on('deviceStopped', function() {
-  console.log("A Leap device has been disconnected.");
-});
-
-leapController.connect();
