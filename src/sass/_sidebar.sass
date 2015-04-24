@@ -1,144 +1,78 @@
 .side-nav
-  height: 100%
-  width: 15%
-  //min-width: 300px
   background-color: #ffffff
-  //padding: 1rem
-  box-sizing: border-box
   box-shadow: 3px 0px 3px rgba(136, 136, 136, 0.16)
-  position: absolute
+  height: 100%
+  max-width: 345px
+  position: fixed
+  width: 15%
   z-index: 2
 
-  .user-contain
-    height: 35%
-    width: 100%
-    //background-color: purple
-    padding: 1rem
-    box-sizing: border-box
-
-    .user-top
-      height: 80%
-      width: 100%
-
-      .user-img
-        height: 100px
-        width: 100px
-        border-radius: 50%
-        background-color: purple
-        background-image: url(../../media/me.jpg)
-        background-size: cover
-        display: block
-        margin: 0 auto
-
-      .user-description
-        height: auto
-        width: 100%
-        display: block
-        line-height: 1.6rem
-        margin-bottom: 20px
-
-        .name
-          //color: #f1f2f2
-          font-size: 1.8rem
-          font-weight: 600
-          text-align: center
-
-
-        .title
-          //color: #939598
-          font-size: 1.3rem
-          font-weight: 300
-          text-align: center
-
-
-
-
-    .user-bottom
-      width: 100%
-      height: 20%
-      display: flex
-      flex-wrap: wrap
-
-      .btn
-        width: 30%
-        flex-grow: 1
-        min-width: 25%
-
-        .icon
-          width: 26px
-          height: 26px
-          background-color: #e4e4e4
-          border-radius: 50%
-          margin: 0 auto
-          display: block
-          margin-bottom: 10px
-
-
-        p
-          text-align: center
-          font-size: 1.3rem
-          text-transform: uppercase
-          font-weight: 300
-
-
-
-
-
-  .btn-contain
-    //background-color: red
-    height: 50%
-    display: block
-    display: flex
-    flex-direction: column
-    box-sizing: border-box
-    //margin-top: 30px
-
-    .btn
-      height: 20%
-      width: 100%
-      //background-color: aqua
-      border-top: 1px #e1e1e1 solid
-      box-sizing: border-box
-      position: relative
-      cursor: pointer
-      z-index: 1
-      &:nth-last-child(1)
-        border-bottom: 1px #e1e1e1 solid
-
-
-.btn-container
-  position: absolute
-  height: 100%
+.user-contain
   width: 100%
-  z-index: 1
-  background-color: #ffffff
-  transition: all 0.5s
-  &:hover
+  padding: 20px 10px
+  .user-top
+    padding: 0 0 25px
+  .user-img
+    border-radius: 50%
+    display: block
+    height: 100px
+    margin: 0 auto
+    width: 100px
+  .user-description
+    display: block
+    margin-bottom: 20px
+    line-height: 1.6rem
+    text-align: center
+    width: 100%
+    .title
+      font-size: 1.3rem
+      font-weight: 300
+    .name
+      font-size: 1.8rem
+      font-weight: 600
+  .user-bottom
+    width: 100%
+    height: 20%
+    display: flex
+    flex-wrap: wrap
+    .btn
+      width: 30%
+      flex-grow: 1
+      min-width: 25%
+      .icon
+        width: 26px
+        height: 26px
+        background-color: #e4e4e4
+        border-radius: 50%
+        margin: 0 auto
+        display: block
+        margin-bottom: 10px
+      p
+        text-align: center
+        font-size: 1.3rem
+        text-transform: uppercase
+        font-weight: 300
+
+.nav-item
+  border-top: 1px #e1e1e1 solid
+  cursor: pointer
+  display: flex
+  flex-wrap: nowrap
+  font-size: 1.65rem
+  padding: 1rem 2rem
+  transition: background-color 0.5s
+  &:nth-last-child(1)
+    border-bottom: 1px #e1e1e1 solid
+  &:hover, &:focus
     background-color: rgb(244, 244, 244)
-
-
-  .content-contain
-    padding: 1rem 2rem
-
+  .nav-name
+    flex-grow: 1
+  .icon
+    background-color: #e1e1e1
+    border-radius: 50%
+    height: 20px
+    width: 20px
+  // CUSTOM .nav-item
+  &.regimen
     .icon
-      width: 10%
-      height: 0%
-      padding-bottom: 10%
-      border-radius: 50%
-      background-color: #e1e1e1
-      float: right
-
-
-    p
-      font-size: 1.65rem
-      font-weight: 400
-      position: absolute
-      top: 50%
-      left: 50%
-      transform: translate(-50%, -50%)
-      transition: all 1s
-
-
-
-
-
+      background-color: $red
