@@ -37,17 +37,28 @@ var topBarView = new TopBarView({
 window.widgetCollection = new WidgetCollection();
 
 // Swap this with all them content views
+// In the beginning, set to 
 var mainContentView;
+
+mainContentView = new WidgetHolderView({
+  collection: widgetCollection,
+  el: '#main-container',
+  EVI: EVI
+});
+
 // FIXME: double init can't be good, no?
 // TODO: Generate these views according to our widget state
 EVI.on('openRegimenBuilder', function(){
+  mainContentView.remove();
   mainContentView = new WidgetHolderView({
+    collection: widgetCollection,
     el: '#main-container',
     EVI: EVI
   });
 });
 
 EVI.on('openPlanScreen', function(){
+  mainContentView.remove();
   mainContentView = new PlanScreenView({
     el: '#main-container',
     EVI: EVI
