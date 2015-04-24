@@ -59,8 +59,10 @@ EVI.on('openRegimenBuilder', function(){
 });
 
 EVI.on('openPlanScreen', function(){
+  console.log("openPlanScreen");
   mainContentView.remove();
   mainContentView = new PlanScreenView({
+    collection: widgetCollection,
     el: '#main-container',
     EVI: EVI
   });

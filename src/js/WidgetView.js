@@ -7,17 +7,13 @@ module.exports = Backbone.View.extend({
   
   initialize: function(options) {
     this.EVI = options.EVI;
-    
+    this.$parent = Backbone.$(options.parent);
     return this.render();
   },
   render: function() {
-    this.$el.append(this.template(this.model.attributes));
+    this.$el.html(this.template(this.model.attributes));
+    if ( !this._rendered ) this.$parent.append(this.$el);
+    this._rendered = true;
     return this;
-  },
-  remove: function() {
-    this.$el.empty().off(); /* off to unbind the events */
-    this.stopListening();
-    return this;
-  },
-  
+  }  
 });
