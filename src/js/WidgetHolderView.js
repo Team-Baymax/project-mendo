@@ -16,6 +16,11 @@ module.exports = Backbone.View.extend({
     this.$el.html(this.template());
     return this;
   },
+  remove: function() {
+    this.$el.empty().off(); /* off to unbind the events */
+    this.stopListening();
+    return this;
+  },
   addWidget: function(data) {
     // trying model => view thing
     var widgetModel = new WidgetModel();
@@ -23,6 +28,9 @@ module.exports = Backbone.View.extend({
       el: '.widget-scroll',
       model: widgetModel
     });
+  },
+  removeWidget: function(data) {
+    
   }
   
 });

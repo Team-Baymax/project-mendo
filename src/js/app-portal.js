@@ -23,6 +23,7 @@ var WidgetHolderView = require('./WidgetHolderView');
 
 var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
+var WidgetCollection = require('./WidgetCollection');
 
 var sideNavView = new SideNavView({
   el: '#side-nav',
@@ -33,27 +34,45 @@ var topBarView = new TopBarView({
   EVI: EVI
 });
 
+window.widgetCollection = new WidgetCollection();
+
 // Swap this with all them content views
+// In the beginning, set to 
 var mainContentView;
+
+mainContentView = new WidgetHolderView({
+  collection: widgetCollection,
+  el: '#main-container',
+  EVI: EVI
+});
+
 // FIXME: double init can't be good, no?
 // TODO: Generate these views according to our widget state
 EVI.on('openRegimenBuilder', function(){
+  mainContentView.remove();
   mainContentView = new WidgetHolderView({
+    collection: widgetCollection,
     el: '#main-container',
     EVI: EVI
   });
 });
 
 EVI.on('openPlanScreen', function(){
+  mainContentView.remove();
   mainContentView = new PlanScreenView({
     el: '#main-container',
     EVI: EVI
   });
 });
 
-socket.on('button clicked', function (data){
-  EVI.emit('addWidget', data);
-    
+socket.on('addWidget', function (data){
+  // EVI.emit('addWidget', data);
+  widgetCollection.addWidget(data);
+});
+socket.on('removeWidget', function (data){
+  // EVI.emit('removeWidget', data);
+  widgetCollection.removeWidget(data);
+});
   // [CHANGBAI] instead of checking the dom element's existence
   // check if it's active in the widget collection
   // Thus, .food won't be necessary
@@ -88,7 +107,7 @@ socket.on('button clicked', function (data){
   //     $widget.remove();
   //   }, 300);
   // }
-});
+
   
 function createWidget (name) {
   var html = '';

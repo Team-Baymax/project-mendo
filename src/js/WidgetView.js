@@ -14,5 +14,10 @@ module.exports = Backbone.View.extend({
     this.$el.append(this.template(this.model.attributes));
     return this;
   },
+  remove: function() {
+    this.$el.empty().off(); /* off to unbind the events */
+    this.stopListening();
+    return this;
+  },
   
 });

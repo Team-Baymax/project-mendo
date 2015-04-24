@@ -16,11 +16,17 @@ io.on('connection', function(socket){
   socket.on('disconnect', function(){
     console.log('user disconnected');
   });
-  socket.on('button clicked', function(data){
+  socket.on('addWidget', function(data){
     console.log('Button ID: ' + data);
     // Send that to view
     // socket.broadcast.emit send it to all connected clients except this one
-    socket.broadcast.emit('button clicked', data);
+    socket.broadcast.emit('addWidget', data);
+  });
+  socket.on('removeWidget', function(data){
+    console.log('Button ID: ' + data);
+    // Send that to view
+    // socket.broadcast.emit send it to all connected clients except this one
+    socket.broadcast.emit('removeWidget', data);
   });
   socket.on('mouse move', function(data){
     socket.broadcast.emit('mouse move', data);
