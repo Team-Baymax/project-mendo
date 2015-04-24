@@ -1,0 +1,346 @@
+.side-nav
+  height: 100%
+  width: 20%
+  //min-width: 300px
+  background-color: #ffffff
+  //padding: 1rem
+  box-sizing: border-box
+  box-shadow: 3px 0px 3px rgba(136, 136, 136, 0.16)
+  position: absolute
+  z-index: 2
+
+  .user-contain
+    //height: 35%
+    width: 100%
+    //background-color: purple
+    padding: 4%
+    box-sizing: border-box
+    margin-bottom: 30px
+
+    .user-top
+      height: 180px
+      width: 100%
+      margin-top: 30px
+
+      .user-img
+        height: 100px
+        width: 100px
+        border-radius: 50%
+        background-color: purple
+        background-image: url(../../media/me.jpg)
+        background-size: cover
+        display: block
+        margin: 0 auto
+
+      .user-description
+        height: auto
+        width: 100%
+        display: block
+        line-height: 1.6rem
+        margin-bottom: 20px
+
+        .name
+          //color: #f1f2f2
+          font-size: 1.8rem
+          font-weight: 600
+          text-align: center
+
+
+        .title
+          //color: #939598
+          font-size: 1.3rem
+          font-weight: 300
+          text-align: center
+          margin-bottom: 5px
+
+
+
+
+    .user-bottom
+      width: 100%
+      height: 20%
+      display: flex
+      flex-wrap: wrap
+
+      .btn
+        width: 30%
+        flex-grow: 1
+        min-width: 25%
+
+        .icon
+          width: 26px
+          height: 26px
+          background-color: #e4e4e4
+          border-radius: 50%
+          margin: 0 auto
+          display: block
+          margin-bottom: 10px
+
+
+        p
+          text-align: center
+          font-size: 1.3rem
+          text-transform: uppercase
+          font-weight: 300
+
+
+
+
+
+  .btn-contain
+    //background-color: red
+    height: 61%
+    display: block
+    display: flex
+    flex-direction: column
+    box-sizing: border-box
+    //padding: 0 6%
+    //margin-top: 30px
+
+    .btn
+      height: 15%
+      width: 80%
+      //background-color: aqua
+      border-top: 1px #e1e1e1 solid
+      border-left: 1px #e1e1e1 solid
+      border-right: 1px #e1e1e1 solid
+      box-sizing: border-box
+      position: relative
+      cursor: pointer
+      z-index: 0
+      margin: 0 auto
+      position: relative
+      &:nth-last-child(1)
+        border-bottom: 1px #e1e1e1 solid
+      
+      .btn-container
+        position: absolute
+        right: 0
+        height: 100%
+        width: 97%
+        z-index: 1
+        background-color: #ffffff
+        transition: all 0.5s
+        &:hover
+          //background-color: rgb(244, 244, 244)
+        
+        .content-contain
+          //padding: 1rem 2rem
+
+          .icon
+            width: 30px
+            height: 30px
+            //border-radius: 50%
+            background-color: #e1e1e1
+            position: absolute
+            top: 50%
+            right: 5%
+            transform: translate(-50%, -50%)
+            
+          p
+            font-size: 1.65rem
+            font-weight: 400
+            position: absolute
+            top: 50%
+            left: 5%
+            transform: translateY(-50%)
+            transition: all 1s
+            
+    .patient-directory
+      height: 470px
+      width: 100%
+      border: 0px #e1e1e1 solid
+      box-shadow: 0px 0px 10px rgba(136, 136, 136, 1)
+      z-index: 1
+      &:after
+        content: ""
+        display: block
+        width: 3%
+        height: 100%
+        background: $red
+        position: absolute
+        z-index: 2
+      
+      .btn-container
+        
+        .content-contain
+          
+          .icon
+            top: 10%
+            right: 14%
+          p
+            top: 10%
+            left: 14%
+            color: $red
+      
+      
+            
+        .name-contain
+          width: 100px
+          height: auto
+          margin-top: 23%
+          padding: 0px 14%
+          .title
+            font-size: 1.2rem
+            color: $text-color-secondary
+          .name
+            font-size: 1.35rem
+            color: $text-color-main
+            
+        .age-weight-height-contain
+          width: 100%
+          height: 20%
+          //background: red
+          display: flex
+          padding: 0 5%
+          box-sizing: border-box
+          
+          .num
+            font-size: 2.2rem
+            font-weight: book
+            text-align: center
+            
+          .title
+            font-size: 1.2rem
+            color: $text-color-secondary
+            text-align: center
+          
+          .age-contain
+            height: 100%
+            //background: brown
+            flex: 1;
+            padding-top: 6%
+            box-sizing: border-box
+            position: relative
+            //border-right: 1px solid grey
+            &:after
+              content:''
+              display: block
+              height: 30%
+              width: 1px
+              background-color: #cbcbcb
+              position: absolute
+              right: 0
+              top: 50%
+              transform: translateY(-50%)
+
+          .weight-contain
+            height: 100%
+            //background: purple
+            flex: 1;
+            padding-top: 6%
+            box-sizing: border-box
+            position: relative
+            &:after
+              content:''
+              display: block
+              height: 30%
+              width: 1px
+              background-color: #cbcbcb
+              position: absolute
+              right: 0
+              top: 50%
+              transform: translateY(-50%)
+          .height-contain
+            height: 100%
+            //background: blue
+            flex: 1;
+            padding-top: 6%
+            box-sizing: border-box
+          
+        .allergies-contain
+          width: 100%
+          height: 25%
+          //background-color: green
+          padding: 0px 14%
+          box-sizing: border-box
+          .title
+            font-size: 1.2rem
+            color: $text-color-secondary
+            margin-bottom: 20px
+          .allergies-row
+            height: auto
+            width: 100%
+            //background-color: red
+            position: relative
+            float: left
+            margin-bottom: 20px
+            .title
+              font-size:1.65rem
+              color: $text-color-main
+              float: left
+              position: absolute
+              top: 5px
+            .graph-contain
+              height: auto
+              width: 50%
+              //background-color: red
+              float: right
+              .title
+                font-size: 1.05rem
+                margin-bottom: 5px
+                position: inherit
+              .data-contain
+                width: 100%
+                height: 8px
+                background-color: #ededed
+                float: left
+                border-radius: 8px
+                overflow: hidden
+                .data
+                  height: 100%
+                  width: 0%
+                  background-color: $red
+                  transition: all cubic-bezier(0.165, 0.84, 0.44, 1)
+                  //border-radius: 8px
+                .penicillin
+                  //background-color: yellow
+                  animation: penicillin-animate 3s 1s forwards
+                .pollen
+                  background-color: $yellow
+                  //width: 60%
+                  animation: pollen-animate 3s 1s forwards
+          
+        .medication-contain
+          width: 100%
+          height: 25%
+          //background-color: green
+          padding: 0px 14%
+          box-sizing: border-box
+          .title
+            font-size: 1.2rem
+            color: $text-color-secondary
+            margin-bottom: 20px
+          .medication-row
+            .title
+              font-size: 1.8rem
+              color: $text-color-main
+              float: left
+              margin-bottom: 0px;
+            .date
+              margin-top: 3px
+              font-size: 1.05rem
+              color: $text-color-main
+              float: right
+          
+  .logo-holder
+    height: 5%
+    width: 100%
+    //background: red
+    position: absolute
+    bottom: 0%
+    
+    .logo
+      height: 100%
+      width: 40%
+      //background: green
+      margin: 0 auto
+      background-image: url('../../media/logo.png')
+      background-position: center
+      background-repeat: no-repeat
+      background-size: contain
+
+
+
+
+
