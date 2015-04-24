@@ -9,7 +9,7 @@ module.exports = Backbone.View.extend({
   template: require('./TopBarTemplate'),
 
   events: {
-		"click .widget-btn": "openPlanScreen"
+		"click .button": "openPlanScreen"
   },
 
   initialize: function(options) {
