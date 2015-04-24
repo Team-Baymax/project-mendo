@@ -10,7 +10,7 @@
   z-index: 2
 
   .user-contain
-    height: 35%
+    //height: 35%
     width: 100%
     //background-color: purple
     padding: 4%
@@ -18,8 +18,9 @@
     margin-bottom: 30px
 
     .user-top
-      height: 80%
+      height: 180px
       width: 100%
+      margin-top: 30px
 
       .user-img
         height: 100px
@@ -88,7 +89,7 @@
 
   .btn-contain
     //background-color: red
-    height: 50%
+    height: 61%
     display: block
     display: flex
     flex-direction: column
@@ -123,7 +124,7 @@
           background-color: rgb(244, 244, 244)
         
         .content-contain
-          padding: 1rem 2rem
+          //padding: 1rem 2rem
 
           .icon
             width: 30px
@@ -145,7 +146,7 @@
             transition: all 1s
             
     .patient-directory
-      height: 400px
+      height: 600px
       width: 100%
       border: 0px #e1e1e1 solid
       box-shadow: 0px 0px 10px rgba(136, 136, 136, 1)
@@ -172,8 +173,44 @@
             color: $red
       
       
+            
+        .name-contain
+          width: 100px
+          height: auto
+          margin-top: 23%
+          padding: 0px 14%
+          .title
+            font-size: 1.2rem
+            color: $text-color-secondary
+          .name
+            font-size: 1.35rem
+            color: $text-color-main
+            
+        .age-weight-height-contain
+          width: 100%
+          height: 20%
+          background: red
+          .weight-contain
+            height: 100%
+            width: auto
+            background: purple
+          .height-contain
+            height: 100%
+            width: auto
+            background: #004eff
+          
+        .allergies-contain
+          width: 100%
+          height: 20%
+          background: green
+          
+        .medication-contain
+          width: 100%
+          height: 20%
+          background: yellow
+          
   .logo-holder
-    height: 10%
+    height: 5%
     width: 100%
     //background: red
     position: absolute
@@ -181,12 +218,13 @@
     
     .logo
       height: 100%
-      width: 80%
+      width: 40%
       //background: green
       margin: 0 auto
       background-image: url('../../media/logo.png')
       background-position: center
       background-repeat: no-repeat
+      background-size: contain
 
 
 
