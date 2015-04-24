@@ -21,6 +21,10 @@ module.exports = {
     src: src + "/htdoc/**/*.html",
     dest: dest
   },
+  fonts: {
+    src: src + "/sass/fonts/*.otf",
+    dest: dest + "/css/fonts"
+  },
   images: {
     src: src + "/media/**",
     dest: dest + "/media"
