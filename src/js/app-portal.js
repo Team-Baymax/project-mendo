@@ -25,19 +25,20 @@ var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
 var WidgetCollection = require('./WidgetCollection');
 
+window.widgetCollection = new WidgetCollection();
+
 var sideNavView = new SideNavView({
   el: '#side-nav',
   EVI: EVI
 });
 var topBarView = new TopBarView({
   el: '#top-bar',
+  collection: widgetCollection,
   EVI: EVI
 });
 
-window.widgetCollection = new WidgetCollection();
-
 // Swap this with all them content views
-// In the beginning, set to 
+// In the beginning, set to
 var mainContentView;
 
 mainContentView = new WidgetHolderView({
@@ -77,14 +78,14 @@ socket.on('removeWidget', function (data){
   // check if it's active in the widget collection
   // Thus, .food won't be necessary
   // event listen/handle should be handled by views themselves
-  
-  
+
+
   // $widget = $('.widget.' + data);
   // if object does not exist, create it
   // if ( $widget.length === 0) {
   //   // add the new html
   //   var $html = $( createWidget(data) );
-  // 
+  //
   //   $('.widget-scroll').append( $html );
   //   // * TODO Refactor. This is spaghetti
   //   $html.click(function(){
@@ -108,7 +109,7 @@ socket.on('removeWidget', function (data){
   //   }, 300);
   // }
 
-  
+
 function createWidget (name) {
   var html = '';
   switch (name) {
@@ -123,7 +124,7 @@ function createWidget (name) {
     default:
       break;
   }
-  
+
   // $(html).click(function(){
   //   console.log("$('.food-journal').click");
   //   widgetExpand.expand();
