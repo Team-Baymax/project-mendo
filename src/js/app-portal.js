@@ -152,11 +152,6 @@ timelineWidgetExpand.close = function(){
   $('.module').find('.unexpanded-widget').removeClass('hide');
 }
 
-$('.food-journal').click(function(){
-  console.log("$('.food-journal').click");
-  widgetExpand.expand();
-});
-
 $('.background-black').click(function(){
   widgetExpand.deflate();
 })

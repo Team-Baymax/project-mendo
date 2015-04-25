@@ -8,6 +8,10 @@ var WidgetTemplate = require('./WidgetTemplate');
 module.exports = Backbone.View.extend({
   template: require('./WidgetHolderTemplate'),
   
+  events: {
+    "click .background-black": "closeLightbox"
+  },
+  
   initialize: function(options) {
     this.EVI = options.EVI;
     // Array for widget views
