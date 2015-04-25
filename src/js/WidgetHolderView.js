@@ -21,7 +21,6 @@ module.exports = Backbone.View.extend({
     this.$el.html(this.template());
     // render widgets
     this.collection.each(function(pModel, i){
-      console.log(this);
       this.addWidget(pModel);
     }, this);
     return this;
