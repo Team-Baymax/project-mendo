@@ -76,67 +76,6 @@ socket.on('removeWidget', function (data){
   // EVI.emit('removeWidget', data);
   widgetCollection.removeWidget(data);
 });
-  // [CHANGBAI] instead of checking the dom element's existence
-  // check if it's active in the widget collection
-  // Thus, .food won't be necessary
-  // event listen/handle should be handled by views themselves
-
-
-  // $widget = $('.widget.' + data);
-  // if object does not exist, create it
-  // if ( $widget.length === 0) {
-  //   // add the new html
-  //   var $html = $( createWidget(data) );
-  //
-  //   $('.widget-scroll').append( $html );
-  //   // * TODO Refactor. This is spaghetti
-  //   $html.click(function(){
-  //     widgetExpand.expand();
-  //   });
-  //   // add the active class to animate in
-  //   // * FIXME: For some reason
-  //   // * the animation is broken
-  //   // * when you call addClass alone.
-  //   // * Wrapping it in the setTimeout
-  //   // * should be just a temporary fix
-  //   setTimeout(function(){
-  //     $('.widget.' + data).addClass('active');
-  //   }, 1);
-  // // else remove it
-  // } else {
-  //   $widget.removeClass('active'); //begin the animation
-  //   // delay by 300ms before removing
-  //   setTimeout(function(){
-  //     $widget.remove();
-  //   }, 300);
-  // }
-
-
-function createWidget (name) {
-  var html = '';
-  switch (name) {
-    case 'food':
-      html = '<div class="widget food-journal"> <div class="widget-bg"> <div class="icon"></div> <div class="content"> <h1>Food Journal</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div>';
-      break;
-
-    case 'bloodPressure':
-      html = '<div class="widget blood-pressure"> <div class="widget-bg blood-pressure"> <div class="icon"></div> <div class="content"> <h1>Blood Pressure</h1> <p class="tags">Food Log, Calorie Counter, Personalized Plan</p> <p class="description">Personalize your diet plan and keep track of your food and caloric intake to develop better lifelong eating habits and lose weight.</p> </div> <div class="status"> <div class="ball"></div> <p>Personalize your tracker</p> </div> </div> </div> ';
-      break;
-
-    default:
-      break;
-  }
-
-  // $(html).click(function(){
-  //   console.log("$('.food-journal').click");
-  //   widgetExpand.expand();
-  // });
-
-  // $('.background-black').click(function(){
-  //   widgetExpand.deflate();
-  // })
-  return html;
-}
 
 // Insert Leap Here
 var leapController = new Leap.Controller({
@@ -164,8 +103,6 @@ leapController.connect();
 
 
 // Legacy code
-
-var mainContainer = $(".main-container");
 
 var widgetExpand = {};
 

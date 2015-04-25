@@ -19,6 +19,11 @@ module.exports = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(this.template());
+    // render widgets
+    this.collection.each(function(pModel, i){
+      console.log(this);
+      this.addWidget(pModel);
+    }, this);
     return this;
   },
   remove: function() {
@@ -27,12 +32,6 @@ module.exports = Backbone.View.extend({
     return this;
   },
   addWidget: function(pModel) {
-    // trying model => view thing
-    // var widgetModel = new WidgetModel();
-    // var foodWidget = new WidgetView({
-    //   el: '.widget-scroll',
-    //   model: widgetModel
-    // });
     console.log("[WidgetHolderView] addWidget");
     // We create an updating donut view for each donut that is added.
     var widgetView = new WidgetView({
@@ -42,14 +41,6 @@ module.exports = Backbone.View.extend({
     });
     // And add it to the collection so that it's easy to reuse.
     this.arrWidget.push(widgetView);
-    //  
-    // If the view has been rendered, then
-    // we immediately append the rendered donut.
-    
-    //     if (this._rendered) {
-    //       $(this.el).append(dv.render().el);
-    //     }
-    
   },
   removeWidget: function(pModel) {
     console.log("[WidgetHolderView] removeWidget");

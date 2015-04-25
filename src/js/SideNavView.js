@@ -6,7 +6,7 @@ module.exports = Backbone.View.extend({
   template: require('./SideNavTemplate'),
   
   events: {
-    "click .regimen": "openRegimen"
+    "click .patient-directory": "openRegimen"
   },
   
   initialize: function(options) {
