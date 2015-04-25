@@ -82,19 +82,48 @@
         width: 900px
         height: 500px
         margin: 0 auto
+        margin-top: 30px
         .content
           background-color: red
           width: 900px
           height: 500px
           float: left
+        .goal-container
+          background: red
+        .weight-measure-container
+          background: blue
+        .weight-lose-container
+          background: green
+        .weight-lose-week-container
+          background: yellow
+        .meal-plan-container
+          background: purple
+        .finish-container
+          background: orange
       .btn-back, .btn-next
         position: absolute
         text-transform: uppercase
         bottom: 30px
+        color: $text-color-secondary
+        font-size: 2.2rem
+        //float: left
+        .btn-text
+          float: left
+        .arrow-back, .arrow-next
+          height: 25px
+          width: 12px
+          background-size: cover
+          float: left
+        .arrow-back
+          background-image: url(../../media/leftArrow.png)
+          margin-right: 10px
+        .arrow-next
+          background-image: url(../../media/rightArrow.png)
+          margin-left: 10px
       .btn-back
-        left: 0px
+        left: 34px
       .btn-next
-        right: 0px
+        right: 34px
 
 
 
