@@ -36,57 +36,65 @@
         height: 100%
 
 
-      .lightbox-bg
-        background-color: black
-        height: 100%
+    .lightbox-bg
+      background-color: black
+      height: 100%
+      width: 100%
+      position: absolute
+      opacity: 0.8
+      cursor: pointer
+
+
+    .lightbox-content
+      background-color: white
+      height: 80%
+      width: 70%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      transition: all 0.5s
+      border-radius: 5px
+      overflow: hidden
+      .top-nav
+        height: 100px
         width: 100%
-        position: absolute
-        opacity: 0.8
-        cursor: pointer
-
-
-      .lightbox-content
-        background-color: white
-        height: 80%
-        width: 70%
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        transition: all 0.5s
-        border-radius: 5px
-        overflow: hidden
-        .top-nav
-          height: 100px
-          width: 100%
-          //background: red
-          padding: 34px 34px 0px 34px
-          .title-contain
-            float: left
-            .widget-title
-              font-size: 2.4rem
-              display: block
-              margin-bottom: 2px
-            .title
-              font-size: 1.8rem
-              color: $text-color-secondary
-          .close
-            height: 26px
-            width: 26px
-            float: right
-            background-image: url(../../media/close.png)
-            background-repeat: no-repeat
-            background-size: cover
-            cursor: pointer
-        .content-window
+        //background: red
+        padding: 34px 34px 0px 34px
+        .title-contain
+          float: left
+          .widget-title
+            font-size: 2.4rem
+            display: block
+            margin-bottom: 2px
+          .title
+            font-size: 1.8rem
+            color: $text-color-secondary
+        .close
+          height: 26px
+          width: 26px
+          float: right
+          background-image: url(../../media/close.png)
+          background-repeat: no-repeat
+          background-size: cover
+          cursor: pointer
+      .content-window
+        width: 900px
+        height: 500px
+        margin: 0 auto
+        .content
+          background-color: red
           width: 900px
           height: 500px
-          margin: 0 auto
-          .content
-            background-color: red
-            width: 900px
-            height: 500px
-            float: left
+          float: left
+      .btn-back, .btn-next
+        position: absolute
+        text-transform: uppercase
+        bottom: 30px
+      .btn-back
+        left: 0px
+      .btn-next
+        right: 0px
 
 
 
