@@ -4,5 +4,4 @@ node_modules
 bower_components
 config.codekit
 npm-debug.log
-src/sass/compass-mixins
 build

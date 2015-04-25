@@ -1,0 +1,97 @@
+$top-bar-height: 88px
+
+.top-bar
+  background-color: white
+  display: flex
+  flex-direction: row
+  height: $top-bar-height
+  left: 20%
+  position: absolute
+  right: 0
+//  height: 10%
+//  width: 80%
+//  background-color: white
+//  padding: 0% 3%
+//  //display: flex
+//  position: absolute
+//  left: 20%
+  z-index: 1
+
+.content-left
+  align-items: center
+  display: flex
+  flex-grow: 1
+  padding: 0 15px
+
+.user
+  align-items: center
+  display: inline-block
+  height: 100%
+  min-width: 200px
+  & > div, & > img
+    display: inline-block
+    vertical-align: middle
+  .picture
+    border-radius: 100%
+    display: inline-block
+    height: 63px
+    width: 63px
+    margin-right: 20px
+  .info
+    .title
+      color: $text-color-main
+      display: block
+      font-size: 1.3rem
+    .name
+      font-size: 1.5rem
+      font-weight: 600
+      width: 110px
+
+.widget-button-contain
+  align-items: stretch
+  display: flex
+  height: $top-bar-height
+  flex-wrap: nowrap
+  .widget-button
+    border-right: solid #e1e1e1 1px
+    cursor: pointer
+    position: relative
+    padding: 5px
+    text-align: center
+    width: (100% / 6)
+    max-width: 108px
+    &:nth-child(1)
+      border-left: solid #e1e1e1 1px
+    .icon
+      background-color: red
+      height: 40px
+      margin-bottom: 2px
+      width: 40px
+    .title
+      font-size: 1.4rem
+      text-align: center
+      color: $text-color-secondary
+
+.content-middle
+  flex-grow: 2
+
+.content-right
+  align-items: center
+  display: flex
+  flex-grow: 1
+  text-align: right
+  span
+    display: inline-block
+    font-size: 1.5rem
+    margin: 0 5px
+    vertical-align: middle
+    &.button
+      background-color: $blue
+      border-radius: 50px
+      color: white
+      cursor: pointer
+      display: inline-block
+      font-weight: bold
+      padding: 12px 16px
+      text-align: center
+      vertical-align: middle

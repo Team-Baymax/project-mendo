@@ -4,7 +4,6 @@ var nodemon = require('gulp-nodemon');
 var config      = require('../config').browserSync;
 
 gulp.task('browser-sync', ['nodemon'], function() {
-  console.log(browserSync.init);
   browserSync(config);
 });
 

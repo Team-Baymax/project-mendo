@@ -9,93 +9,6 @@
   flex-wrap: wrap
   box-sizing: border-box
 
-  .top-bar
-    height: 10%
-    width: 100%
-    background-color: white
-    margin-bottom: 3%
-    padding: 0% 3%
-
-    .user
-      height: 100%
-      width: auto
-      padding: 1%
-      box-sizing: border-box
-      float: left
-      display: flex
-      align-items: center
-      min-width: 200px
-
-      .picture
-        height: 63px
-        width: 63px
-        //background-color: antiquewhite
-        background-image: url('../../media/robertKeller.jpg')
-        border-radius: 100%
-        margin-right: 20px
-        background-size: cover
-        background-position: 63px 71px
-
-
-      .content-left
-        //display: flex
-        //flex-direction: column
-        //align-content: flex-start
-
-        .patient
-          font-size: 1.3rem
-          color: $text-color-main
-
-
-        .name
-          font-size: 1.5rem
-          font-weight: 600
-          width: 110px
-          display: inherit
-
-
-
-
-    .content-right
-      height: 100%
-      width: auto
-      max-width: 349px
-      padding: 1%
-      box-sizing: border-box
-      float: right
-      display: flex
-      align-items: center
-
-      .widget-btn, .widget-count
-        width: 187px
-        height: 42px
-        float: left
-        box-sizing: border-box
-        text-align: center
-        font-size: 1.5rem
-        line-height: 42px
-
-
-      .widget-btn
-        text-align: center
-        color: white
-        font-size: 1.5rem
-        line-height: 42px
-        background-color: #1fb6be
-        border-radius: 50px
-        cursor: pointer
-
-        span
-          color: #f1f2f2
-          //line-height: 50px
-          text-align: center
-          font-weight: 400
-          font-size: 1.5rem
-
-
-
-
-
   .widget-scroll
     height: 87%
     width: 100%
@@ -144,23 +57,23 @@
 
 
 
-    .food-journal
+    .food-journal .widget-bg
       background-image: url(../../media/foodTrackerBg.jpg)
       cursor: pointer
 
-    .blood-pressure
+    .blood-pressure .widget-bg
       background-image: url(../../media/bloodPressureBg.jpg)
 
-    .blood-glucose
+    .blood-glucose .widget-bg
       background-image: url(../../media/bloodSugarBg.jpg)
 
-    .fitness-planner
+    .fitness-planner .widget-bg
       background-image: url(../../media/fitnessTrackerBg.jpg)
 
-    .sleep-analysis
+    .sleep-analysis .widget-bg
       background-image: url(../../media/sleepTrackerBg.jpg)
 
-    .medication
+    .medication .widget-bg
       background-image: url(../../media/medicationTrackerBg.jpg)
 
     .widget
@@ -280,6 +193,3 @@
     transition: transform 0.3s ease-in
     &.active
       transform: translate(0, 0)
-
-
-

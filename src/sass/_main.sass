@@ -1,3 +1,6 @@
+*
+  box-sizing: border-box
+
 html, body
   font-size: 62.5%
   font-family: $font-family
@@ -17,10 +20,13 @@ h1
   display: none !important
 
 .main-container
-  height: 100%
-  width: 82%
+  height: 90%
+  width: 85%
   background-color: #ededed
   z-index: 0
+  position: absolute
+  top: 10%
+  left: 15%
   // [HACK] inner contents overflow container for some reason
   overflow: hidden
 

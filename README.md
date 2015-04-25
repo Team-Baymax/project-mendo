@@ -1,6 +1,6 @@
-Project Endo
+Project Mendo
 ====
-
+Envisioning future health care system.
 ### Setup
 
 ```
