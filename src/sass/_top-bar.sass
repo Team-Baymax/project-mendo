@@ -92,14 +92,22 @@ $top-bar-height: 88px
 
 .top-bar-expanded-container
   background-color: $white
-  height: 90%
+  height: 0
   left: 0
+  overflow: hidden
   position: absolute
   right: 0
   top: 0
+  transition: height 400ms
   z-index: 500
+  &.open
+    height: 90%
   .expanded-button-contain
     display: flex
+    opacity: 0
+    transition: opacity 400ms
+    &.seen
+      opacity: 1
   .expanded-widget-button
     border: 1px solid $gray
     margin: 15px
