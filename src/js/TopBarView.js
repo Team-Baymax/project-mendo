@@ -4,12 +4,15 @@ Backbone.$ = require('jquery');
 
 var TopBarWidgetButtonView = require('./TopBarWidgetButtonView');
 var WidgetModel = require('./WidgetModel');
+var TopBarExpandedView = require('./TopBarExpandedView');
 
 module.exports = Backbone.View.extend({
   template: require('./TopBarTemplate'),
 
   events: {
-		"click .button": "openPlanScreen"
+		"click .button": "openPlanScreen",
+    "mouseenter .widget-button-contain": "openExpandedView",
+    "mouseleave .widget-button-contain": "closeExpandedView"
   },
 
   initialize: function(options) {
@@ -57,6 +60,20 @@ module.exports = Backbone.View.extend({
   },
   updateWidgetCount: function() {
     this.$el.find('.widget-count').html(this.collection.length + ' widget' + ((this.collection.length === 1)?'':'s'));
-  }
+  },
+  openExpandedView: function() {
+    var that = this;
 
+    if (! this.$el.find('.widget-button-contain').is(':empty')) {
+      this.$el.parent().append(new TopBarExpandedView({
+        collection: that.collection,
+        tagName: 'div',
+        className: 'top-bar-expanded-container'
+      }).$el);
+    }
+  },
+  closeExpandedView: function() {
+    // FIXME: should only be removed at certain times
+    this.$el.parent().find('.top-bar-expanded-container').remove();
+  }
 });
