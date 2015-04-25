@@ -12,7 +12,6 @@ module.exports = Backbone.View.extend({
   events: {
 		"click .button": "openPlanScreen",
     "mouseenter .widget-button-contain": "openExpandedView",
-    "mouseleave .widget-button-contain": "closeExpandedView"
   },
 
   initialize: function(options) {
@@ -64,16 +63,19 @@ module.exports = Backbone.View.extend({
   openExpandedView: function() {
     var that = this;
 
+    // NOTE: is(:empty) will return false even if its just a line break
     if (! this.$el.find('.widget-button-contain').is(':empty')) {
-      this.$el.parent().append(new TopBarExpandedView({
+      this.$el.parent().find('#main-container').append(new TopBarExpandedView({
         collection: that.collection,
         tagName: 'div',
         className: 'top-bar-expanded-container'
       }).$el);
     }
+
+    this.$el.parent().find('#main-container').find('.top-bar-expanded-container').on('mouseleave', that.closeExpandedView);
   },
   closeExpandedView: function() {
     // FIXME: should only be removed at certain times
-    this.$el.parent().find('.top-bar-expanded-container').remove();
+    Backbone.$('#main-container').find('.top-bar-expanded-container').remove().off('mouseleave');;
   }
 });
