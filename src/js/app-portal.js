@@ -104,17 +104,7 @@ leapController.connect();
 
 // Legacy code
 
-var widgetExpand = {};
-
 var timelineWidgetExpand = {};
-
-widgetExpand.expand = function(){
-  $('.expand').addClass('active');
-}
-
-widgetExpand.deflate = function(){
-  $('.expand').removeClass('active');
-}
 
 //Expand food journal
 timelineWidgetExpand.expandFoodWidget = function(e){
@@ -151,10 +141,6 @@ timelineWidgetExpand.close = function(){
   });
   $('.module').find('.unexpanded-widget').removeClass('hide');
 }
-
-$('.background-black').click(function(){
-  widgetExpand.deflate();
-})
 
 $('.module').click(function(){
   timelineWidgetExpand.close();

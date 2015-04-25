@@ -9,7 +9,7 @@ module.exports = Backbone.View.extend({
   template: require('./WidgetHolderTemplate'),
   
   events: {
-    "click .background-black": "closeLightbox"
+    "click .lightbox-bg": "closeLightbox"
   },
   
   initialize: function(options) {
@@ -61,11 +61,11 @@ module.exports = Backbone.View.extend({
     // TODO: For this demo we are using just one instance, 
     // therefore the model id is actually not used
     console.log(this);
-    this.$el.find('.expand').addClass('active');
+    this.$el.find('.lightbox').addClass('active');
   },
   closeLightbox: function() {
     console.log("[WidgetHolderView] closeLightbox");
-    this.$el.find('.expand').removeClass('active');
+    this.$el.find('.lightbox').removeClass('active');
   }
   
 });
