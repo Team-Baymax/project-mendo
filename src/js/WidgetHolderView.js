@@ -27,6 +27,13 @@ module.exports = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(this.template());
+    // Init carousel
+    $('.content-window').owlCarousel({
+      singleItem: true,
+      rewindNav: false,
+      // lazyLoad: true, // fades in images
+      
+    });
     // render widgets
     this.collection.each(function(pModel, i){
       this.addWidget(pModel);
