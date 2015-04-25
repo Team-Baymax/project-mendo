@@ -14,14 +14,11 @@ module.exports = Backbone.View.extend({
 
   initialize: function(options) {
     var that = this;
-    this.buttons = [this.collection.length];
+    this.buttons = [];
 
-    this.listenTo(this.collection, 'add', this.updateWidgetButtons);
+    this.listenTo(this.collection, 'add remove', this.updateWidgetButtons);
 
     this.EVI = options.EVI;
-
-
-    console.log(this.collection, this.buttons);
 
     return this.render();
   },
@@ -39,13 +36,27 @@ module.exports = Backbone.View.extend({
     this.EVI.emit('openPlanScreen');
   },
   updateWidgetButtons: function() {
-    console.log('adding widget button');
     var that = this;
-    this.collection.each(function(){
+    console.log(this.$el);
+
+    this.buttons = [];
+    this.$el.find('.widget-button-contain').empty();
+
+    this.collection.each(function(buttonModel, index){
       that.buttons.push(new TopBarWidgetButtonView({
-        model : WidgetModel
+        model : buttonModel,
+        tagName: 'div',
+        className: 'widget-button'
       }));
     });
+
+    this.buttons.forEach(function(btn) {
+      that.$el.find('.widget-button-contain').append(btn.$el);
+    });
+    this.updateWidgetCount();
+  },
+  updateWidgetCount: function() {
+    this.$el.find('.widget-count').html(this.collection.length + ' widget' + ((this.collection.length === 1)?'':'s'));
   }
 
 });
