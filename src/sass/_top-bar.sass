@@ -49,7 +49,6 @@ $top-bar-height: 88px
 
 .widget-button-contain
   align-items: stretch
-  border-left: solid #e1e1e1 1px
   display: flex
   height: $top-bar-height
   flex-wrap: nowrap
@@ -61,6 +60,8 @@ $top-bar-height: 88px
     text-align: center
     width: (100% / 6)
     max-width: 108px
+    &:nth-child(1)
+      border-left: solid #e1e1e1 1px
     .icon
       background-color: red
       height: 40px
