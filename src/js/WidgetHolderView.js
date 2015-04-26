@@ -38,6 +38,7 @@ module.exports = Backbone.View.extend({
       rewindNav: false,
       // lazyLoad: true, // fades in images
     });
+    this.checkSlideButton();
     // render widgets. Bind to this context
     this.collection.each(function(pModel, i){
       this.addWidget(pModel);
@@ -83,11 +84,30 @@ module.exports = Backbone.View.extend({
   nextSlide: function() {
     if ( this._rendered ) {
       $('.content-window').data('owlCarousel').next();
+      this.checkSlideButton();
     }
   },
   backSlide: function() {
     if ( this._rendered ) {
       $('.content-window').data('owlCarousel').prev();
+      this.checkSlideButton();
+    }
+  },
+  checkSlideButton: function() {
+    var iSlide = $('.content-window').data('owlCarousel').currentItem;
+    var length = $('.content-window').data('owlCarousel').$owlItems.length;
+    console.log( length );
+    var $back = this.$el.find('.btn-back');
+    var $next = this.$el.find('.btn-next');
+    // if first item, hide back button
+    if ( iSlide == 0 ) {
+      $back.hide();
+    } else if ( iSlide == length-1 ) {
+      // if last, change text
+      $next.find('.btn-text').html('Complete');
+    } else {
+      $back.show();
+      $next.find('.btn-text').html('Next');
     }
   }
   
