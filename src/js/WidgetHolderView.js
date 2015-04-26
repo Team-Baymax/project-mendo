@@ -1,3 +1,6 @@
+// HACK: owlslider attaches itself to the global jquery object, 
+// forcing us to have a global one outside the context of browserify.
+// Have to use the global $ to get that element
 var _ = require('underscore');
 var Backbone = require('backbone');
 Backbone.$ = require('jquery');
@@ -9,7 +12,9 @@ module.exports = Backbone.View.extend({
   template: require('./WidgetHolderTemplate'),
   
   events: {
-    "click .lightbox-bg": "closeLightbox"
+    "click .lightbox-bg": "closeLightbox",
+    "click .btn-next": "nextSlide",
+    "click .btn-back": "backSlide"
   },
   
   initialize: function(options) {
@@ -32,12 +37,13 @@ module.exports = Backbone.View.extend({
       singleItem: true,
       rewindNav: false,
       // lazyLoad: true, // fades in images
-      
     });
-    // render widgets
+    // render widgets. Bind to this context
     this.collection.each(function(pModel, i){
       this.addWidget(pModel);
     }, this);
+    
+    this._rendered = true;
     return this;
   },
   remove: function() {
@@ -73,6 +79,16 @@ module.exports = Backbone.View.extend({
   closeLightbox: function() {
     console.log("[WidgetHolderView] closeLightbox");
     this.$el.find('.lightbox').removeClass('active');
+  },
+  nextSlide: function() {
+    if ( this._rendered ) {
+      $('.content-window').data('owlCarousel').next();
+    }
+  },
+  backSlide: function() {
+    if ( this._rendered ) {
+      $('.content-window').data('owlCarousel').prev();
+    }
   }
   
 });
