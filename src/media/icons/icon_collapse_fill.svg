@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="90px" height="90px" viewBox="0 0 90 90" enable-background="new 0 0 90 90" xml:space="preserve">
+<g>
+	<polygon fill="#1FB6BE" points="61.869,13.926 78.32,30.377 61.869,46.828 78.32,63.279 61.869,79.73 46.332,64.193 30.338,80.187 
+		12.973,62.822 28.967,46.828 12.516,30.377 28.967,13.926 45.418,30.377 	"/>
+	<polygon fill="#1FA5AD" points="60.699,46.95 77.027,63.279 60.576,79.73 45.039,64.193 29.045,80.187 11.68,62.822 27.521,46.981 
+			"/>
+	
+		<polygon fill="none" stroke="#424242" stroke-width="2.585" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		60.576,10.27 77.027,26.721 61.033,42.715 77.484,59.166 61.033,75.617 45.496,60.08 29.502,76.074 12.137,58.709 28.131,42.715 
+		11.68,26.264 28.131,9.813 44.582,26.264 	"/>
+	<g>
+		<defs>
+			<polygon id="SVGID_7_" points="60.119,20.78 68.345,29.006 52.351,45 69.716,62.365 62.404,69.677 45.039,52.312 29.045,68.306 
+				20.82,60.08 36.814,44.086 20.363,27.635 27.674,20.323 44.125,36.774 			"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_7_"  overflow="visible"/>
+		</clipPath>
+		<polygon clip-path="url(#SVGID_2_)" fill="#F97159" points="60.576,15.754 77.027,32.205 60.576,48.656 77.027,65.107 
+			60.576,81.558 45.039,66.021 29.045,82.015 11.68,64.65 27.674,48.656 11.223,32.205 27.674,15.754 44.125,32.205 		"/>
+		<polygon clip-path="url(#SVGID_2_)" fill="#DB6252" points="60.699,48.778 77.027,65.107 60.576,81.558 45.039,66.021 
+			29.045,82.015 11.68,64.65 27.521,48.809 		"/>
+	</g>
+	
+		<polygon fill="none" stroke="#424242" stroke-width="2.585" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+		61.033,19.866 68.345,27.178 52.351,43.172 69.716,60.537 62.404,67.849 45.039,50.484 29.045,66.478 21.734,59.166 37.728,43.172 
+		20.363,25.807 27.674,18.496 45.039,35.861 	"/>
+</g>
+</svg>
