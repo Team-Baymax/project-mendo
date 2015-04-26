@@ -3,12 +3,22 @@
 // each item will get a class name that matches the file name
 $icon-list: add_widget alert appointments back blood_glucose blood_pressure chat collapse expand find_doctor fitness_planner food_journal github internet linkedin medical_history medication message nav_back nav_next overview patient_directory personal_profile recipe regimen_plan search settings sleep_analysis widget_directory
 
+// all parent elements that need to trigger icon hover
+$parents: '.btn' '.widget-button'
+
 =all-icons
   @each $icon in $icon-list
     &.#{$icon}
       background-image: url(../media/icons/icon_#{$icon}.svg)
       &:hover, &:focus
         background-image: url(../media/icons/icon_#{$icon}_fill.svg)
+=all-icon-parents
+  @each $icon in $icon-list
+    @each $parent in $parents
+      #{$parent}:hover
+        .icon.#{$icon}, .icon-large.#{$icon}
+          background-image: url(../media/icons/icon_#{$icon}_fill.svg)
+
 
 .icon, .icon-large
   background-position: center center
@@ -20,3 +30,5 @@ $icon-list: add_widget alert appointments back blood_glucose blood_pressure chat
 .icon-large
   display: block
   width: 100%
+
++all-icon-parents
