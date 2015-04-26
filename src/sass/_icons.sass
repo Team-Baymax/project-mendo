@@ -10,9 +10,13 @@ $icon-list: add_widget alert appointments back blood_glucose blood_pressure chat
       &:hover, &:focus
         background-image: url(../media/icons/icon_#{$icon}_fill.svg)
 
-.icon
+.icon, .icon-large
   background-position: center center
   background-repeat: no-repeat
   background-size: contain
   display: inline-block
   +all-icons
+
+.icon-large
+  display: block
+  width: 100%
