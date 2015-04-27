@@ -5,7 +5,7 @@ var PIXI = require('pixi.js');
 module.exports = {
   init: function() {
     // Bind context
-    _.bindAll(this, 'render', 'leapUpdate', 'onMouseMove');
+    _.bindAll(this, 'render', 'leapUpdate');
     // Flags
     this.isFisting = false;
     this.isFingering = false;
@@ -38,9 +38,6 @@ module.exports = {
     });
 
     this.leapController.connect();
-  },
-  onMouseMove: function(e) {
-    this.cursor.position = e.data.global;
   },
   initPIXI: function(){
     this.renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight, {transparent: true, antialias: true});
