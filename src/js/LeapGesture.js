@@ -171,7 +171,7 @@ module.exports = {
       downX: 10,
       upX: 10,
       downY: 20,
-      upY: 0,
+      upY: 5,
     },
     reset: function(){
       this.flags = {
