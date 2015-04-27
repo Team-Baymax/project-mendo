@@ -15,7 +15,8 @@ module.exports = {
     });
     this.leapController.use('boneHand', {
       targetEl: document.querySelector("#handModel-holder"),
-      arm: true
+      arm: true,
+      opacity: 0.3
      });
     this.leapController.use('screenPosition');
 
@@ -83,6 +84,8 @@ module.exports = {
     var mappedPalm = this.posMap( hand.stabilizedPalmPosition );
     this.cursor.position.x = mappedPalm[0];
     this.cursor.position.y = mappedPalm[1];
+    // FIRE THE THING
+    this.fire('mousemove', mappedPalm[0], mappedPalm[1]);
     // loop through the fingers to see if only index's extended
     var indexPointing = true;
     for (var i = 0; i < hand.fingers.length; i++) {
@@ -111,5 +114,20 @@ module.exports = {
     var screenDimension = [window.innerWidth, window.innerHeight];
     var mappedPosition = _.map( normalizedPosition, function(value, index){ return value * screenDimension[index] } );
     return mappedPosition;
-  }
+  },
+  /**
+   * fires built-in event onto the window
+   */
+  fire: function(eventName, pX, pY) {
+    // More optionals here?
+    // var event = new MouseEvent(eventName, {
+    //   'view': window,
+    //   'bubbles': true,
+    //   'cancelable': true,
+    //   'screenX': pX,
+    //   'screenY': pY
+    // });
+    // event.initMouseEvent
+    $(document.elementFromPoint(pX, pY)).trigger(eventName);
+  },
 }

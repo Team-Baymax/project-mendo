@@ -9,7 +9,8 @@ module.exports = Backbone.View.extend({
   template: require('./TopBarTemplate'),
 
   events: {
-		"click .button": "openPlanScreen"
+		"click .button": "openPlanScreen",
+    "mousemove": "testMouseMove"
   },
 
   initialize: function(options) {
@@ -34,6 +35,10 @@ module.exports = Backbone.View.extend({
   openPlanScreen: function() {
     console.log("[TopBarView] openPlanScreen");
     this.EVI.emit('openPlanScreen');
+  },
+  testMouseMove: function(e) {
+    console.log("testMouseMove");
+    console.log(e);
   },
   updateWidgetButtons: function() {
     var that = this;
