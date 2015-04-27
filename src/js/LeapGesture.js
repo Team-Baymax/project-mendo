@@ -96,8 +96,88 @@ module.exports = {
         indexPointing = false;
       }
     }
-    if (indexPointing) {
-      console.log("POINTING");
+    var checkmarkDown = false;
+    var checkmarkUp = false;
+    if (!indexPointing) {
+      this.fingerPoint.firstTime = true;
+    } else {
+      var mappedFinger = this.posMap( hand.fingers[1].stabilizedTipPosition );
+      // If it's the first time it's pointed,
+      if (this.fingerPoint.firstTime) {
+        // save index position for gesture comparison
+        this.fingerPoint.fingerPos.x = mappedFinger[0];
+        this.fingerPoint.fingerPos.y = mappedFinger[1];
+        // save palm position for click event firing
+        this.fingerPoint.palmPos.x = mappedPalm[0];
+        this.fingerPoint.palmPos.y = mappedPalm[1];
+        // set flag
+        this.fingerPoint.firstTime = false;
+        this.checkMark.reset();
+      } else {
+        // if going-down-complete is false,
+        if (! this.checkMark.flags.downComplete) {
+          // (posMap) if distance between saved index position and current position is greater than some number
+          if ( 
+            mappedFinger[0] - this.fingerPoint.fingerPos.x >= this.checkMark.dists.downX &&
+            mappedFinger[1] - this.fingerPoint.fingerPos.y >= this.checkMark.dists.downY
+          ) {
+            // TODO: visual hint for progress of this motion
+            console.log("Down Complete");
+            this.checkMark.flags.downComplete = true;
+          }
+        } else {
+          // if going-up-complete is false,
+          if (! this.checkMark.flags.upComplete) {
+            // if dist is greater than some number
+            if ( 
+              mappedFinger[0] - this.fingerPoint.fingerPos.x >= this.checkMark.dists.upX &&
+              mappedFinger[1] - this.fingerPoint.fingerPos.y <= this.checkMark.dists.upY
+            ) {
+              // TODO: visual hint for progress of this motion
+              console.log("Up Complete");
+              this.checkMark.flags.upComplete = true;
+              // **EVENT TRIGGERED
+              this.fire('click', this.fingerPoint.palmPos.x, this.fingerPoint.palmPos.y);
+              console.log("Click");
+              this.checkMark.reset();
+            }
+          }
+        }
+      }
+      // Draw cursor at that point
+      this.cursor.position.x = this.fingerPoint.palmPos.x;
+      this.cursor.position.y = this.fingerPoint.palmPos.y;
+    }
+  },
+  
+  fingerPoint: {
+    firstTime: true,
+    fingerPos: {
+      x:NaN,
+      y:NaN
+    },
+    palmPos: {
+      x:NaN,
+      y:NaN
+    }
+  },
+  
+  checkMark: {
+    flags: {
+      downComplete: false,
+      upComplete: false,
+    },
+    dists: {
+      downX: 10,
+      upX: 10,
+      downY: 20,
+      upY: 0,
+    },
+    reset: function(){
+      this.flags = {
+        downComplete: false,
+        upComplete: false,
+      };
     }
   },
 
@@ -125,6 +205,7 @@ module.exports = {
     //   'screenY': pY
     // });
     // event.initMouseEvent
+    if(eventName == "click") console.log($(document.elementFromPoint(pX, pY)));
     $(document.elementFromPoint(pX, pY)).trigger(eventName);
   },
 }
