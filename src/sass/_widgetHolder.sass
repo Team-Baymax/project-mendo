@@ -10,7 +10,7 @@
   box-sizing: border-box
 
   .widget-scroll
-    height: 87%
+    height: 100%
     width: 100%
     position: relative
     bottom: 0%
@@ -19,7 +19,7 @@
     //flex-direction: row
     //flex-wrap: wrap
     padding: 0% 2.9%
-    .expand
+    .lightbox
       position: absolute
       top: 50%
       left: 50%
@@ -36,24 +36,182 @@
         height: 100%
 
 
-      .background-black
-        background-color: black
-        height: 100%
+    .lightbox-bg
+      background-color: black
+      height: 100%
+      width: 100%
+      position: absolute
+      opacity: 0.8
+      cursor: pointer
+
+
+    .lightbox-content
+      background-color: white
+      height: 80%
+      width: 70%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      transition: all 0.5s
+      border-radius: 5px
+      overflow: hidden
+      background-image:url('../../media/widgetLightboxBackground.jpg')
+      background-size: cover
+      background-position-y: 40%
+      .top-nav
+        height: 100px
         width: 100%
+        //background: red
+        padding: 34px 34px 0px 34px
+        .title-contain
+          float: left
+          .widget-title
+            font-size: 2.4rem
+            display: block
+            margin-bottom: 2px
+          .title
+            font-size: 1.8rem
+            color: $text-color-secondary
+        .close
+          height: 26px
+          width: 26px
+          float: right
+          background-image: url(../../media/close.png)
+          background-repeat: no-repeat
+          background-size: cover
+          cursor: pointer
+      .content-window
+        width: 900px
+        height: 500px
+        margin: 0 auto
+        margin-top: 30px
+        .title
+          font-size: 3.6rem
+          text-align: center
+          display: block
+          margin-top: 50px
+          margin-bottom: 60px
+        .button-contain
+          width: 100%
+          height: 225px
+          //background: green
+          margin-top: 100px
+          display: flex
+          justify-content: space-between
+          .be-healthy-btn, .lose-weight-btn, .gain-weight-btn, .pounds-btn, .kilograms-btn, .diabetic-meal-btn, .gluten-meal-btn, .heart-healthy-meal-btn
+            width: 225px
+            height: 225px
+            border-radius: 50%
+            border: 1px solid #d1d1d1
+            float: left
+            display: flex
+            justify-content: center
+            align-items: center
+            &:hover
+              background-color: $red
+              border: 0px
+              background-image: inherit
+            &:hover .btn-title
+              color: white
+            .btn-title
+              font-size: 2.2rem
+              //text-align: center
+              display: block
+          .be-healthy-btn
+            background-image: url('../../media/beHealthyBtnBackground.png')
+          .lose-weight-btn
+            background-image: url('../../media/loseWeightBtnBackground.png')
+          .gain-weight-btn
+            background-image: url('../../media/gainWeightBtnBackground.png')
+          .diabetic-meal-btn
+            background-image: url('../../media/diabeticMealBtnBackground.png')
+          .gluten-meal-btn
+            background-image: url('../../media/glutenBtnBackground.png')
+          .heart-healthy-meal-btn
+            background-image: url('../../media/heartHealthyBtnBackground.png')
+        .owl-controls
+          margin-top: 65px
+        .content
+          //background-color: red
+          width: 900px
+          height: 500px
+          float: left
+          .radial-slider-holder
+            width: 286px
+            height: 267px
+            background-image:url('../../media/radialSliderRing.png')
+            background-size: contain
+            background-repeat: no-repeat
+            display: block
+            margin: 0 auto
+            margin-bottom: 30px
+            //display: flex
+            position: relative
+            .top-row
+              position: absolute
+              left: 50%
+              top: 50%
+              transform: translate(-50%, -50%)
+              //margin-bottom: 30px
+            .bottom-text
+              font-size: 2.2rem
+              position: absolute
+              left: 50%
+              top: 65%
+              transform: translate(-50%, -50%)
+            span
+              font-size: 4.5rem
+          .bottom-text
+            font-size: 2.1rem
+            text-align: center
+        .goal-container
+          //background: red
+        .weight-measure-container
+          //background: blue
+          .button-contain
+            width: 60%
+            margin: 100px auto 0px auto
+        .weight-lose-container
+          //background: green
+        .weight-lose-week-container
+          //background: yellow
+        .meal-plan-container
+          //background: purple
+        .finish-container
+          //background: orange
+          .finish-image
+            height: 264px
+            width: 422px
+            background-image: url('../../media/finishSlideBackground.png')
+            display: block
+            margin: 0 auto
+            margin-bottom: 30px
+      .btn-back, .btn-next
+        font-style: italic
         position: absolute
-        opacity: 0.8
-        cursor: pointer
-
-
-      .background-white
-        background-color: white
-        height: 80%
-        width: 80%
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        transition: all 0.5s
+        text-transform: capitalize
+        bottom: 30px
+        color: $text-color-secondary
+        font-size: 2.2rem
+        //float: left
+        .btn-text
+          float: left
+        .arrow-back, .arrow-next
+          height: 25px
+          width: 12px
+          background-size: cover
+          float: left
+        .arrow-back
+          background-image: url(../../media/leftArrow.png)
+          margin-right: 10px
+        .arrow-next
+          background-image: url(../../media/rightArrow.png)
+          margin-left: 10px
+      .btn-back
+        left: 34px
+      .btn-next
+        right: 34px
 
 
 
