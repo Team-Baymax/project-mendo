@@ -4,8 +4,12 @@ var PIXI = require('pixi.js');
 
 module.exports = {
   init: function() {
+    // Bind context
     _.bindAll(this, 'render', 'leapUpdate', 'onMouseMove');
-    // Insert Leap Here
+    // Flags
+    this.isFisting = false;
+    this.isFingering = false;
+
     this.leapController = new Leap.Controller({
       enableGestures: true
     });
@@ -79,6 +83,22 @@ module.exports = {
     var mappedPalm = this.posMap( hand.stabilizedPalmPosition );
     this.cursor.position.x = mappedPalm[0];
     this.cursor.position.y = mappedPalm[1];
+    // loop through the fingers to see if only index's extended
+    var indexPointing = true;
+    for (var i = 0; i < hand.fingers.length; i++) {
+      var finger = hand.fingers[i];
+      // if index finger not extended
+      if (!finger.extended && finger.type == 1) {
+        indexPointing = false;
+      }
+      // if other fingers extended
+      if (finger.extended && finger.type != 1) {
+        indexPointing = false;
+      }
+    }
+    if (indexPointing) {
+      console.log("POINTING");
+    }
   },
 
   /**
