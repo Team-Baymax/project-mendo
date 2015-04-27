@@ -91,8 +91,8 @@ module.exports = {
       if (!finger.extended && finger.type == 1) {
         indexPointing = false;
       }
-      // if other fingers extended
-      if (finger.extended && finger.type != 1) {
+      // if other fingers extended, and it's not index nor thumb
+      if (finger.extended && ( finger.type != 1 && finger.type != 0 )) {
         indexPointing = false;
       }
     }
