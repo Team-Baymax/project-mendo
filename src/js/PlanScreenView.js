@@ -1,9 +1,16 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+var $ = require('jquery');
+require('jquery.scrollto');
+Backbone.$ = $;
+
 
 module.exports = Backbone.View.extend({
   template: require('./PlanScreenTemplate'),
+  
+  events: {
+    "fistMove": "scrollTimeline"
+  },
   
   initialize: function(options) {
     // this.EVI = options.EVI;
@@ -19,5 +26,13 @@ module.exports = Backbone.View.extend({
     this.stopListening();
     return this;
   },
+  
+  scrollTimeline: function(e, data) {
+    console.log(data);
+    if (data.direction == 'up')
+      this.$el.find('.timeline-holder').scrollTo('-=' + data.amount + 'px', {axis: 'y'});
+    if (data.direction == 'down')
+      this.$el.find('.timeline-holder').scrollTo('+=' + data.amount + 'px', {axis: 'y'});
+  }
   
 });
