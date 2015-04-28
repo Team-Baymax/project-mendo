@@ -123,6 +123,7 @@ module.exports = Backbone.View.extend({
     // determine the question being answered
     var $currentTarget = $(e.currentTarget);
     var answer = ($currentTarget.data('accept-value') !== undefined)? $('.dial[data-question=' + $currentTarget.data('accept-value') + ']').val() : $currentTarget.data('answer');
+    //update the model
     this.foodJournalResponses.set($currentTarget.data('question'), answer);
     console.log(this.foodJournalResponses.attributes);
     this.nextSlide();
