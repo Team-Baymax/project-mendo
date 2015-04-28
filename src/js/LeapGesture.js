@@ -185,7 +185,7 @@ module.exports = {
   detectFistEvents: function( hand, mappedPalm ) {
     // Detect fisting with grabStrength
     var fisting = false;
-    if (hand.grabStrength >= 0.8) {
+    if (hand.grabStrength >= this.fist.proximity) {
       fisting = true;
     }
     if (! fisting) {
@@ -197,6 +197,7 @@ module.exports = {
         console.log("Fisting started");
         this.fist.palmPos.x = mappedPalm[0];
         this.fist.palmPos.y = mappedPalm[1];
+        this.fire('fistStart', this.fist.palmPos.x, this.fist.palmPos.y);
         this.fist.firstTime = false;
       } else {
         // get the difference vector
@@ -257,8 +258,9 @@ module.exports = {
       x:NaN,
       y:NaN
     },
+    proximity: 0.9,
     // the distance fist can move around till triggering an event 
-    leeway: 20
+    leeway: 50
   },
   
   checkMark: {
@@ -295,15 +297,6 @@ module.exports = {
    * fires event onto element at some coordinate
    */
   fire: function(eventName, pX, pY, data) {
-    // More optionals here?
-    // var event = new MouseEvent(eventName, {
-    //   'view': window,
-    //   'bubbles': true,
-    //   'cancelable': true,
-    //   'screenX': pX,
-    //   'screenY': pY
-    // });
-    // event.initMouseEvent
     $(document.elementFromPoint(pX, pY)).trigger(eventName, data);
   },
   /**
@@ -315,6 +308,8 @@ module.exports = {
   // scrollTo only works on elements with overflow: scroll
   fireFist: function(pDirection, pDelta) {
     var pAmount = Math.abs(pDelta) - this.fist.leeway;
+    // nerf the movement amount
+    pAmount *= 0.1;
     // trigger event at the element at saved fist location with attributes
     this.fire(
       'fistMove', 

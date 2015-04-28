@@ -21,6 +21,8 @@ module.exports = Backbone.View.extend({
     "click .btn-back": "backSlide",
     "click [data-answer]": "selectFoodJournalResponse",
     "click [data-accept-value]": "selectFoodJournalResponse",
+    "fistStart": "setFisting",
+    "fistMove": "fistNavigate",
   },
 
   initialize: function(options) {
@@ -127,6 +129,27 @@ module.exports = Backbone.View.extend({
     this.foodJournalResponses.set($currentTarget.data('question'), answer);
     console.log(this.foodJournalResponses.attributes);
     this.nextSlide();
-  }
+  },
+  // let slide listen to fist
+  setFisting: function(e) {
+    this.slideListenToFist = true;
+  },
+  fistNavigate: function(e, data) {
+    var lightboxIsOpen = this.$el.find('.lightbox').hasClass('active');
+    // force these gestures to only run once every fisting
+    if (this.slideListenToFist && lightboxIsOpen) {
+      if (data.direction == 'up') {
+        this.closeLightbox();
+      }
+      if (data.direction == 'left'){
+        this.backSlide();
+        this.slideListenToFist = false;
+      }
+      if (data.direction == 'right'){
+        this.nextSlide();
+        this.slideListenToFist = false;
+      }
+    }
+  },
 
 });
