@@ -205,6 +205,8 @@ module.exports = {
           this.fist.palmPos
         );
         // check for 4 directions
+        // TODO: With our visual, it won't make sense to have 
+        // events firing at both x and y axis at same time
         // Up
         if (delta.y < - this.fist.leeway) {
           this.fireFist('up', delta.y)
@@ -320,11 +322,5 @@ module.exports = {
       this.fist.palmPos.y, 
       { direction:pDirection, amount: pAmount }
     );
-    if (pDirection == 'down') {
-      var testDiv = $(document.elementFromPoint(this.fist.palmPos.x, this.fist.palmPos.y));
-      testDiv.scrollTo(pAmount, {axis:'y'});
-      console.log(testDiv);
-      console.log(pAmount);
-    }
   },
 }
