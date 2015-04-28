@@ -15,13 +15,13 @@
           <div class="content goal-container">
             <span class="title">What is your goal?</span>
             <div class="button-contain">
-              <div class="be-healthy-btn">
+              <div class="be-healthy-btn" data-question="goal" data-answer="beHealthy">
                 <span class="btn-title">Be Healthy</span>
               </div>
-              <div class="lose-weight-btn">
+              <div class="lose-weight-btn" data-question="goal" data-answer="loseWeight">
                 <span class="btn-title">Lose Weight</span>
               </div>
-              <div class="gain-weight-btn">
+              <div class="gain-weight-btn" data-question="goal" data-answer="gainWeight">
                 <span class="btn-title">Gain Weight</span>
               </div>
             </div>
@@ -29,10 +29,10 @@
           <div class="content weight-measure-container">
             <span class="title">How do you want to measure your weight?</span>
             <div class="button-contain">
-              <div class="pounds-btn">
+              <div class="pounds-btn" data-question="units" data-answer="lbs">
                 <span class="btn-title">Pounds</span>
               </div>
-              <div class="kilograms-btn">
+              <div class="kilograms-btn" data-question="units" data-answer="kgs">
                 <span class="btn-title">Kilograms</span>
               </div>
             </div>
@@ -40,31 +40,31 @@
           <div class="content weight-lose-container">
             <span class="title">How much weight do you want to lose?</span>
             <div class="radial-slider-holder">
-              <div class="top-row"><span class="weight-per-week-num">x</span><span class="unit-of-measure">lbs/kilo</span></div><br>
-              <!--<span class="bottom-text">every week</span>-->
+              <input type="text" value="0" class="dial" data-question="weightChange" data-min="0" data-max="250" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#fc7575" />
             </div>
             <p class="bottom-text">Current weight: <span class="current-weight-num">xx</span><span class="unit-of-measure">lbs/kilo</span></p><br>
             <p class="bottom-text">Weight goal: <span class="weight-goal-num">xx</span><span class="unit-of-measure">lbs/kilo</span></p>
+            <input type="submit" value="Accept" data-question="weightChange" data-accept-value="weightChange" />
           </div>
           <div class="content weight-lose-week-container">
             <span class="title">How much weight do you want to lose a week?</span>
             <div class="radial-slider-holder">
-              <div class="top-row"><span class="weight-per-week-num">x</span><span class="unit-of-measure">lbs/kilo</span></div><br>
-              <span class="bottom-text">every week</span>
+              <input type="text" value="0" class="dial" data-question="weightPerWeek" data-min="0" data-max="250" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#fc7575">
             </div>
             <p class="bottom-text">You’ll reach your goal of <span class="weight-num">xx</span><span class="unit-of-measure">lbs/kilo</span> in 26 weeks.</p><br>
             <p class="bottom-text">Your daily caloric goal is <span class="calories-num">xxxx</span> calories.</p>
+            <input type="submit" value="Accept" data-question="weightPerWeek" data-accept-value="weightPerWeek" />
           </div>
           <div class="content meal-plan-container">
             <span class="title">Select our recommended meal plan for you.</span>
             <div class="button-contain">
-              <div class="diabetic-meal-btn">
+              <div class="diabetic-meal-btn" data-question="recommendedMealPlan" data-answer="diabetic">
                 <span class="btn-title">Diabetic</span>
               </div>
-              <div class="gluten-meal-btn">
+              <div class="gluten-meal-btn" data-question="recommendedMealPlan" data-answer="gluten-free">
                 <span class="btn-title">Gluten Free</span>
               </div>
-              <div class="heart-healthy-meal-btn">
+              <div class="heart-healthy-meal-btn" data-question="recommendedMealPlan" data-answer="heart-healthy">
                 <span class="btn-title">Heart Healthy</span>
               </div>
             </div>

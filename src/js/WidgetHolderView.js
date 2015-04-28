@@ -1,4 +1,4 @@
-// HACK: owlslider attaches itself to the global jquery object, 
+// HACK: owlslider attaches itself to the global jquery object,
 // forcing us to have a global one outside the context of browserify.
 // Have to use the global $ to get that element
 var _ = require('underscore');
@@ -7,16 +7,22 @@ Backbone.$ = require('jquery');
 var WidgetModel = require('./WidgetModel');
 var WidgetView = require('./WidgetView');
 var WidgetTemplate = require('./WidgetTemplate');
+var FoodJournalModel = require('./models/FoodJournalModel');
 
 module.exports = Backbone.View.extend({
+
+  foodJournalResponses: null,
+
   template: require('./WidgetHolderTemplate'),
-  
+
   events: {
     "click .lightbox-bg": "closeLightbox",
     "click .btn-next": "nextSlide",
-    "click .btn-back": "backSlide"
+    "click .btn-back": "backSlide",
+    "click [data-answer]": "selectFoodJournalResponse",
+    "click [data-accept-value]": "selectFoodJournalResponse",
   },
-  
+
   initialize: function(options) {
     this.EVI = options.EVI;
     // Array for widget views
@@ -27,7 +33,7 @@ module.exports = Backbone.View.extend({
     // eventemitter2 events
     this.openLightbox = _.bind(this.openLightbox, this);
     this.EVI.on( 'openWidgetLightbox', this.openLightbox );
-    
+
     return this.render();
   },
   render: function() {
@@ -37,13 +43,15 @@ module.exports = Backbone.View.extend({
       singleItem: true,
       rewindNav: false,
       // lazyLoad: true, // fades in images
+      mouseDrag: false,
+      touchDrag: false
     });
     this.changeSlideButton();
     // render widgets. Bind to this context
     this.collection.each(function(pModel, i){
       this.addWidget(pModel);
     }, this);
-    
+
     this._rendered = true;
     return this;
   },
@@ -53,8 +61,6 @@ module.exports = Backbone.View.extend({
     return this;
   },
   addWidget: function(pModel) {
-    console.log("[WidgetHolderView] addWidget");
-    // We create an updating donut view for each donut that is added.
     var widgetView = new WidgetView({
       parent: '.widget-scroll',
       className: 'widget',
@@ -65,17 +71,21 @@ module.exports = Backbone.View.extend({
     this.arrWidget.push(widgetView);
   },
   removeWidget: function(pModel) {
-    console.log("[WidgetHolderView] removeWidget");
     var widgetView = _(this.arrWidget).filter( function(view) { return view.model === pModel; } )[0];
     widgetView.remove();
     this.arrWidget = _(this.arrWidget).without(widgetView);
   },
   openLightbox: function(data) {
     console.log("[WidgetHolderView] openLightbox");
-    // TODO: For this demo we are using just one instance, 
+    // TODO: For this demo we are using just one instance,
     // therefore the model id is actually not used
-    console.log(this);
     this.$el.find('.lightbox').addClass('active');
+
+    $('.dial').knob();
+
+    if (this.foodJournalResponses === null) {
+      this.foodJournalResponses = new FoodJournalModel();
+    }
   },
   closeLightbox: function() {
     console.log("[WidgetHolderView] closeLightbox");
@@ -96,7 +106,6 @@ module.exports = Backbone.View.extend({
   changeSlideButton: function() {
     var iSlide = $('.content-window').data('owlCarousel').currentItem;
     var length = $('.content-window').data('owlCarousel').$owlItems.length;
-    console.log( length );
     var $back = this.$el.find('.btn-back');
     var $next = this.$el.find('.btn-next');
     // if first item, hide back button
@@ -109,6 +118,15 @@ module.exports = Backbone.View.extend({
       $back.show();
       $next.find('.btn-text').html('Next');
     }
+  },
+  selectFoodJournalResponse: function(e) {
+    // determine the question being answered
+    var $currentTarget = $(e.currentTarget);
+    var answer = ($currentTarget.data('accept-value') !== undefined)? $('.dial[data-question=' + $currentTarget.data('accept-value') + ']').val() : $currentTarget.data('answer');
+    //update the model
+    this.foodJournalResponses.set($currentTarget.data('question'), answer);
+    console.log(this.foodJournalResponses.attributes);
+    this.nextSlide();
   }
-  
+
 });
