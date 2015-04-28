@@ -44,7 +44,7 @@
         position: absolute
         
       .time-row
-        width: auto
+        width: 95%
         height: auto
         position: relative
         padding-left: 80px
@@ -92,45 +92,56 @@
 
         .top
           margin-top: 50px
-
-        .module
-          height: 187px
-          width: 284px
-          background-color: #eeecee
-          border: solid 1px #c9c9c9
+        .module-background
+          height: 100%
+          width: 100%
+          background: #dcdcdc
+          display: block
+          box-sizing: border-box
+          padding: 2% 2% 0 2%
           border-radius: 8px
-          padding: 20px
-          margin: 0px 30px 30px 0px
-          float: left
-          cursor: pointer
-          transition: all 2s
-          background-image: url('../../media/medicationBg.jpg')
-          background-size: contain
+          .module
+            height: 187px
+            width: 275px
+            background-color: #eeecee
+            border: solid 1px #c9c9c9
+            border-radius: 8px
+            padding: 20px
+            margin-right: 10px
+            margin-bottom: 2%
+            //float: left
+            display: inline-block
+            cursor: pointer
+            transition: all 2s
+            background-image: url('../../media/medicationBg.jpg')
+            background-size: contain
+            &:nth-child(4n+4)
+              margin-right: 0px
 
-          .unexpanded-widget
-            height: 100%
-            width: 100%
-
-            .title
-              color: #444444
-              font-size: 1.4rem
-              font-weight: 500
-              margin-bottom: 10px
-
-            .sub-text
-              color: #757575
-              font-size: 0.8rem
-              font-weight: 500
-
-            .graphic-container
+            .unexpanded-widget
+              height: 100%
               width: 100%
-              margin-top: 50px
-              .graphic
-                height: 10px
+
+              .title
+                color: #444444
+                font-size: 1.4rem
+                font-weight: 500
+                margin-bottom: 10px
+
+              .sub-text
+                color: #757575
+                font-size: 0.8rem
+                font-weight: 500
+
+              .graphic-container
                 width: 100%
-                background-color: #9f9f9f
-                border-radius: 10px
-                margin-bottom: 20px
+                margin-top: 50px
+                .graphic
+                  height: 10px
+                  width: 100%
+                  background-color: #9f9f9f
+                  border-radius: 10px
+                  margin-bottom: 20px
 
           .expanded-widget
             height: 100%
