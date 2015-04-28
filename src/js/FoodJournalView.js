@@ -1,16 +1,11 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
 var $ = require('jquery');
-require('jquery.scrollto');
 Backbone.$ = $;
 
 
 module.exports = Backbone.View.extend({
-  template: require('./PlanScreenTemplate'),
-  
-  events: {
-    "fistMove": "scrollTimeline"
-  },
+  template: require('./FoodJournalTemplate'),
   
   initialize: function(options) {
     // this.EVI = options.EVI;
@@ -26,12 +21,5 @@ module.exports = Backbone.View.extend({
     this.stopListening();
     return this;
   },
-  
-  scrollTimeline: function(e, data) {
-    if (data.direction == 'up')
-      this.$el.find('.timeline-holder').scrollTo('-=' + data.amount + 'px', {axis: 'y'});
-    if (data.direction == 'down')
-      this.$el.find('.timeline-holder').scrollTo('+=' + data.amount + 'px', {axis: 'y'});
-  }
-  
+    
 });

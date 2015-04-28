@@ -22,6 +22,7 @@ module.exports = Backbone.View.extend({
     this.collection.each(function(widgetModel, index) {
       that.$el.find('.expanded-button-contain').append(new TopBarExpandedWidgetButton({
         model: widgetModel,
+        EVI: that.EVI,
         tagname: 'div',
         className: 'expanded-widget-button'
       }).$el );
