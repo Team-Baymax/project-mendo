@@ -49,6 +49,11 @@ module.exports = {
         outputName: 'app-control.js',
         extensions: ['.hbs']
       },
+      {
+        entries: src + '/js/jquery-knob.js',
+        dest: dest + '/js',
+        outputName: 'jquery-knob.js'
+      },
     ]
   }
 };
