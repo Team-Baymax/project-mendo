@@ -1,6 +1,27 @@
 var _ = require('underscore');
 var $ = require('jquery');
+require('jquery.scrollto');
 var PIXI = require('pixi.js');
+
+// Utility functions for vector math
+// currently just a namespace for 
+// some functions that takes in 
+// object presuming x and y key
+var Vector2D = {
+  subtract: function( v1, v2 ) {
+    return {
+      x: v1.x - v2.x,
+      y: v1.y - v2.y
+    };
+  },
+  magnitude: function( v ) {
+    return Math.sqrt(v.x * v.x + v.y * v.y);
+  }
+}
+// Utility function to convert vector array to object
+function arrToVec2(arr) {
+  return { x: arr[0], y: arr[1] };
+}
 
 module.exports = {
   init: function() {
@@ -70,7 +91,7 @@ module.exports = {
     // attach a reference of the frame to this module for ease of access
     this.frame = frame;
     // If no hand, draw nothing
-    if ( !frame.hands.length ) {
+    if ( ! frame.hands.length ) {
       this.cursor.visible = false;
       return;
     }
@@ -83,12 +104,19 @@ module.exports = {
     this.cursor.position.y = mappedPalm[1];
     // FIRE THE THING
     this.fire('mousemove', mappedPalm[0], mappedPalm[1]);
+    
+    // TODO: these parameters shouldn't be here
+    this.detectPointEvents( hand, mappedPalm );
+    this.detectFistEvents( hand, mappedPalm );
+  },
+  
+  detectPointEvents: function( hand, mappedPalm ) {
     // loop through the fingers to see if only index's extended
     var indexPointing = true;
     for (var i = 0; i < hand.fingers.length; i++) {
       var finger = hand.fingers[i];
       // if index finger not extended
-      if (!finger.extended && finger.type == 1) {
+      if (! finger.extended && finger.type == 1) {
         indexPointing = false;
       }
       // if other fingers extended, and it's not index nor thumb
@@ -96,9 +124,8 @@ module.exports = {
         indexPointing = false;
       }
     }
-    var checkmarkDown = false;
-    var checkmarkUp = false;
-    if (!indexPointing) {
+    if (! indexPointing) {
+      // set firstTime to true so that when it is pointing, it'll represent it's true
       this.fingerPoint.firstTime = true;
     } else {
       var mappedFinger = this.posMap( hand.fingers[1].stabilizedTipPosition );
@@ -114,12 +141,17 @@ module.exports = {
         this.fingerPoint.firstTime = false;
         this.checkMark.reset();
       } else {
+        // get the difference vector
+        var delta = Vector2D.subtract(
+          arrToVec2(mappedFinger),
+          this.fingerPoint.fingerPos
+        );
         // if going-down-complete is false,
         if (! this.checkMark.flags.downComplete) {
           // (posMap) if distance between saved index position and current position is greater than some number
           if ( 
-            mappedFinger[0] - this.fingerPoint.fingerPos.x >= this.checkMark.dists.downX &&
-            mappedFinger[1] - this.fingerPoint.fingerPos.y >= this.checkMark.dists.downY
+            delta.x >= this.checkMark.dists.downX &&
+            delta.y >= this.checkMark.dists.downY
           ) {
             // TODO: visual hint for progress of this motion
             console.log("Down Complete");
@@ -130,8 +162,8 @@ module.exports = {
           if (! this.checkMark.flags.upComplete) {
             // if dist is greater than some number
             if ( 
-              mappedFinger[0] - this.fingerPoint.fingerPos.x >= this.checkMark.dists.upX &&
-              mappedFinger[1] - this.fingerPoint.fingerPos.y <= this.checkMark.dists.upY
+              delta.x >= this.checkMark.dists.upX &&
+              delta.y <= this.checkMark.dists.upY
             ) {
               // TODO: visual hint for progress of this motion
               console.log("Up Complete");
@@ -144,10 +176,65 @@ module.exports = {
           }
         }
       }
-      // Draw cursor at that point
+      // Draw cursor at the initial palm position
       this.cursor.position.x = this.fingerPoint.palmPos.x;
       this.cursor.position.y = this.fingerPoint.palmPos.y;
     }
+  },
+  
+  detectFistEvents: function( hand, mappedPalm ) {
+    // Detect fisting with grabStrength
+    var fisting = false;
+    if (hand.grabStrength >= 0.8) {
+      fisting = true;
+    }
+    if (! fisting) {
+      this.fist.firstTime = true;
+    } else {
+    /* Begin Fisting Updater */
+      if (this.fist.firstTime) {
+        // if it's the very first time, save palm pos
+        console.log("Fisting started");
+        this.fist.palmPos.x = mappedPalm[0];
+        this.fist.palmPos.y = mappedPalm[1];
+        this.fist.firstTime = false;
+      } else {
+        // get the difference vector
+        var delta = Vector2D.subtract(
+          arrToVec2(mappedPalm),
+          this.fist.palmPos
+        );
+        // check for 4 directions
+        // Up
+        if (delta.y < - this.fist.leeway) {
+          this.fireFist('up', delta.y)
+        }
+        // Down
+        if (delta.y > this.fist.leeway) {
+          this.fireFist('down', delta.y)
+        }
+        // Left
+        if (delta.x < - this.fist.leeway) {
+          this.fireFist('left', delta.x)
+        }
+        // Right
+        if (delta.x > this.fist.leeway) {
+          this.fireFist('right', delta.x)
+        }
+      }
+      
+      
+      // TODO: Draw arrows at the initial palm position
+      // TODO: 
+      // Since the arrows shouldn't be so easily triggered, and
+      // their positions are used to represent trigger area,
+      // palmPosition shouldn't be used so directly that 
+      // events are triggered quickly,
+      // the fist cursor needs to be drawn relatively
+      // with movement scaled down
+    }
+    /* End Fisting Updater */
+    
   },
   
   fingerPoint: {
@@ -160,6 +247,16 @@ module.exports = {
       x:NaN,
       y:NaN
     }
+  },
+  
+  fist: {
+    firstTime: true,
+    palmPos: {
+      x:NaN,
+      y:NaN
+    },
+    // the distance fist can move around till triggering an event 
+    leeway: 20
   },
   
   checkMark: {
@@ -193,9 +290,9 @@ module.exports = {
     return mappedPosition;
   },
   /**
-   * fires built-in event onto the window
+   * fires event onto element at some coordinate
    */
-  fire: function(eventName, pX, pY) {
+  fire: function(eventName, pX, pY, data) {
     // More optionals here?
     // var event = new MouseEvent(eventName, {
     //   'view': window,
@@ -205,7 +302,29 @@ module.exports = {
     //   'screenY': pY
     // });
     // event.initMouseEvent
-    if(eventName == "click") console.log($(document.elementFromPoint(pX, pY)));
-    $(document.elementFromPoint(pX, pY)).trigger(eventName);
+    $(document.elementFromPoint(pX, pY)).trigger(eventName, data);
+  },
+  /**
+   * fires fist direction event
+   * includes the amount it surpasses the leeway
+   */
+  // TODO: This event fires on the element
+  // The scrolling should be handled by views separately
+  // scrollTo only works on elements with overflow: scroll
+  fireFist: function(pDirection, pDelta) {
+    var pAmount = Math.abs(pDelta) - this.fist.leeway;
+    // trigger event at the element at saved fist location with attributes
+    this.fire(
+      'fistMove', 
+      this.fist.palmPos.x, 
+      this.fist.palmPos.y, 
+      { direction:pDirection, amount: pAmount }
+    );
+    if (pDirection == 'down') {
+      var testDiv = $(document.elementFromPoint(this.fist.palmPos.x, this.fist.palmPos.y));
+      testDiv.scrollTo(pAmount, {axis:'y'});
+      console.log(testDiv);
+      console.log(pAmount);
+    }
   },
 }
