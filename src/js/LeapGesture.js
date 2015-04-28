@@ -225,8 +225,6 @@ module.exports = {
           this.fireFist('right', delta.x)
         }
       }
-      
-      
       // TODO: Draw arrows at the initial palm position
       // TODO: 
       // Since the arrows shouldn't be so easily triggered, and
@@ -236,7 +234,6 @@ module.exports = {
       // the fist cursor needs to be drawn relatively
       // with movement scaled down
     }
-    /* End Fisting Updater */
     
   },
   
@@ -258,7 +255,7 @@ module.exports = {
       x:NaN,
       y:NaN
     },
-    proximity: 0.9,
+    proximity: 0.99,
     // the distance fist can move around till triggering an event 
     leeway: 50
   },

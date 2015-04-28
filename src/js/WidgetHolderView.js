@@ -138,7 +138,7 @@ module.exports = Backbone.View.extend({
     var lightboxIsOpen = this.$el.find('.lightbox').hasClass('active');
     // force these gestures to only run once every fisting
     if (this.slideListenToFist && lightboxIsOpen) {
-      if (data.direction == 'up') {
+      if (data.direction == 'up' && data.amount > 10) {
         this.closeLightbox();
       }
       if (data.direction == 'left'){
