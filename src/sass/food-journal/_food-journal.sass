@@ -140,6 +140,24 @@
     display: flex
     .breakfast-container, .lunch-container, .afternoon-snack-container, .dinner-container
       height: 300px
-      width: auto
+      width: 100%
       background: red
       float: left
+      .summary-top-bar
+        display: flex
+        flex-direction: column
+        .calories
+          font-size: 2.3rem
+          color: $green
+          //display: block
+          margin-bottom: 0px
+          box-sizing: border-box
+        .title
+          font-size: 2.3rem
+          color: $text-color-main
+          //display: block
+          margin-bottom: 10px
+        .sub-text
+          font-size: 1.6rem
+          color: $text-color-secondary
+          //display: block
