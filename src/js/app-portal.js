@@ -13,6 +13,10 @@ Backbone.$ = $;
 var EventEmitter2 = require('eventemitter2').EventEmitter2;
 var EVI = new EventEmitter2();
 
+// global patient object
+var Patient = require('./models/PatientModel');
+window.Patient = new Patient();
+
 // Assemble the views
 window.LeapGesture = require('./LeapGesture');
 var SideNavView = require('./SideNavView');
