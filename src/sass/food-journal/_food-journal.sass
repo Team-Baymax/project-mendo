@@ -209,17 +209,35 @@
     .weekly-container, .monthly-container
       height: 100%
       width: 100%
-      background: red
+      //background: red
       position: relative
       top: 1010px
       overflow-x: scroll
       overflow-y: hidden
+      z-index: 1
       .calories-container
         height: 100%
         width: 100%
-        background: green
+        //background: green
         position: absolute
         .graph-lines-container
+          height: 100%
+          width: 100%
+          .main-vert-line
+            width: 2px
+            height: 80%
+            background-color: $grey
+            position: absolute
+            left: 10%
+            bottom: 0
+          .main-horz-line
+            width: 85%
+            height: 1px
+            background-color: $grey
+            position: absolute
+            bottom: 30%
+            left: 50%
+            transform: translateX(-50%)
       .carbs-container
         height: 100%
         width: 100%
@@ -231,3 +249,31 @@
         background: purple
       .carbs-container
         background: orange
+  .bottom-bar-journal
+    width: 100%
+    height: 200px
+    background-image: url('../../media/FoodWidgetBg.jpg')
+    background-size: cover
+    background-color: #ededed
+    position: absolute
+    bottom: 0
+    z-index: 0
+    .scroll-down-btn
+      width: 200px
+      height: 100px
+      cursor: pointer
+      margin: 0 auto
+      .scroll-text
+        font-size: 1.2rem
+        color: $text-color-main
+        position: absolute
+        left: 50%
+        transform: translateX(-50%)
+      .arrow
+        height: 12px
+        width: 24px
+        background-image: url('../../media/bottomArrow.png')
+        position: absolute
+        left: 50%
+        top: 20px
+        transform: translateX(-50%)
