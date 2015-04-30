@@ -3,11 +3,13 @@
 // Have to use the global $ to get that element
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+Backbone.$ = $;
 var WidgetModel = require('./WidgetModel');
 var WidgetView = require('./WidgetView');
 var WidgetTemplate = require('./WidgetTemplate');
 var FoodJournalModel = require('./models/FoodJournalModel');
+
+require('./jquery-knob');
 
 module.exports = Backbone.View.extend({
 
