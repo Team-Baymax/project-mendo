@@ -1,5 +1,6 @@
 .food-journal-container
   position: relative
+  height: 100%
   .top-bar-journal
     width: 100%
     height: 100px
@@ -36,128 +37,178 @@
       .dangerous
         .icon
           background-color: $red
-  .today-container
-    height: 320px
+  .scrollable
+    //background: red
+    overflow-y: scroll
     width: 100%
-    //background: green
-    padding: 3% 5% 3% 3%
-    box-sizing: border-box
-    position: relative
-    top: 250px
-    .center-data-container
-      width: 70%
-      height: 100%
-      display: block
-      margin: 0 auto
+    height: 100%
+    .today-container
+      height: 320px
+      width: 100%
+      //background: green
+      padding: 3% 5% 3% 3%
+      box-sizing: border-box
       position: relative
-      .data-left
-        float: left
-        position: relative
-        top: 50%
-        //left: 0%
-        transform: translateY(-50%)
-        .data
-          font-size: 2.4rem
-          color: $text-color-main
-          text-align: center
-          display: block
-        .sub-text
-          font-size: 1.8rem
-          color: $text-color-secondary
-      .data-center
-        margin: 0 auto
+      top: 250px
+      .center-data-container
+        width: 70%
+        height: 100%
         display: block
-        .graph
-          height: 300px
-          width: 300px
-          //background: yellow
-          //margin: 0 auto
-          display: block
-          position: absolute
-          left: 50%
-          top: 50%
-          transform: translate(-50%, -50%)
-          overflow: visible
-          .circle
-            transform-origin: center center
-            transform: rotate(-90deg)
-            stroke: $green
-            stroke-width: 16
-            stroke-dasharray: 1000 6000
-            stroke-dashoffset: 1000
-            fill: rgba(255,255,255,0)
-            transition: $transition
-            z-index: 1
-            animation: circlebar-animate 3s 1s forwards
-          .circleBg
-            transform-origin: center center
-            transform: rotate(90deg)
-            stroke: #ffffff
-            stroke-width: 16
-            stroke-dasharray: 1000 6000
-            stroke-dashoffset: 0
-            fill: rgba(255,255,255,0)
-            //transition: all 2s
-            z-index: 0
-      .data-contain
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        .data
-          font-size: 4.4rem
-          color: $green
-          text-align: center
-          position: absolute
-          left: 50%
-          transform: translateX(-50%)
-          transition: $transition
-          animation: circlebar-num-animate 3s 1s forwards
-          //margin-bottom: 30px
-        .sub-text
-          font-size: 2.4rem
-          color: $text-color-secondary
-          display: block
-          margin-top: 40px
-      .data-right
-        float: right
+        margin: 0 auto
         position: relative
-        top: 50%
-        //left: 100%
-        transform: translateY(-50%)
-        .data
-          font-size: 2.4rem
-          color: $text-color-main
-          text-align: center
+        .data-left
+          float: left
+          position: relative
+          top: 50%
+          //left: 0%
+          transform: translateY(-50%)
+          .data
+            font-size: 2.4rem
+            color: $text-color-main
+            text-align: center
+            display: block
+          .sub-text
+            font-size: 1.8rem
+            color: $text-color-secondary
+        .data-center
+          margin: 0 auto
           display: block
-        .sub-text
-          font-size: 1.8rem
+          .graph
+            height: 300px
+            width: 300px
+            //background: yellow
+            //margin: 0 auto
+            display: block
+            position: absolute
+            left: 50%
+            top: 50%
+            transform: translate(-50%, -50%)
+            overflow: visible
+            .circle
+              transform-origin: center center
+              transform: rotate(-90deg)
+              stroke: $green
+              stroke-width: 16
+              stroke-dasharray: 1000 6000
+              stroke-dashoffset: 1000
+              fill: rgba(255,255,255,0)
+              transition: $transition
+              z-index: 1
+              animation: circlebar-animate 15s 1.5s forwards
+            .circleBg
+              transform-origin: center center
+              transform: rotate(90deg)
+              stroke: #ffffff
+              stroke-width: 16
+              stroke-dasharray: 1000 6000
+              stroke-dashoffset: 0
+              fill: rgba(255,255,255,0)
+              //transition: all 2s
+              z-index: 0
+        .data-contain
+          position: absolute
+          top: 50%
+          left: 50%
+          transform: translate(-50%, -50%)
+          .data
+            font-size: 4.4rem
+            color: $green
+            text-align: center
+            position: absolute
+            left: 50%
+            transform: translateX(-50%)
+            transition: $transition
+            animation: circlebar-num-animate 15s 1s forwards
+            //margin-bottom: 30px
+          .sub-text
+            font-size: 2.4rem
+            color: $text-color-secondary
+            display: block
+            margin-top: 40px
+        .data-right
+          float: right
+          position: relative
+          top: 50%
+          //left: 100%
+          transform: translateY(-50%)
+          .data
+            font-size: 2.4rem
+            color: $text-color-main
+            text-align: center
+            display: block
+          .sub-text
+            font-size: 1.8rem
+            color: $text-color-secondary
+    .today-summary-container
+      height: 400px
+      width: 100%
+      //background-color: rebeccapurple
+      display: flex
+      margin-top: 200px
+      .breakfast-container, .lunch-container, .afternoon-snack-container, .dinner-container
+        height: 300px
+        width: 100%
+        //background: red
+        float: left
+        padding: 3%
+        .summary-top-bar
+          display: flex
+          flex-direction: column
+          .calories
+            font-size: 2.3rem
+            color: $green
+            //display: block
+            margin-bottom: 3px
+            box-sizing: border-box
+          .title
+            font-size: 2.3rem
+            color: $text-color-main
+            //display: block
+            margin-bottom: 10px
+          .sub-text
+            font-size: 1.6rem
+            color: $text-color-secondary
+            //display: block
+        .bar-graphic
+          height: 12px
+          width: 100%
+          background-color: #ffffff
+          border-radius: 10px
+          margin: 0 auto 25px auto
+          overflow: hidden
+          margin-top: 100px
+          .data
+            height: 100%
+            width: 0%
+            background-color: $green
+            transition: $transition
+        .bar-graphic-text-left
+          //margin-left: 5%
+          font-size: 1.3rem
           color: $text-color-secondary
-  .today-summary-container
-    height: 400px
-    width: 100%
-    background-color: rebeccapurple
-    display: flex
-    .breakfast-container, .lunch-container, .afternoon-snack-container, .dinner-container
-      height: 300px
+          float: left
+        .bar-graphic-text-right
+          //margin-right: 5%
+          font-size: 1.3rem
+          color: $text-color-secondary
+          float: right
+      .breakfast-container
+        .data
+          animation: breakfast-data-bar-animate 2s 1s forwards
+      .lunch-container
+        .data
+          animation: lunch-data-bar-animate 2s 1s forwards
+      .afternoon-snack-container
+        .data
+          animation: snack-data-bar-animate 2s 1s forwards
+      .dinner-container
+        .calories
+          animation: data-bar-text-animate 8s 3s forwards
+        .data
+          animation: dinner-data-bar-animate 8s 3s forwards
+    .weekly-container
+      height: 100%
       width: 100%
       background: red
-      float: left
-      .summary-top-bar
-        display: flex
-        flex-direction: column
-        .calories
-          font-size: 2.3rem
-          color: $green
-          //display: block
-          margin-bottom: 0px
-          box-sizing: border-box
-        .title
-          font-size: 2.3rem
-          color: $text-color-main
-          //display: block
-          margin-bottom: 10px
-        .sub-text
-          font-size: 1.6rem
-          color: $text-color-secondary
-          //display: block
+      position: relative
+      top: 1010px

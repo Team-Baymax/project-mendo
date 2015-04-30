@@ -4,7 +4,7 @@
     stroke: $green
   
   50%
-    stroke-dashoffset: 300;
+    //stroke-dashoffset: 500;
     stroke: $yellow
   
   100%
@@ -18,5 +18,35 @@
   50%
     color: $yellow
   
+  100%
+    color: $red
+  
+@keyframes breakfast-data-bar-animate
+  to
+    width: 50%
+    
+@keyframes lunch-data-bar-animate
+  to
+    width: 90%
+    
+@keyframes snack-data-bar-animate
+  to
+    width: 100%
+    
+@keyframes dinner-data-bar-animate
+  0%
+    width: 0%
+    background-color: $green
+  70%
+    //width: 80%
+    background-color: $yellow
+  100%
+    width: 100%
+    background-color: $red
+@keyframes data-bar-text-animate
+  0%
+    color: $green
+  50%
+    color: $yellow
   100%
     color: $red
