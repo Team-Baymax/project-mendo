@@ -73,9 +73,9 @@
         .data-center
           margin: 0 auto
           display: block
-          .graph
-            height: 300px
-            width: 300px
+          .graph-holder
+            height: 250px
+            width: 250px
             //background: yellow
             //margin: 0 auto
             display: block
@@ -83,7 +83,7 @@
             left: 50%
             top: 50%
             transform: translate(-50%, -50%)
-            overflow: visible
+            overflow: hidden
             .circle
               transform-origin: center center
               transform: rotate(-90deg)
@@ -144,13 +144,13 @@
       width: 100%
       //background-color: rebeccapurple
       display: flex
-      margin-top: 200px
+      margin-top: -30px
       .breakfast-container, .lunch-container, .afternoon-snack-container, .dinner-container
         height: 300px
         width: 100%
         //background: red
         float: left
-        padding: 3%
+        padding: 2%
         .summary-top-bar
           display: flex
           flex-direction: column
