@@ -168,6 +168,5 @@ module.exports = Backbone.View.extend({
         this.slideListenToFist = false;
       }
     }
-  },
-
+  }
 });
