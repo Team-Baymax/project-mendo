@@ -206,9 +206,28 @@
           animation: data-bar-text-animate 8s 3s forwards
         .data
           animation: dinner-data-bar-animate 8s 3s forwards
-    .weekly-container
+    .weekly-container, .monthly-container
       height: 100%
       width: 100%
       background: red
       position: relative
       top: 1010px
+      overflow-x: scroll
+      overflow-y: hidden
+      .calories-container
+        height: 100%
+        width: 100%
+        background: green
+        position: absolute
+        .graph-lines-container
+      .carbs-container
+        height: 100%
+        width: 100%
+        background: yellow
+        position: absolute
+        left: 100%
+    .monthly-container
+      .calories-container
+        background: purple
+      .carbs-container
+        background: orange
