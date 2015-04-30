@@ -39,7 +39,7 @@ module.exports = Backbone.View.extend({
     return this.render();
   },
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template(window.Patient.attributes));
     // Init carousel
     $('.content-window').owlCarousel({
       singleItem: true,
@@ -78,12 +78,23 @@ module.exports = Backbone.View.extend({
     this.arrWidget = _(this.arrWidget).without(widgetView);
   },
   openLightbox: function(data) {
+    var that = this;
     console.log("[WidgetHolderView] openLightbox");
     // TODO: For this demo we are using just one instance,
     // therefore the model id is actually not used
     this.$el.find('.lightbox').addClass('active');
 
-    $('.dial').knob();
+    $('#weightChangeSlider').knob({
+      change : function (value) {
+        that.$el.find('.weight-goal-num').html( Math.round(250 - value) );
+      }
+    });
+    $('#weightPerWeekSlider').knob({
+      change : function (value) {
+        var goal = that.$el.find('.weight-goal-num').html();
+        that.$el.find('#num-weeks').html( Math.round(goal / value) );
+      }
+    });
 
     if (this.foodJournalResponses === null) {
       this.foodJournalResponses = new FoodJournalModel();
@@ -127,8 +138,15 @@ module.exports = Backbone.View.extend({
     var answer = ($currentTarget.data('accept-value') !== undefined)? $('.dial[data-question=' + $currentTarget.data('accept-value') + ']').val() : $currentTarget.data('answer');
     //update the model
     this.foodJournalResponses.set($currentTarget.data('question'), answer);
-    console.log(this.foodJournalResponses.attributes);
+    this.updateQuestions($currentTarget.data('question'), answer);
     this.nextSlide();
+  },
+  updateQuestions: function (question, answer) {
+    switch (question) {
+      case 'units':
+      this.$el.find('.unit-of-measure').html(answer);
+      break;
+    }
   },
   // let slide listen to fist
   setFisting: function(e) {
