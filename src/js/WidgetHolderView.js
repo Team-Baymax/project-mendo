@@ -23,6 +23,7 @@ module.exports = Backbone.View.extend({
     "click [data-accept-value]": "selectFoodJournalResponse",
     "fistStart": "setFisting",
     "fistMove": "fistNavigate",
+    "leapCircle": "leapDial",
   },
 
   initialize: function(options) {
@@ -151,5 +152,8 @@ module.exports = Backbone.View.extend({
       }
     }
   },
+  leapDial: function(e, data) {
+    
+  }
 
 });
