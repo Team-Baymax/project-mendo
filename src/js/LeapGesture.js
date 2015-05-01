@@ -1,6 +1,5 @@
 var _ = require('underscore');
-// var $ = require('jquery');
-var PIXI = require('pixi.js');
+var LeapCanvas = require('./LeapCanvas');
 
 // Utility functions for vector math
 // currently just a namespace for 
@@ -23,9 +22,10 @@ function arrToVec2(arr) {
 }
 
 module.exports = {
-  init: function() {
+  init: function(options) {
+    this.EVI = options.EVI;
     // Bind context
-    _.bindAll(this, 'render', 'leapUpdate');
+    _.bindAll(this, 'leapUpdate');
     // Flags
     this.isFisting = false;
     this.isFingering = false;
@@ -47,7 +47,10 @@ module.exports = {
     this.leapController.on('deviceStreaming', function() {
       console.log("A Leap device has been connected.");
       // If connected, make pixi and attach frame handler
-      this.initPIXI();
+      LeapCanvas.init({
+        EVI: this.EVI,
+      });
+      LeapCanvas.newState = "cursor";
       // The Animation Frame of Leap. steady 60fps
       this.leapController.on('frame', this.leapUpdate);
     }.bind(this));
@@ -58,54 +61,32 @@ module.exports = {
     });
     this.leapController.connect();
   },
-  initPIXI: function(){
-    this.renderer = new PIXI.WebGLRenderer(window.innerWidth, window.innerHeight, {transparent: true, antialias: true});
- 
-    $('#leap-view').append(this.renderer.view);
- 
-    this.stage = new PIXI.Container();
- 
-    var cursorTexture = PIXI.Texture.fromImage("media/RobertKeller.jpg");
-    this.cursor = new PIXI.Sprite(cursorTexture);
- 
-    this.cursor.position.x = 400;
-    this.cursor.position.y = 300;
-    this.cursor.anchor = new PIXI.Point(0.5, 0.5);
-    this.cursor.scale.x = 0.1;
-    this.cursor.scale.y = 0.1;
   
-    this.stage.interactive = true;
-    this.stage.addChild(this.cursor);
- 
-    requestAnimationFrame( this.render );
-  },
-  render: function() {
-    this.cursor.rotation += 0.01;
-
-    this.renderer.render(this.stage);
-    requestAnimationFrame(this.render);
-  },
   leapUpdate: function(frame){
     // attach a reference of the frame to this module for ease of access
     this.frame = frame;
     // If no hand, draw nothing
     if ( ! frame.hands.length ) {
-      this.cursor.visible = false;
+      LeapCanvas.cursor.visible = false;
       return;
     }
-    this.cursor.visible = true;
+    LeapCanvas.cursor.visible = true;
     // for the first hand there
     var hand = frame.hands[0];
     // move the cursor along
     var mappedPalm = this.posMap( hand.stabilizedPalmPosition );
-    this.cursor.position.x = mappedPalm[0];
-    this.cursor.position.y = mappedPalm[1];
+    LeapCanvas.cursor.position.x = mappedPalm[0];
+    LeapCanvas.cursor.position.y = mappedPalm[1];
     // FIRE THE THING
     this.fire('mousemove', mappedPalm[0], mappedPalm[1]);
+    
+    LeapCanvas.newState = "cursor";
     
     // TODO: these parameters shouldn't be here
     this.detectPointEvents( hand, mappedPalm );
     this.detectFistEvents( hand, mappedPalm );
+    
+    LeapCanvas.switchState();
   },
   
   detectPointEvents: function( hand, mappedPalm ) {
@@ -186,8 +167,8 @@ module.exports = {
         }
       }
       // Draw cursor at the initial palm position
-      this.cursor.position.x = this.fingerPoint.palmPos.x;
-      this.cursor.position.y = this.fingerPoint.palmPos.y;
+      LeapCanvas.cursor.position.x = this.fingerPoint.palmPos.x;
+      LeapCanvas.cursor.position.y = this.fingerPoint.palmPos.y;
     }
   },
   
@@ -201,6 +182,7 @@ module.exports = {
       this.fist.firstTime = true;
     } else {
     /* Begin Fisting Updater */
+      LeapCanvas.newState = "fist";
       if (this.fist.firstTime) {
         // if it's the very first time, save palm pos
         console.log("Fisting started");

@@ -30,7 +30,9 @@ var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
 var WidgetCollection = require('./WidgetCollection');
 
-LeapGesture.init();
+LeapGesture.init({
+  EVI: EVI
+});
 
 window.widgetCollection = new WidgetCollection();
 
