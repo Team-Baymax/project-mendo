@@ -4,6 +4,7 @@ var Backbone = require('backbone');
 // using cdn in html for now
 // require('jquery.scrollto');
 Backbone.$ = $;
+var PlanScreenModuleView = require('./views/PlanScreenModuleView');
 
 
 module.exports = Backbone.View.extend({
@@ -19,12 +20,31 @@ module.exports = Backbone.View.extend({
     return this.render();
   },
   render: function() {
-    console.log(this.collection);
-
-    this.collection.each(function(model, index){
-      console.log(model);
-    });
+    var that = this;
     this.$el.html(this.template());
+
+    var timelineHTML = '';
+
+    window.timelineData.forEach(function(timeBlock, index){
+      timelineHTML += '<span class="line"></span>';
+      timelineHTML += '<div class="time-row">';
+      timelineHTML += ' <div class="time-container top">';
+      timelineHTML += '   <p class="time">' + timeBlock.time + '</p>';
+      timelineHTML += '   <div class="node"></div>';
+      timelineHTML += '   <div class="line"></div>';
+      timelineHTML += ' </div>';
+      timelineHTML += ' <div class="module-background">';
+
+      timeBlock.modules.forEach(function(module){
+        var view = new PlanScreenModuleView({
+          model: module
+        });
+        timelineHTML += view.$el.html();
+      });
+      timelineHTML += '</div>';
+      timelineHTML += '</div>';
+    });
+    $('.modules-holder').html(timelineHTML);
     return this;
   },
   remove: function() {
@@ -32,7 +52,6 @@ module.exports = Backbone.View.extend({
     this.stopListening();
     return this;
   },
-
   scrollTimeline: function(e, data) {
     if (data.direction == 'up')
       // this.$el.find('.timeline-holder').scrollTo('-=' + data.amount + 'px', {axis: 'y'});

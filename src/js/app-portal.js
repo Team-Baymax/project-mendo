@@ -34,8 +34,7 @@ LeapGesture.init();
 
 window.widgetCollection = new WidgetCollection();
 
-var TimelineCollection = require('./models/TimelineCollection');
-window.timelineCollection = new TimelineCollection();
+require('./models/TimelineCollection');
 
 var sideNavView = new SideNavView({
   el: '#side-nav',
@@ -72,7 +71,6 @@ EVI.on('openPlanScreen', function(){
   console.log("openPlanScreen");
   mainContentView.remove();
   mainContentView = new PlanScreenView({
-    collection: timelineCollection,
     el: '#main-container',
     EVI: EVI
   });
