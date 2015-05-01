@@ -7,7 +7,6 @@ Backbone.$ = require('jquery');
 var WidgetModel = require('./WidgetModel');
 var WidgetView = require('./WidgetView');
 var WidgetTemplate = require('./WidgetTemplate');
-var FoodJournalModel = require('./models/FoodJournalModel');
 
 module.exports = Backbone.View.extend({
 
@@ -86,21 +85,10 @@ module.exports = Backbone.View.extend({
 
     $('#weightChangeSlider').knob({
       change : function (value) {
-        that.$el.find('.weight-goal-num').html( Math.round(250 - value) );
-        that.foodJournalResponses.set('weightChange', value);
+        window.Patient.set('weightChange', Math.round(value));
+        that.$el.find('.weight-goal-num').html( Math.round(window.Patient.get('convertedWeight') - window.Patient.get('weightChange') ) );
       }
     });
-    $('#weightPerWeekSlider').knob({
-      change : function (value) {
-        var goal = that.$el.find('.weight-goal-num').html();
-        that.$el.find('#num-weeks').html( Math.round(goal / value) );
-        that.foodJournalResponses.set('weightPerWeek', value);
-      }
-    });
-
-    if (this.foodJournalResponses === null) {
-      this.foodJournalResponses = new FoodJournalModel();
-    }
   },
   closeLightbox: function() {
     console.log("[WidgetHolderView] closeLightbox");
@@ -140,15 +128,16 @@ module.exports = Backbone.View.extend({
     $('[data-question=' + $currentTarget.data('question') + ']').removeClass('active');
     $currentTarget.addClass('active');
     var answer = ($currentTarget.data('accept-value') !== undefined)? $('.dial[data-question=' + $currentTarget.data('accept-value') + ']').val() : $currentTarget.data('answer');
+
     //update the model
-    this.foodJournalResponses.set($currentTarget.data('question'), answer);
+    window.Patient.set($currentTarget.data('question'), answer);
     this.updateQuestions($currentTarget.data('question'), answer);
     this.nextSlide();
   },
   updateQuestions: function (question, answer) {
     switch (question) {
       case 'units':
-      this.$el.find('.unit-of-measure').html(answer);
+      //this.$el.find('.unit-of-measure').html(answer);
       break;
     }
   },
