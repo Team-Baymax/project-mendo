@@ -7,7 +7,6 @@ Backbone.$ = $;
 var WidgetModel = require('./WidgetModel');
 var WidgetView = require('./WidgetView');
 var WidgetTemplate = require('./WidgetTemplate');
-var FoodJournalModel = require('./models/FoodJournalModel');
 
 require('./jquery-knob');
 
@@ -41,7 +40,7 @@ module.exports = Backbone.View.extend({
     return this.render();
   },
   render: function() {
-    this.$el.html(this.template());
+    this.$el.html(this.template(window.Patient.attributes));
     // Init carousel
     $('.content-window').owlCarousel({
       singleItem: true,
@@ -80,25 +79,23 @@ module.exports = Backbone.View.extend({
     this.arrWidget = _(this.arrWidget).without(widgetView);
   },
   openLightbox: function(data) {
+    var that = this;
     console.log("[WidgetHolderView] openLightbox");
     // TODO: For this demo we are using just one instance,
     // therefore the model id is actually not used
     this.$el.find('.lightbox').addClass('active');
 
-    var $dials = $('.dial');
-    for (var i = 0; i < $dials.length; i++) {
-      var dial = $($dials[i]);
-      dial.knobObject = dial.knob();
-      dial.parent().on('leapCircle', function(e, data){
-        var dV = data.amount * (data.clockwise ? 1 : -1);
-        this.knobObject.val(parseInt( this.knobObject.v + dV, 10 ));
-      }.bind(dial));
-    }
-    // console.log(knob);
-
-    if (this.foodJournalResponses === null) {
-      this.foodJournalResponses = new FoodJournalModel();
-    }
+    var $dial = $('#weightChangeSlider');
+    $dial.knobObject = $dial.knob({
+      change : function (value) {
+        window.Patient.set('weightChange', Math.round(value));
+        that.$el.find('.weight-goal-num').html( Math.round(window.Patient.get('convertedWeight') - window.Patient.get('weightChange') ) );
+      }
+    });
+    $dial.parent().on('leapCircle', function(e, data){
+      var dV = data.amount * (data.clockwise ? 1 : -1);
+      this.knobObject.val(parseInt( this.knobObject.v + dV, 10 ));
+    }.bind($dial));
   },
   closeLightbox: function() {
     console.log("[WidgetHolderView] closeLightbox");
@@ -135,11 +132,24 @@ module.exports = Backbone.View.extend({
   selectFoodJournalResponse: function(e) {
     // determine the question being answered
     var $currentTarget = $(e.currentTarget);
+    $('[data-question=' + $currentTarget.data('question') + ']').removeClass('active');
+    $currentTarget.addClass('active');
     var answer = ($currentTarget.data('accept-value') !== undefined)? $('.dial[data-question=' + $currentTarget.data('accept-value') + ']').val() : $currentTarget.data('answer');
+
     //update the model
-    this.foodJournalResponses.set($currentTarget.data('question'), answer);
-    console.log(this.foodJournalResponses.attributes);
+    window.Patient.set($currentTarget.data('question'), answer);
+    this.updateQuestions($currentTarget.data('question'), answer);
     this.nextSlide();
+  },
+  updateQuestions: function (question, answer) {
+    switch (question) {
+      case 'units':
+      $('.dial').trigger('configure', {
+          'max': window.Patient.get('convertedWeight')
+      });
+      $('.dial').trigger('change');
+      break;
+    }
   },
   // let slide listen to fist
   setFisting: function(e) {
@@ -161,6 +171,5 @@ module.exports = Backbone.View.extend({
         this.slideListenToFist = false;
       }
     }
-  },
-
+  }
 });
