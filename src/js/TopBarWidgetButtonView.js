@@ -1,6 +1,6 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
   template: require('./TopBarWidgetButtonTemplate'),

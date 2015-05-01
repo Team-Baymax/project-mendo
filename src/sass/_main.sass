@@ -20,12 +20,12 @@ h1
   display: none !important
 
 .main-container
-  height: 90%
+  height: 100%
   width: 80%
   background-color: #ededed
   z-index: 0
   position: absolute
-  top: 10%
+  padding-top: $top-bar-height
   left: 20%
   // [HACK] inner contents overflow container for some reason
   overflow: hidden
@@ -40,4 +40,13 @@ h1
   position: fixed
   z-index: 9001
   pointer-events: none
-
+  
+#leap-view
+  width: 100%
+  height: 100%
+  position: fixed
+  z-index: 9000
+  pointer-events: none
+  canvas
+    width: 100%
+    height: 100%
