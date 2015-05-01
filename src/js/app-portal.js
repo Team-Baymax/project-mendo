@@ -24,8 +24,10 @@ var WidgetHolderView = require('./WidgetHolderView');
 var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
 var WidgetCollection = require('./WidgetCollection');
-
 window.widgetCollection = new WidgetCollection();
+
+var TimelineCollection = require('./models/TimelineCollection');
+window.timelineCollection = new TimelineCollection();
 
 var sideNavView = new SideNavView({
   el: '#side-nav',
@@ -62,7 +64,7 @@ EVI.on('openPlanScreen', function(){
   console.log("openPlanScreen");
   mainContentView.remove();
   mainContentView = new PlanScreenView({
-    collection: widgetCollection,
+    collection: timelineCollection,
     el: '#main-container',
     EVI: EVI
   });
