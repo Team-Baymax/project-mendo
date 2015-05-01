@@ -5,7 +5,6 @@
  */
 console.log("**Doctor / Patient Portal**");
 
-var $ = require('jquery');
 var Backbone = require('backbone');
 var socket = require('socket.io-client')();
 Backbone.$ = $;

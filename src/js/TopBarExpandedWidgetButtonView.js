@@ -1,6 +1,6 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
   template: require('./TopBarExpandedWidgetButtonTemplate'),
@@ -20,6 +20,7 @@ module.exports = Backbone.View.extend({
   },
   
   handleClick: function() {
+    console.log("TopBarExpandedWidgetButton Click");
     if (this.model.attributes.id == 'food') {
       this.EVI.emit('openFoodJournal');
     }

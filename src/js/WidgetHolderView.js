@@ -3,10 +3,12 @@
 // Have to use the global $ to get that element
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+Backbone.$ = $;
 var WidgetModel = require('./WidgetModel');
 var WidgetView = require('./WidgetView');
 var WidgetTemplate = require('./WidgetTemplate');
+
+require('./jquery-knob');
 
 module.exports = Backbone.View.extend({
 
@@ -83,12 +85,17 @@ module.exports = Backbone.View.extend({
     // therefore the model id is actually not used
     this.$el.find('.lightbox').addClass('active');
 
-    $('#weightChangeSlider').knob({
+    var $dial = $('#weightChangeSlider');
+    $dial.knobObject = $dial.knob({
       change : function (value) {
         window.Patient.set('weightChange', Math.round(value));
         that.$el.find('.weight-goal-num').html( Math.round(window.Patient.get('convertedWeight') - window.Patient.get('weightChange') ) );
       }
     });
+    $dial.parent().on('leapCircle', function(e, data){
+      var dV = data.amount * (data.clockwise ? 1 : -1);
+      this.knobObject.val(parseInt( this.knobObject.v + dV, 10 ));
+    }.bind($dial));
   },
   closeLightbox: function() {
     console.log("[WidgetHolderView] closeLightbox");

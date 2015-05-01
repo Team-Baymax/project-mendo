@@ -1,6 +1,5 @@
 var _ = require('underscore');
-var $ = require('jquery');
-require('jquery.scrollto');
+// var $ = require('jquery');
 var PIXI = require('pixi.js');
 
 // Utility functions for vector math
@@ -57,7 +56,6 @@ module.exports = {
       // TODO: Remove canvas and update loop
       console.log("A Leap device has been disconnected.");
     });
-
     this.leapController.connect();
   },
   initPIXI: function(){
@@ -141,6 +139,17 @@ module.exports = {
         this.fingerPoint.firstTime = false;
         this.checkMark.reset();
       } else {
+        /* Circling */
+        // Only detects when pointing
+        if (this.frame.valid && this.frame.pointables.length > 0) {
+          this.frame.gestures.forEach(function(gesture){
+            if (gesture.type == "circle") {
+              console.log("Circle");
+              this.fireCircle( gesture );
+            }
+          }.bind(this));
+        }
+        /* Checkmark */
         // get the difference vector
         var delta = Vector2D.subtract(
           arrToVec2(mappedFinger),
@@ -154,7 +163,7 @@ module.exports = {
             delta.y >= this.checkMark.dists.downY
           ) {
             // TODO: visual hint for progress of this motion
-            console.log("Down Complete");
+            // console.log("Down Complete");
             this.checkMark.flags.downComplete = true;
           }
         } else {
@@ -166,7 +175,7 @@ module.exports = {
               delta.y <= this.checkMark.dists.upY
             ) {
               // TODO: visual hint for progress of this motion
-              console.log("Up Complete");
+              // console.log("Up Complete");
               this.checkMark.flags.upComplete = true;
               // **EVENT TRIGGERED
               this.fire('click', this.fingerPoint.palmPos.x, this.fingerPoint.palmPos.y);
@@ -295,6 +304,7 @@ module.exports = {
    */
   fire: function(eventName, pX, pY, data) {
     $(document.elementFromPoint(pX, pY)).trigger(eventName, data);
+    // console.log($(document.elementFromPoint(pX, pY)));
   },
   /**
    * fires fist direction event
@@ -315,4 +325,19 @@ module.exports = {
       { direction:pDirection, amount: pAmount }
     );
   },
+  fireCircle: function( pGesture ) {
+    // Determine rotation direction with normal
+    var direction = this.frame.pointable( pGesture.pointableIds[0] ).direction;
+    var dotProduct = Leap.vec3.dot(direction, pGesture.normal);
+    var clockwise = false;
+    if(dotProduct > 0) clockwise = true;
+    // reduce the amount
+    var amount = pGesture.progress / 2;
+    this.fire(
+      'leapCircle',
+      this.fingerPoint.palmPos.x,
+      this.fingerPoint.palmPos.y,
+      { clockwise:clockwise, amount: amount }
+    );
+  }
 }
