@@ -5,7 +5,6 @@
  */
 console.log("**Doctor / Patient Portal**");
 
-var $ = require('jquery');
 var Backbone = require('backbone');
 var socket = require('socket.io-client')();
 Backbone.$ = $;
@@ -21,6 +20,7 @@ var TopBarView = require('./TopBarView');
 // Views that go into main content view
 var PlanScreenView = require('./PlanScreenView');
 var WidgetHolderView = require('./WidgetHolderView');
+var FoodJournalView = require('./FoodJournalView');
 
 var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
@@ -66,6 +66,15 @@ EVI.on('openPlanScreen', function(){
   mainContentView.remove();
   mainContentView = new PlanScreenView({
     collection: widgetCollection,
+    el: '#main-container',
+    EVI: EVI
+  });
+});
+
+EVI.on('openFoodJournal', function(){
+  console.log("openFoodJournal");
+  mainContentView.remove();
+  mainContentView = new FoodJournalView({
     el: '#main-container',
     EVI: EVI
   });

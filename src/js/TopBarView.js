@@ -71,6 +71,7 @@ module.exports = Backbone.View.extend({
       if (! this.$el.find('.widget-button-contain').is(':empty')) {
         this.$main.append(new TopBarExpandedView({
           collection: that.collection,
+          EVI: that.EVI,
           tagName: 'div',
           className: 'top-bar-expanded-container'
         }).$el);

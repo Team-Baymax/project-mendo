@@ -1,6 +1,5 @@
 var _ = require('underscore');
 // var $ = require('jquery');
-require('jquery.scrollto');
 var PIXI = require('pixi.js');
 
 // Utility functions for vector math
