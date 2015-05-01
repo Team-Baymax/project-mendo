@@ -13,7 +13,7 @@ module.exports = Backbone.View.extend({
 
   events: {
 		"click .button": "openPlanScreen",
-    "mouseenter .widget-button-contain": "openExpandedView",
+    "mousemove .widget-button-contain": "openExpandedView",
   },
 
   initialize: function(options) {
@@ -64,29 +64,46 @@ module.exports = Backbone.View.extend({
     this.$el.find('.widget-count').html(this.collection.length + ' widget' + ((this.collection.length === 1)?'':'s'));
   },
   openExpandedView: function() {
-    var that = this;
+    if (!this.expanded){
+      var that = this;
 
-    // NOTE: is(:empty) will return false even if its just a line break
-    if (! this.$el.find('.widget-button-contain').is(':empty')) {
-      this.$main.append(new TopBarExpandedView({
-        collection: that.collection,
-        tagName: 'div',
-        className: 'top-bar-expanded-container'
-      }).$el);
+      // NOTE: is(:empty) will return false even if its just a line break
+      if (! this.$el.find('.widget-button-contain').is(':empty')) {
+        this.$main.append(new TopBarExpandedView({
+          collection: that.collection,
+          tagName: 'div',
+          className: 'top-bar-expanded-container'
+        }).$el);
 
-      // FIXME: look for alternatives to settimeout
-      setTimeout( function() {
-        that.$main
-        .find('.top-bar-expanded-container')
-        .addClass('open')
-        .on('mouseleave', that.closeExpandedView);
-      }, 20);
+        // FIXME: look for alternatives to settimeout
+        setTimeout( function() {
+          that.$main
+          .find('.top-bar-expanded-container')
+          .addClass('open');
+          $('body').on('mousemove', function(e){
+            // HACK: Only use mousemove and gain the same effect of mouseleave
+            // if the top bar doesn't contain this element,
+            // nor is it this element,
+            // then we have a mouseleave
+            if ( 
+              ! $('.top-bar-expanded-container').has(e.target).length > 0 &&
+              e.target !== $('.top-bar-expanded-container')[0] &&
+              ! $('#top-bar').has(e.target).length > 0
+            ) {
+              that.closeExpandedView();
+              $(this).off('mousemove');
+            }
+          });
+        }, 20);
 
-      setTimeout( function() {
-        that.$main
-        .find('.expanded-button-contain')
-        .addClass('seen');
-      }, 400);
+        setTimeout( function() {
+          that.$main
+          .find('.expanded-button-contain')
+          .addClass('seen');
+        }, 400);
+      }
+      
+      this.expanded = true;
     }
   },
   closeExpandedView: function() {
@@ -100,5 +117,6 @@ module.exports = Backbone.View.extend({
       .remove()
       .off('mouseleave');
     }, 400);
+    this.expanded = false;
   }
 });
