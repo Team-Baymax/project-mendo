@@ -137,7 +137,10 @@ module.exports = Backbone.View.extend({
   updateQuestions: function (question, answer) {
     switch (question) {
       case 'units':
-      //this.$el.find('.unit-of-measure').html(answer);
+      $('.dial').trigger('configure', {
+          'max': window.Patient.get('convertedWeight')
+      });
+      $('.dial').trigger('change');
       break;
     }
   },
