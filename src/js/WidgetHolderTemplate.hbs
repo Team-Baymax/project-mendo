@@ -40,20 +40,11 @@
           <div class="content weight-lose-container">
             <span class="title">How much weight do you want to lose?</span>
             <div class="radial-slider-holder">
-              <input type="text" value="0" class="dial" data-question="weightChange" data-min="0" data-max="250" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#fc7575" />
+              <input type="text" value="0" class="dial" id="weightChangeSlider" data-question="weightChange" data-min="0" data-max="250" data-linecap="round" data-angleOffset="-150" data-angleArc="300" data-fgColor="#fc7575" data-thickness=".1" data-height="300" data-width="300"/>
             </div>
-            <p class="bottom-text">Current weight: <span class="current-weight-num">xx</span><span class="unit-of-measure">lbs/kilo</span></p><br>
-            <p class="bottom-text">Weight goal: <span class="weight-goal-num">xx</span><span class="unit-of-measure">lbs/kilo</span></p>
+            <p class="bottom-text">Current weight: <span class="current-weight-num">{{ weight }}</span><span class="unit-of-measure">lbs/kilo</span></p><br>
+            <p class="bottom-text">Weight goal: <span id="new-weight-goal" class="weight-goal-num">xx</span><span class="unit-of-measure">lbs/kilo</span></p>
             <input type="submit" value="Accept" data-question="weightChange" data-accept-value="weightChange" />
-          </div>
-          <div class="content weight-lose-week-container">
-            <span class="title">How much weight do you want to lose a week?</span>
-            <div class="radial-slider-holder">
-              <input type="text" value="0" class="dial" data-question="weightPerWeek" data-min="0" data-max="250" data-linecap="round" data-angleOffset="-125" data-angleArc="250" data-fgColor="#fc7575">
-            </div>
-            <p class="bottom-text">You’ll reach your goal of <span class="weight-num">xx</span><span class="unit-of-measure">lbs/kilo</span> in 26 weeks.</p><br>
-            <p class="bottom-text">Your daily caloric goal is <span class="calories-num">xxxx</span> calories.</p>
-            <input type="submit" value="Accept" data-question="weightPerWeek" data-accept-value="weightPerWeek" />
           </div>
           <div class="content meal-plan-container">
             <span class="title">Select our recommended meal plan for you.</span>
