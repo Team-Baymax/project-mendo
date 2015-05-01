@@ -25,7 +25,6 @@ module.exports = Backbone.View.extend({
     "click [data-accept-value]": "selectFoodJournalResponse",
     "fistStart": "setFisting",
     "fistMove": "fistNavigate",
-    "leapCircle": "leapDial",
   },
 
   initialize: function(options) {
@@ -86,7 +85,16 @@ module.exports = Backbone.View.extend({
     // therefore the model id is actually not used
     this.$el.find('.lightbox').addClass('active');
 
-    $('.dial').knob();
+    var $dials = $('.dial');
+    for (var i = 0; i < $dials.length; i++) {
+      var dial = $($dials[i]);
+      dial.knobObject = dial.knob();
+      dial.parent().on('leapCircle', function(e, data){
+        var dV = data.amount * (data.clockwise ? 1 : -1);
+        this.knobObject.val(parseInt( this.knobObject.v + dV, 10 ));
+      }.bind(dial));
+    }
+    // console.log(knob);
 
     if (this.foodJournalResponses === null) {
       this.foodJournalResponses = new FoodJournalModel();
@@ -154,8 +162,5 @@ module.exports = Backbone.View.extend({
       }
     }
   },
-  leapDial: function(e, data) {
-    
-  }
 
 });

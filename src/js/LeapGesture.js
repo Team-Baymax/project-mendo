@@ -1,5 +1,5 @@
 var _ = require('underscore');
-var $ = require('jquery');
+// var $ = require('jquery');
 require('jquery.scrollto');
 var PIXI = require('pixi.js');
 
@@ -305,6 +305,7 @@ module.exports = {
    */
   fire: function(eventName, pX, pY, data) {
     $(document.elementFromPoint(pX, pY)).trigger(eventName, data);
+    // console.log($(document.elementFromPoint(pX, pY)));
   },
   /**
    * fires fist direction event
@@ -331,11 +332,13 @@ module.exports = {
     var dotProduct = Leap.vec3.dot(direction, pGesture.normal);
     var clockwise = false;
     if(dotProduct > 0) clockwise = true;
+    // reduce the amount
+    var amount = pGesture.progress / 2;
     this.fire(
       'leapCircle',
       this.fingerPoint.palmPos.x,
       this.fingerPoint.palmPos.y,
-      { clockwise:clockwise, amount: pGesture.progress }
+      { clockwise:clockwise, amount: amount }
     );
   }
 }

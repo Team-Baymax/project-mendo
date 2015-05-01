@@ -464,7 +464,6 @@
                                 s.cH
                                 && (s.cH(v) === false)
                             ) return;
-
                             s.val(v);
                         }
                 , kval, to, m = 1, kv = {37:-s.o.step, 38:s.o.step, 39:s.o.step, 40:-s.o.step};
@@ -529,7 +528,6 @@
 
                     }
                 );
-
             this.$c.bind("mousewheel DOMMouseScroll", mw);
             this.$.bind("mousewheel DOMMouseScroll", mw)
         };
@@ -648,14 +646,12 @@
     };
 
     $.fn.dial = $.fn.knob = function (o) {
-        return this.each(
-            function () {
-                var d = new k.Dial();
-                d.o = o;
-                d.$ = $(this);
-                d.run();
-            }
-        ).parent();
+        var d = new k.Dial();
+        d.o = o;
+        d.$ = $(this);
+        d.run();
+        console.log(d);
+        return d;
     };
 
 })(jQuery);

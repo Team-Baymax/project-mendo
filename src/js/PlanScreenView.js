@@ -1,6 +1,5 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
-var $ = require('jquery');
 require('jquery.scrollto');
 Backbone.$ = $;
 

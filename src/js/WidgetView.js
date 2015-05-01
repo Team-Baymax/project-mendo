@@ -1,6 +1,6 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
-Backbone.$ = require('jquery');
+Backbone.$ = $;
 var Prefixer = require('./Prefixer');
 
 module.exports = Backbone.View.extend({
