@@ -87,12 +87,14 @@ module.exports = Backbone.View.extend({
     $('#weightChangeSlider').knob({
       change : function (value) {
         that.$el.find('.weight-goal-num').html( Math.round(250 - value) );
+        that.foodJournalResponses.set('weightChange', value);
       }
     });
     $('#weightPerWeekSlider').knob({
       change : function (value) {
         var goal = that.$el.find('.weight-goal-num').html();
         that.$el.find('#num-weeks').html( Math.round(goal / value) );
+        that.foodJournalResponses.set('weightPerWeek', value);
       }
     });
 
@@ -135,6 +137,8 @@ module.exports = Backbone.View.extend({
   selectFoodJournalResponse: function(e) {
     // determine the question being answered
     var $currentTarget = $(e.currentTarget);
+    $('[data-question=' + $currentTarget.data('question') + ']').removeClass('active');
+    $currentTarget.addClass('active');
     var answer = ($currentTarget.data('accept-value') !== undefined)? $('.dial[data-question=' + $currentTarget.data('accept-value') + ']').val() : $currentTarget.data('answer');
     //update the model
     this.foodJournalResponses.set($currentTarget.data('question'), answer);
