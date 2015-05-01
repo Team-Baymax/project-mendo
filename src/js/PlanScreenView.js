@@ -1,6 +1,8 @@
 var _ = require('underscore');
 var Backbone = require('backbone');
-require('jquery.scrollto');
+// HACK somehow this doesn't get attached to global jquery properly
+// using cdn in html for now
+// require('jquery.scrollto');
 Backbone.$ = $;
 
 
@@ -29,9 +31,10 @@ module.exports = Backbone.View.extend({
   scrollTimeline: function(e, data) {
     console.log(data);
     if (data.direction == 'up')
-      this.$el.find('.timeline-holder').scrollTo('-=' + data.amount + 'px', {axis: 'y'});
+      // this.$el.find('.timeline-holder').scrollTo('-=' + data.amount + 'px', {axis: 'y'});
+      $('.timeline-holder').scrollTo('-=' + data.amount + 'px', {axis: 'y'});
     if (data.direction == 'down')
-      this.$el.find('.timeline-holder').scrollTo('+=' + data.amount + 'px', {axis: 'y'});
+      $('.timeline-holder').scrollTo('+=' + data.amount + 'px', {axis: 'y'});
   }
   
 });
