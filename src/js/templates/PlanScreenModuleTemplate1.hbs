@@ -1,7 +1,7 @@
-<div class="module log-breakfast">
+<div class="module log-breakfast" style="background-image: url('/media/timeline-bg/{{ bgImage }}_BG.png')">
   <div class="unexpanded-widget slider-widget">
     <span class="title">{{ title }}</span><br>
-    <span class="sub-text">{{ subtext }}</span>
+    <span class="sub-text">{{ subText }}</span>
     <div class="graphic-container">
       <div class="bar-graphic">
         <div class="data"></div>
@@ -11,10 +11,9 @@
     </div>
 
     <div class="bottom-bar">
-      <div class="icon"></div>
-      <div class="status">
-        <div class="dot"></div>
-        <span class="text">logged</span>
+      <i class="icon-filled {{ icon }}"></i>
+      <div class="status {{ colorClass }}">
+        <span class="text">{{ status }}</span>
       </div>
     </div>
   </div>

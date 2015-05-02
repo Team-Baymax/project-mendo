@@ -26,7 +26,6 @@ module.exports = Backbone.View.extend({
     var timelineHTML = '';
 
     window.timelineData.forEach(function(timeBlock, index){
-      timelineHTML += '<span class="line"></span>';
       timelineHTML += '<div class="time-row">';
       timelineHTML += ' <div class="time-container top">';
       timelineHTML += '   <p class="time">' + timeBlock.time + '</p>';
