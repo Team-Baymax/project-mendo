@@ -7,7 +7,7 @@ var WidgetModel = require('./WidgetModel');
 var TopBarExpandedView = require('./TopBarExpandedView');
 
 module.exports = Backbone.View.extend({
-  template: require('./TopBarTemplate'),
+  template: require('./TopBarTemplatePatient'),
 
   $main: null,
 
@@ -38,8 +38,8 @@ module.exports = Backbone.View.extend({
     return this;
   },
   openPlanScreen: function() {
-    console.log("[TopBarView] openRegimenBuilder");
-    this.EVI.emit('openRegimenBuilder');
+    console.log("[TopBarView] openPlanScreen");
+    this.EVI.emit('openPlanScreen');
   },
   updateWidgetButtons: function() {
     var that = this;
