@@ -30,6 +30,7 @@ var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
 var WidgetCollection = require('./WidgetCollection');
 
+
 LeapGesture.init({
   EVI: EVI
 });
@@ -47,6 +48,12 @@ var topBarView = new TopBarView({
   collection: widgetCollection,
   EVI: EVI
 });
+widgetCollection.addWidget('food');
+widgetCollection.addWidget('blood-pressure');
+widgetCollection.addWidget('blood-glucose');
+widgetCollection.addWidget('fitness-planner');
+widgetCollection.addWidget('sleep-analysis');
+widgetCollection.addWidget('medication');
 
 // Swap this with all them content views
 // In the beginning, set to
@@ -86,13 +93,4 @@ EVI.on('openFoodJournal', function(){
     el: '#main-container',
     EVI: EVI
   });
-});
-
-socket.on('addWidget', function (data){
-  // EVI.emit('addWidget', data);
-  widgetCollection.addWidget(data);
-});
-socket.on('removeWidget', function (data){
-  // EVI.emit('removeWidget', data);
-  widgetCollection.removeWidget(data);
 });

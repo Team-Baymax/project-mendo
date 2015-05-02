@@ -13,7 +13,6 @@ module.exports = Backbone.View.extend({
 
   events: {
 		"click .button": "openPlanScreen",
-    "mousemove .widget-button-contain": "openExpandedView",
   },
 
   initialize: function(options) {
@@ -49,6 +48,7 @@ module.exports = Backbone.View.extend({
 
     this.collection.each(function(buttonModel, index){
       that.buttons.push(new TopBarWidgetButtonView({
+        EVI: that.EVI,
         model : buttonModel,
         tagName: 'div',
         className: 'widget-button'
