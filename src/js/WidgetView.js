@@ -6,7 +6,7 @@ var Prefixer = require('./Prefixer');
 module.exports = Backbone.View.extend({
   template: require('./WidgetTemplate'),
   events: {
-    "click": "emitOpenLightbox"
+    "click": "emitOpenLightbox",
   },
   
   initialize: function(options) {

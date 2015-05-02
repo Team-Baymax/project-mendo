@@ -189,6 +189,7 @@
             var d = true,
                 c = document.createElement('canvas');
 
+            // c.setAttribute("class", "knobCanvas");
             c.width = s.o.width;
             c.height = s.o.height;
             s.g = c.getContext('2d');
