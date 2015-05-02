@@ -22,7 +22,6 @@ var SideNavView = require('./SideNavView');
 var TopBarView = require('./TopBarView');
 
 // Views that go into main content view
-var PlanScreenView = require('./PlanScreenView');
 var WidgetHolderView = require('./WidgetHolderView');
 var FoodJournalView = require('./FoodJournalView');
 
@@ -65,16 +64,6 @@ EVI.on('openRegimenBuilder', function(){
   mainContentView = new WidgetHolderView({
     collection: widgetCollection,
     el: '#main-container',
-    EVI: EVI
-  });
-});
-
-EVI.on('openPlanScreen', function(){
-  console.log("openPlanScreen");
-  mainContentView.remove();
-  mainContentView = new PlanScreenView({
-    el: '#main-container',
-    collection: widgetCollection,
     EVI: EVI
   });
 });

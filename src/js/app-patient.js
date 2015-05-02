@@ -23,7 +23,6 @@ var TopBarView = require('./TopBarViewPatient');
 
 // Views that go into main content view
 var PlanScreenView = require('./PlanScreenView');
-var WidgetHolderView = require('./WidgetHolderView');
 var FoodJournalView = require('./FoodJournalView');
 
 var WidgetView = require('./WidgetView');
@@ -59,22 +58,14 @@ widgetCollection.addWidget('medication');
 // In the beginning, set to
 var mainContentView;
 
-mainContentView = new WidgetHolderView({
-  collection: widgetCollection,
+mainContentView = new PlanScreenView({
   el: '#main-container',
+  collection: widgetCollection,
   EVI: EVI
 });
 
 // FIXME: double init can't be good, no?
 // TODO: Generate these views according to our widget state
-EVI.on('openRegimenBuilder', function(){
-  mainContentView.remove();
-  mainContentView = new WidgetHolderView({
-    collection: widgetCollection,
-    el: '#main-container',
-    EVI: EVI
-  });
-});
 
 EVI.on('openPlanScreen', function(){
   console.log("openPlanScreen");
