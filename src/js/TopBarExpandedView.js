@@ -27,5 +27,13 @@ module.exports = Backbone.View.extend({
         className: 'expanded-widget-button'
       }).$el );
     });
+    // add the button that cleanses the world
+    this.$el.find('.expanded-button-contain').append($(
+        '<div class="expanded-special-button">'
+      + ' <p>'
+      + '   Add New Widget'
+      + ' </p>'
+      + '</div>'
+    ));
   }
 });

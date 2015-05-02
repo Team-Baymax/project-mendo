@@ -52,6 +52,10 @@
     text-align: center
     width: (100% / 6)
     max-width: 108px
+    display: flex
+    flex-direction: column
+    align-items: center
+    vertical-align: middle
     &:nth-child(1)
       border-left: solid #e1e1e1 1px
     .icon
@@ -107,6 +111,17 @@
     transition: opacity 400ms
     &.seen
       opacity: 1
+  .expanded-special-button
+    width: 200px
+    height: 200px
+    border-radius: 200px
+    display: flex
+    align-items: center
+    vertical-align: middle
+    background-color: $blue
+    &.patient
+      background-color: $red
+      
   .expanded-widget-button
     border: 1px solid $gray
     margin: 15px
