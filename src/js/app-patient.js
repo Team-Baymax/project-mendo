@@ -18,8 +18,8 @@ window.Patient = new Patient();
 
 // Assemble the views
 window.LeapGesture = require('./LeapGesture');
-var SideNavView = require('./SideNavView');
-var TopBarView = require('./TopBarView');
+var SideNavView = require('./SideNavViewPatient');
+var TopBarView = require('./TopBarViewPatient');
 
 // Views that go into main content view
 var PlanScreenView = require('./PlanScreenView');
