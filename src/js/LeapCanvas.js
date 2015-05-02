@@ -152,9 +152,11 @@ module.exports = {
         this.cursor.texture = fistTexture;
         break;
       case "circle":
+        this.cursor.texture = cursorTexture;
         this.circleHint.visible = true;
         break;
       case "checkmark":
+        this.cursor.texture = cursorTexture;
         this.checkmarkHint.visible = true;
         break;
     }

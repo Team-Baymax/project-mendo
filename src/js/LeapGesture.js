@@ -21,6 +21,16 @@ function arrToVec2(arr) {
   return { x: arr[0], y: arr[1] };
 }
 
+function containsOrIs( eContainer, eTarget ) {
+  if (
+    ! eContainer.has(eTarget).length > 0 &&
+    eTarget !== eContainer[0]
+  ) {
+    return false;
+  }
+  return true;
+}
+
 module.exports = {
   init: function(options) {
     this.EVI = options.EVI;
@@ -89,7 +99,40 @@ module.exports = {
     this.detectPointEvents( hand, mappedPalm );
     this.detectFistEvents( hand, mappedPalm );
     
+    // HACK XXX: Really bad. The only way to not get mousemove result overwritten 
+    // by the loop here is to check for mouseover on
+    // specific elements instead of 
+    // waiting on jquery update loop / EVI to fire mousemove
+    // 
+    // I'm sorry
+    // 
+    this.checkHoverMouseOver( mappedPalm );
+    console.log(LeapCanvas.newState);
     LeapCanvas.switchState();
+  },
+  
+  checkHoverMouseOver: function( mappedPalm ) {
+    var elementUnderCursor = $(document.elementFromPoint(mappedPalm[0], mappedPalm[1]));
+    
+    if (LeapCanvas.newState == 'cursor') {
+      if ( containsOrIs( $('.radial-slider-holder'), elementUnderCursor ) ) {
+        LeapCanvas.newState = 'circle';
+      }
+      if ( containsOrIs( $('.widget'), elementUnderCursor ) ) {
+        LeapCanvas.newState = 'checkmark';
+      }
+      if ( containsOrIs( $('[data-answer]'), elementUnderCursor ) ) {
+        LeapCanvas.newState = 'checkmark';
+      }
+      if ( containsOrIs( $('.expanded-widget-button'), elementUnderCursor ) ) {
+        LeapCanvas.newState = 'checkmark';
+      }
+    } else if (LeapCanvas.newState == 'fist') {
+      // .lightbox-content - fistNavigate
+      // .plan-screen - fistScroll
+      // .food-journal-container - fistScroll
+    }
+    
   },
   
   detectPointEvents: function( hand, mappedPalm ) {
