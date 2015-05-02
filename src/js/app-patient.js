@@ -3,7 +3,7 @@
  * Serves as page router also
  * [TENTATIVE TODO] Put router into its own module?
  */
-console.log("**Doctor / Patient Portal**");
+console.log("**Patient Portal**");
 
 var Backbone = require('backbone');
 var socket = require('socket.io-client')();

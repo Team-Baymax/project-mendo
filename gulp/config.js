@@ -38,9 +38,15 @@ module.exports = {
     // bundle config in the list below
     bundleConfigs: [
       {
-        entries: src + '/js/app-portal.js',
+        entries: src + '/js/app-doctor.js',
         dest: dest + '/js',
-        outputName: 'app-portal.js',
+        outputName: 'app-doctor.js',
+        extensions: ['.hbs']
+      },
+      {
+        entries: src + '/js/app-patient.js',
+        dest: dest + '/js',
+        outputName: 'app-patient.js',
         extensions: ['.hbs']
       },
       {
