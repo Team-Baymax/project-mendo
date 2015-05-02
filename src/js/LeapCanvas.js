@@ -1,17 +1,21 @@
 var _ = require('underscore');
-var PIXI = require('pixi.js');
 
 var cursorTexture = PIXI.Texture.fromImage("media/leap/cursor/cursor.png");
 var fistTexture = PIXI.Texture.fromImage("media/leap/fist/fist.png");
 
 function convertIndexToFilename(i) {
-  if (i < 10) {
-    i = '0' + i;
+  var name = i;
+  var zeroNum = 0;
+  if (name < 10) {
+    zeroNum ++;
   }
-  if (i < 100) {
-    i = '0' + i;
+  if (name < 100) {
+    zeroNum ++;
   }
-  return i;
+  for (var j = 0; j < zeroNum; j++) {
+    name = '0' + name;
+  }
+  return name;
 }
 
 module.exports = {
@@ -19,11 +23,18 @@ module.exports = {
     if (!this.started){
       this.EVI = options.EVI;
       _.bindAll(this, 'init', 'render');
-      PIXI.loader
-        .add('arrow', 'media/leap/spritesheet/arrow.json')
-        .add('rotate', 'media/leap/spritesheet/rotate.json')
-        .add('select', 'media/leap/spritesheet/select.json')
-        .load(this.init);
+      
+      // this.EVI.on("")
+      
+      var loader = new PIXI.AssetLoader([
+        'media/leap/spritesheet/rotate.json',
+        'media/leap/spritesheet/select.json',
+        'media/leap/spritesheet/arrow.json'
+      ]);
+      
+      loader.onComplete = this.init;
+      loader.load();
+      
       this.started = true;
     }
   },
@@ -35,46 +46,78 @@ module.exports = {
  
     $('#leap-view').append(this.renderer.view);
  
-    this.stage = new PIXI.Container();
+    this.stage = new PIXI.Stage();
+    this.stage.interactive = true;
  
     var arrArrow = [];
     for (var i = 0; i < 60; i++)
     {
-      i = convertIndexToFilename(i);
-      var t = PIXI.Texture.fromFrame('arrow_00' + i + '.png');
+      var name = convertIndexToFilename(i);
+      var t = PIXI.Texture.fromFrame('arrow_00' + name + '.png');
       arrArrow.push(t);
     }
     
     var arrRotate = [];
     for (var i = 0; i < 120; i++)
     {
-      i = convertIndexToFilename(i);
-      var t = PIXI.Texture.fromFrame('rotate_00' + i + '.png');
+      var name = convertIndexToFilename(i);
+      var t = PIXI.Texture.fromFrame('rotate_00' + name + '.png');
       arrRotate.push(t);
     }
     
     var arrSelect = [];
     for (var i = 0; i < 60; i++)
     {
-      i = convertIndexToFilename(i);
-      var t = PIXI.Texture.fromFrame('select_00' + i + '.png');
+      var name = convertIndexToFilename(i);
+      var t = PIXI.Texture.fromFrame('select_00' + name + '.png');
       arrSelect.push(t);
     }
     
     this.cursor = new PIXI.Sprite(cursorTexture);
-    // this.cursor = new PIXI.extras.MovieClip(arrArrow);
- 
     this.cursor.position.x = 400;
     this.cursor.position.y = 300;
     this.cursor.anchor.set(0.5, 0.5);
+    this.stage.addChild(this.cursor);
     
-    // this.cursor.play();
+    // Checkmark hint
+    this.checkmarkHint = new PIXI.MovieClip(arrSelect);
+    this.checkmarkHint.anchor.set(0.5, 0.5);
+    this.checkmarkHint.animationSpeed = 0.5;
+    this.stage.addChild(this.checkmarkHint);
+    this.checkmarkHint.play();
+    
+    // Circling Hint 
+    this.circleHint = new PIXI.MovieClip(arrRotate);
+    this.circleHint.anchor.set(0.5, 0.5);
+    this.circleHint.animationSpeed = 0.5;
+    this.stage.addChild(this.circleHint);
+    this.circleHint.play();
+    
+    this.checkmarkHint.visible = false;
+    this.circleHint.visible = false;
+    
+    // Group of arrows for fist
+    this.arrowGroup = new PIXI.DisplayObjectContainer();
+    this.stage.addChild(this.arrowGroup);
+    // rotated positions for each arrow
+    var posRoted = [
+      [0, -100],
+      [100, 0],
+      [0, 100],
+      [-100, 0]
+    ];
+    for (var i = 0; i < 4; i ++) {
+      var arrow = new PIXI.MovieClip(arrArrow);
+      arrow.anchor.set(0.5, 0.5);
+      arrow.position.set( posRoted[i][0], posRoted[i][1] );
+      arrow.rotation = i * 90 * Math.PI / 180;
+      arrow.play();
+      this.arrowGroup.addChild(arrow);
+    }
+    this.arrowGroup.visible = false;
     
     this.newState = this.curState = "cursor";
   
-    this.stage.interactive = true;
-    this.stage.addChild(this.cursor);
- 
     requestAnimationFrame( this.render );
   },
   render: function() {
@@ -93,6 +136,12 @@ module.exports = {
         break;
       case "fist":
         break;
+      case "circle":
+        this.circleHint.visible = false;
+        break;
+      case "checkmark":
+        this.checkmarkHint.visible = false;
+        break;
     }
     // update state
     this.curState = this.newState;
@@ -105,11 +154,19 @@ module.exports = {
         // TODO determine which page it's on, so it know what to display
         this.cursor.texture = fistTexture;
         break;
+      case "circle":
+        this.circleHint.visible = true;
+        break;
+      case "checkmark":
+        this.checkmarkHint.visible = true;
+        break;
     }
   },
   updatePos: function(pX, pY) {
-    this.cursor.position.x = pX;
-    this.cursor.position.y = pY;
+    this.cursor.position.set(pX, pY);
+    this.arrowGroup.position.set(pX, pY);
+    this.circleHint.position.set(pX + 100, pY);
+    this.checkmarkHint.position.set(pX + 100, pY);
   },
   hide: function() {
     $('#leap-view').hide();
