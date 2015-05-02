@@ -12,10 +12,15 @@ module.exports = Backbone.View.extend({
   },
   render: function() {
     this.$el.html(this.template());
-    this.updateWidgetButtons();
+    return this;
+  },
+  remove: function() {
+    this.$el.empty().off(); /* off to unbind the events */
+    this.stopListening();
     return this;
   },
   updateWidgetButtons: function() {
+    console.log('updating ');
     var that = this;
 
     this.buttons = [];
@@ -32,6 +37,5 @@ module.exports = Backbone.View.extend({
     this.buttons.forEach(function(btn) {
       that.$el.find('.overview-container').append(btn.$el);
     });
-    console.log('ahasd as asd asd sad asd as das ad sd');
   }
 });

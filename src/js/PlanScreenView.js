@@ -15,18 +15,20 @@ module.exports = Backbone.View.extend({
     "fistMove": "scrollTimeline"
   },
 
+  myRegimenView: null,
+
   initialize: function(options) {
     // this.EVI = options.EVI;
+    this.myRegimenView = new PlanScreenRegimenView({
+      collection: this.collection
+    });
     return this.render();
   },
   render: function() {
     var that = this;
     this.$el.html(this.template());
 
-    var regimenView = new PlanScreenRegimenView({
-      collection: this.collection
-    });
-    this.$el.find('.regimen-overview').html(regimenView.$el.html());
+    this.$el.find('.regimen-overview').html(this.myRegimenView.$el.html());
 
     var timelineHTML = '';
     window.timelineData.forEach(function(timeBlock, index){
@@ -53,6 +55,7 @@ module.exports = Backbone.View.extend({
   remove: function() {
     this.$el.empty().off(); /* off to unbind the events */
     this.stopListening();
+    this.myRegimenView.remove();
     return this;
   },
   scrollTimeline: function(e, data) {
