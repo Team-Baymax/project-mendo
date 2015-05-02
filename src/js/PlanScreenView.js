@@ -5,6 +5,7 @@ var Backbone = require('backbone');
 // require('jquery.scrollto');
 Backbone.$ = $;
 var PlanScreenModuleView = require('./views/PlanScreenModuleView');
+var PlanScreenRegimenView = require('./views/PlanScreenRegimenView')
 
 
 module.exports = Backbone.View.extend({
@@ -16,15 +17,18 @@ module.exports = Backbone.View.extend({
 
   initialize: function(options) {
     // this.EVI = options.EVI;
-
     return this.render();
   },
   render: function() {
     var that = this;
     this.$el.html(this.template());
 
-    var timelineHTML = '';
+    var regimenView = new PlanScreenRegimenView({
+      collection: this.collection
+    });
+    this.$el.find('.regimen-overview').html(regimenView.$el.html());
 
+    var timelineHTML = '';
     window.timelineData.forEach(function(timeBlock, index){
       timelineHTML += '<div class="time-row">';
       timelineHTML += ' <div class="time-container top">';

@@ -72,6 +72,7 @@ EVI.on('openPlanScreen', function(){
   mainContentView.remove();
   mainContentView = new PlanScreenView({
     el: '#main-container',
+    collection: widgetCollection,
     EVI: EVI
   });
 });
