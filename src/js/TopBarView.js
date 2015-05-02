@@ -88,7 +88,7 @@ module.exports = Backbone.View.extend({
             // then we have a mouseleave
             if ( 
               ! $('.top-bar-expanded-container').has(e.target).length > 0 &&
-              e.target !== $('.top-bar-expanded-container')[0] &&
+              ! $(e.target).is( $('.top-bar-expanded-container') ) &&
               ! $('#top-bar').has(e.target).length > 0
             ) {
               that.closeExpandedView();

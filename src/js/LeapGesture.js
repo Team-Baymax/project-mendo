@@ -107,7 +107,6 @@ module.exports = {
     // I'm sorry
     // 
     this.checkHoverMouseOver( mappedPalm );
-    console.log(LeapCanvas.newState);
     LeapCanvas.switchState();
   },
   
@@ -171,7 +170,6 @@ module.exports = {
         if (this.frame.valid && this.frame.pointables.length > 0) {
           this.frame.gestures.forEach(function(gesture){
             if (gesture.type == "circle") {
-              console.log("Circle");
               this.fireCircle( gesture );
             }
           }.bind(this));
@@ -206,7 +204,6 @@ module.exports = {
               this.checkMark.flags.upComplete = true;
               // **EVENT TRIGGERED
               this.fire('click', this.fingerPoint.palmPos.x, this.fingerPoint.palmPos.y);
-              console.log("Click");
               this.checkMark.reset();
             }
           }
@@ -230,7 +227,6 @@ module.exports = {
       LeapCanvas.newState = "fist";
       if (this.fist.firstTime) {
         // if it's the very first time, save palm pos
-        console.log("Fisting started");
         this.fist.palmPos.x = mappedPalm[0];
         this.fist.palmPos.y = mappedPalm[1];
         this.fire('fistStart', this.fist.palmPos.x, this.fist.palmPos.y);
