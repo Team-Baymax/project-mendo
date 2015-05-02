@@ -34,6 +34,8 @@ LeapGesture.init();
 
 window.widgetCollection = new WidgetCollection();
 
+require('./models/TimelineCollection');
+
 var sideNavView = new SideNavView({
   el: '#side-nav',
   EVI: EVI
@@ -69,8 +71,8 @@ EVI.on('openPlanScreen', function(){
   console.log("openPlanScreen");
   mainContentView.remove();
   mainContentView = new PlanScreenView({
-    collection: widgetCollection,
     el: '#main-container',
+    collection: widgetCollection,
     EVI: EVI
   });
 });

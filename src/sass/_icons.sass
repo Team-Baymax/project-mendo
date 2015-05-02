@@ -12,6 +12,12 @@ $parents: '.btn' '.widget-button'
       background-image: url(../media/icons/icon_#{$icon}.svg)
       &:hover, &:focus
         background-image: url(../media/icons/icon_#{$icon}_fill.svg)
+
+=all-icons-filled
+  @each $icon in $icon-list
+    &.#{$icon}
+      background-image: url(../media/icons/icon_#{$icon}_fill.svg)
+
 =all-icon-parents
   @each $icon in $icon-list
     @each $parent in $parents
@@ -26,6 +32,13 @@ $parents: '.btn' '.widget-button'
   background-size: contain
   display: inline-block
   +all-icons
+
+.icon-filled
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: contain
+  display: inline-block
+  +all-icons-filled
 
 .icon-large
   display: block
