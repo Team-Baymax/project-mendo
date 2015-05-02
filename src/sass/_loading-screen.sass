@@ -1,0 +1,36 @@
+#loading-screen
+  height: 100%
+  width: 100%
+  background-color: white
+  position: absolute
+  z-index: 5
+  animation: fadeout 1s 3s forwards
+  .container
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    .logo
+      background-image: url('../../media/logoLoading.png')
+      background-size: cover
+      width: 252px
+      height: 63px
+      display: block
+      margin: 0 auto
+      margin-bottom: 30px
+    .mendo
+      background-image: url('../../media/logotypeLoading.png')
+      background-size: cover
+      width: 417px
+      height: 88px
+      display: block
+      margin: 0 auto
+      
+      
+      
+      
+// ----ANIMATIONS-----//
+@keyframes fadeout
+  to
+    opacity: 0
+    display: none
