@@ -24,7 +24,7 @@ function arrToVec2(arr) {
 function containsOrIs( eContainer, eTarget ) {
   if (
     ! eContainer.has(eTarget).length > 0 &&
-    eTarget !== eContainer[0]
+    ! eTarget.is( eContainer )
   ) {
     return false;
   }
@@ -121,7 +121,7 @@ module.exports = {
       if ( containsOrIs( $('.widget'), elementUnderCursor ) ) {
         LeapCanvas.newState = 'checkmark';
       }
-      if ( containsOrIs( $('[data-answer]'), elementUnderCursor ) ) {
+      if ( containsOrIs( $('.btn-title').parent(), elementUnderCursor ) ) {
         LeapCanvas.newState = 'checkmark';
       }
       if ( containsOrIs( $('.expanded-widget-button'), elementUnderCursor ) ) {
