@@ -1,5 +1,5 @@
 var _ = require('underscore');
-var LeapCanvas = require('./LeapCanvas');
+window.LeapCanvas = require('./LeapCanvas');
 
 // Utility functions for vector math
 // currently just a namespace for 
@@ -34,11 +34,11 @@ module.exports = {
     this.leapController = new Leap.Controller({
       enableGestures: true
     });
-    this.leapController.use('boneHand', {
-      targetEl: document.querySelector("#handModel-holder"),
-      arm: true,
-      opacity: 0.3
-     });
+    // this.leapController.use('boneHand', {
+    //   targetEl: document.querySelector("#handModel-holder"),
+    //   arm: true,
+    //   opacity: 0.3
+    //  });
     this.leapController.use('screenPosition');
 
     this.leapController.on('connect', function() {
@@ -61,7 +61,7 @@ module.exports = {
   },
   
   startUpdate: function(){
-    LeapCanvas.newState = "cursor";
+    // LeapCanvas.newState = "cursor";
     // The Animation Frame of Leap. steady 60fps
     this.leapController.on('frame', this.leapUpdate);
   },

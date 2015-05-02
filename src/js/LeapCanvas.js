@@ -23,9 +23,7 @@ module.exports = {
     if (!this.started){
       this.EVI = options.EVI;
       _.bindAll(this, 'init', 'render');
-      
-      // this.EVI.on("")
-      
+            
       var loader = new PIXI.AssetLoader([
         'media/leap/spritesheet/rotate.json',
         'media/leap/spritesheet/select.json',
@@ -82,14 +80,12 @@ module.exports = {
     // Checkmark hint
     this.checkmarkHint = new PIXI.MovieClip(arrSelect);
     this.checkmarkHint.anchor.set(0.5, 0.5);
-    this.checkmarkHint.animationSpeed = 0.5;
     this.stage.addChild(this.checkmarkHint);
     this.checkmarkHint.play();
     
     // Circling Hint 
     this.circleHint = new PIXI.MovieClip(arrRotate);
     this.circleHint.anchor.set(0.5, 0.5);
-    this.circleHint.animationSpeed = 0.5;
     this.stage.addChild(this.circleHint);
     this.circleHint.play();
     
@@ -126,6 +122,7 @@ module.exports = {
   },
   switchState: function() {
     if (this.newState != this.curState) {
+      console.log("state switched to " + this.newState);
       this.changeVisual();
     }
   },
