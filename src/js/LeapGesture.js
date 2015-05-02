@@ -24,8 +24,9 @@ function arrToVec2(arr) {
 module.exports = {
   init: function(options) {
     this.EVI = options.EVI;
+    _.bindAll(this, 'startUpdate', 'leapUpdate');
+    this.EVI.on("canvasReady", this.startUpdate);
     // Bind context
-    _.bindAll(this, 'leapUpdate');
     // Flags
     this.isFisting = false;
     this.isFingering = false;
@@ -47,12 +48,9 @@ module.exports = {
     this.leapController.on('deviceStreaming', function() {
       console.log("A Leap device has been connected.");
       // If connected, make pixi and attach frame handler
-      LeapCanvas.init({
+      LeapCanvas.preload({
         EVI: this.EVI,
       });
-      LeapCanvas.newState = "cursor";
-      // The Animation Frame of Leap. steady 60fps
-      this.leapController.on('frame', this.leapUpdate);
     }.bind(this));
 
     this.leapController.on('deviceStopped', function() {
@@ -62,21 +60,26 @@ module.exports = {
     this.leapController.connect();
   },
   
+  startUpdate: function(){
+    LeapCanvas.newState = "cursor";
+    // The Animation Frame of Leap. steady 60fps
+    this.leapController.on('frame', this.leapUpdate);
+  },
+  
   leapUpdate: function(frame){
     // attach a reference of the frame to this module for ease of access
     this.frame = frame;
     // If no hand, draw nothing
     if ( ! frame.hands.length ) {
-      LeapCanvas.cursor.visible = false;
+      LeapCanvas.hide();
       return;
     }
-    LeapCanvas.cursor.visible = true;
+    LeapCanvas.show();
     // for the first hand there
     var hand = frame.hands[0];
     // move the cursor along
     var mappedPalm = this.posMap( hand.stabilizedPalmPosition );
-    LeapCanvas.cursor.position.x = mappedPalm[0];
-    LeapCanvas.cursor.position.y = mappedPalm[1];
+    LeapCanvas.updatePos( mappedPalm[0], mappedPalm[1] );
     // FIRE THE THING
     this.fire('mousemove', mappedPalm[0], mappedPalm[1]);
     
@@ -167,8 +170,7 @@ module.exports = {
         }
       }
       // Draw cursor at the initial palm position
-      LeapCanvas.cursor.position.x = this.fingerPoint.palmPos.x;
-      LeapCanvas.cursor.position.y = this.fingerPoint.palmPos.y;
+      LeapCanvas.updatePos( this.fingerPoint.palmPos.x, this.fingerPoint.palmPos.y );
     }
   },
   
