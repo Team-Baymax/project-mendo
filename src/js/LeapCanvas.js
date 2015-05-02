@@ -113,6 +113,7 @@ module.exports = {
     this.arrowGroup.visible = false;
     
     this.newState = this.curState = "cursor";
+    this.fistState = "fistOff";
   
     requestAnimationFrame( this.render );
   },
@@ -132,6 +133,7 @@ module.exports = {
       case "cursor":
         break;
       case "fist":
+        this.arrowGroup.visible = false;
         break;
       case "circle":
         this.circleHint.visible = false;
@@ -148,8 +150,22 @@ module.exports = {
       this.cursor.texture = cursorTexture;
         break;
       case "fist":
-        // TODO determine which page it's on, so it know what to display
         this.cursor.texture = fistTexture;
+        switch (this.fistState) {
+          case "fistNavigate":
+            // Hide the bottom one
+            this.arrowGroup.children[2].visible = false;
+            this.arrowGroup.visible = true;
+            break;
+          case "fistScroll":
+            // show the bottom one
+            this.arrowGroup.children[2].visible = true;
+            this.arrowGroup.visible = true;
+            break;
+          case "fistOff":
+            this.arrowGroup.visible = false;
+            break;
+        }
         break;
       case "circle":
         this.cursor.texture = cursorTexture;

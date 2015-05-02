@@ -127,9 +127,15 @@ module.exports = {
         LeapCanvas.newState = 'checkmark';
       }
     } else if (LeapCanvas.newState == 'fist') {
-      // .lightbox-content - fistNavigate
-      // .plan-screen - fistScroll
-      // .food-journal-container - fistScroll
+      if ( containsOrIs( $('.lightbox-content'), elementUnderCursor ) ) {
+        LeapCanvas.fistState = 'fistNavigate';
+      }
+      if ( containsOrIs( $('.plan-screen'), elementUnderCursor ) ) {
+        LeapCanvas.fistState = 'fistScroll';
+      }
+      if ( containsOrIs( $('.food-journal-container'), elementUnderCursor ) ) {
+        LeapCanvas.fistState = 'fistScroll';
+      }
     }
     
   },
@@ -225,6 +231,7 @@ module.exports = {
     } else {
     /* Begin Fisting Updater */
       LeapCanvas.newState = "fist";
+      LeapCanvas.fistState = "fistOff";
       if (this.fist.firstTime) {
         // if it's the very first time, save palm pos
         this.fist.palmPos.x = mappedPalm[0];
@@ -265,6 +272,7 @@ module.exports = {
       // events are triggered quickly,
       // the fist cursor needs to be drawn relatively
       // with movement scaled down
+      
     }
     
   },
