@@ -7,11 +7,12 @@ var PlanScreenRegimenOverviewView = require('./PlanScreenRegimenOverviewView');
 module.exports = Backbone.View.extend({
   template: require('../templates/PlanScreenRegimenContainer'),
   initialize: function(options) {
-    this.listenTo(this.collection, 'add remove', this.updateWidgetButtons);
+    this.listenTo(this.collection, 'add remove', this.updateWidgetOverviews);
     return this.render();
   },
   render: function() {
     this.$el.html(this.template());
+    this.updateWidgetOverviews();
     return this;
   },
   remove: function() {
@@ -19,22 +20,22 @@ module.exports = Backbone.View.extend({
     this.stopListening();
     return this;
   },
-  updateWidgetButtons: function() {
-    console.log('updating ');
+  updateWidgetOverviews: function() {
     var that = this;
 
-    this.buttons = [];
+    this.overviews = [];
     this.$el.find('.overview-container').empty();
 
-    this.collection.each(function(buttonModel, index){
-      that.buttons.push(new PlanScreenRegimenOverviewView({
+    this.collection.each(function(buttonModel, index) {
+      that.overviews.push(new PlanScreenRegimenOverviewView({
         model : buttonModel,
         tagName: 'div',
         className: 'widget-overview'
       }));
     });
 
-    this.buttons.forEach(function(btn) {
+    console.log('hello');
+    this.overviews.forEach(function(btn) {
       that.$el.find('.overview-container').append(btn.$el);
     });
   }
