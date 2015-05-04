@@ -19,7 +19,7 @@ window.timelineData = [
         templateStyle: 2,
         title: 'Log Your Weight',
         subText: 'target weight 241lbs / 109kgs',
-        firstLine: '242lbs',
+        firstLine: '250lbs',
         secondLine: 'Last Recorded',
         icon: 'fitness_planner',
         bgImage: 'Weight',

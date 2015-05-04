@@ -18,3 +18,14 @@ function selectWidget (e) {
     socket.emit('addWidget', $(this).attr('name'));
   }
 }
+
+$('.btn-reload').on('click', emitReload);
+
+function emitReload (e) {
+  e.preventDefault();
+  socket.emit('reload');
+}
+
+socket.on('reload', function(){
+  window.location.reload();
+});

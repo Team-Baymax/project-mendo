@@ -31,6 +31,9 @@ io.on('connection', function(socket){
   socket.on('mouse move', function(data){
     socket.broadcast.emit('mouse move', data);
   });
+  socket.on('reload', function(){
+    socket.broadcast.emit('reload');
+  });
 })
 
 http.listen(5000, function(){

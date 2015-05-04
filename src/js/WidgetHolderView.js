@@ -64,6 +64,10 @@ module.exports = Backbone.View.extend({
     return this;
   },
   addWidget: function(pModel) {
+    if (!this.welcomeTextRemoved) {
+      this.$el.find('.beginning-text').remove();
+      this.welcomeTextRemoved = true;
+    }
     var widgetView = new WidgetView({
       parent: '.widget-scroll',
       className: 'widget',
@@ -114,6 +118,7 @@ module.exports = Backbone.View.extend({
     }
   },
   changeSlideButton: function() {
+    return;
     var iSlide = $('.content-window').data('owlCarousel').currentItem;
     var length = $('.content-window').data('owlCarousel').$owlItems.length;
     var $back = this.$el.find('.btn-back');

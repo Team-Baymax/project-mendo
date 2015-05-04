@@ -295,7 +295,7 @@ module.exports = {
       x:NaN,
       y:NaN
     },
-    proximity: 0.99,
+    proximity: 1,
     // the distance fist can move around till triggering an event 
     leeway: 50
   },

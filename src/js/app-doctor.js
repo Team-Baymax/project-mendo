@@ -85,3 +85,6 @@ socket.on('removeWidget', function (data){
   // EVI.emit('removeWidget', data);
   widgetCollection.removeWidget(data);
 });
+socket.on('reload', function(){
+  window.location.reload();
+});
