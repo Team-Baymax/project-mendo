@@ -16,6 +16,9 @@
       "hbsfy"
     ]
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "browserify-shim": {},
   "devDependencies": {
     "browser-sync": "1.3.7",
