@@ -14,9 +14,9 @@ module.exports = Backbone.Model.extend({
     leftValue: 2140,
     leftUnit: 'Calories',
     leftAvg: 'Per Day Avg',
-    rightValue: 61,
-    rightUnit: 'Carbs',
-    rightAvg: 'Per Meal Avg',
+    rightValue: "",
+    rightUnit: '',
+    rightAvg: '',
     progress: '67%'
   }
 });

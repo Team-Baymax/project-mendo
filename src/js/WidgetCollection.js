@@ -83,13 +83,10 @@ module.exports = Backbone.Collection.extend({
       icon: 'sleep_analysis',
       overviewBG: 'sleep',
       overviewStatus: 'meeting target range',
-      leftValue: 2140,
-      leftUnit: 'Calories',
-      leftAvg: 'Per Day Avg',
-      rightValue: 61,
-      rightUnit: 'Carbs',
-      rightAvg: 'Per Meal Avg',
-      progress: '67%'
+      leftValue: "7:07",
+      leftUnit: 'Hours and Minutes',
+      leftAvg: 'Per Night Avg',
+      progress: '89%'
     },
     'medication': {
       name: 'Medication',
