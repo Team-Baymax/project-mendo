@@ -1,1 +1,1 @@
-web: gulp production; node server/index.js
+web: node server/index.js
