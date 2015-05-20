@@ -150,7 +150,7 @@ module.exports = Backbone.View.extend({
     switch (question) {
       case 'units':
       $('.dial').trigger('configure', {
-          'max': window.Patient.get('convertedWeight')
+          'max': Math.floor( window.Patient.get('convertedWeight') / 5)
       });
       $('.dial').trigger('change');
       break;
