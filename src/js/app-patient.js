@@ -17,7 +17,6 @@ var Patient = require('./models/PatientModel');
 window.Patient = new Patient();
 
 // Assemble the views
-window.LeapGesture = require('./LeapGesture');
 var SideNavView = require('./SideNavViewPatient');
 var TopBarView = require('./TopBarViewPatient');
 
@@ -28,11 +27,6 @@ var FoodJournalView = require('./FoodJournalView');
 var WidgetView = require('./WidgetView');
 var WidgetModel = require('./WidgetModel');
 var WidgetCollection = require('./WidgetCollection');
-
-
-LeapGesture.init({
-  EVI: EVI
-});
 
 window.widgetCollection = new WidgetCollection();
 
