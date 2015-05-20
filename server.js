@@ -6,9 +6,7 @@ var app = express(); // the main app
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-var root = '../build';
-
-app.use(express.static(path.join(__dirname, root)));
+app.use(express.static(__dirname));
 
 // Socket Setup
 io.on('connection', function(socket){
